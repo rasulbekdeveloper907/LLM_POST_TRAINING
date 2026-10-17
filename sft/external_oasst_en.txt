@@ -1,0 +1,12 @@
+# Manba: OpenAssistant/oasst1 (https://huggingface.co/datasets/OpenAssistant/oasst1), litsenziya Apache-2.0.
+# fetch_external.py yasagan. Qo'lda tahrirlamang: o'zgarishlar keyingi yuklashda yo'qoladi.
+## external
+
+Q: What are the probabilities that i get struck by lightning?
+A: The odds of being struck by lightning in a given year are less than one in a million! 
+
+It's safe to say that it is exceptionally rare to be struck by lightning, but precautions should still be taken during lightning storms to prevent the likelihood of such an event occurring. Stay safe!
+
+Q: How do I setup a mySQL connection to access a database in PHP
+A: To connect to a MySQL database using PHP, you need to use either MySQLi extension or PHP Data Objects (PDO). These are two different ways of interacting with MySQL databases that have different advantages and disadvantages. Which one do you prefer to use?
+

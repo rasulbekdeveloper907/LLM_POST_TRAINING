@@ -1,0 +1,190 @@
+# Boshqa modeldan olingan qo'shimcha namunalar: umumiy bilim, mantiq, kod va matn yozish.
+# Format seeds.txt bilan bir xil. Javob ichida bo'sh qator va kod bloki bo'lishi mumkin.
+
+## factual
+
+Q: Yer sharidagi eng chuqur botiqlik qaysi?
+A: Yer sharidagi eng chuqur botiqlik — Mariana botig‘idir. U Tinch okeanida joylashgan bo‘lib, chuqurligi taxminan 11 000 metrni tashkil etadi.
+
+Q: O‘zbekiston Respublikasining mustaqillik kuni qachon nishonlanadi?
+A: O‘zbekiston Respublikasining mustaqillik kuni har yili 1-sentabrda nishonlanadi.
+
+Q: Quyosh tizimidagi eng katta sayyora qaysi?
+A: Quyosh tizimidagi eng katta sayyora — Yupiterdir.
+
+Q: Suvning kimyoviy formulasi qanday?
+A: Suvning kimyoviy formulasi — H2O.
+
+Q: Alisher Navoiy nechanchi yilda va qayerda tug‘ilgan?
+A: Alisher Navoiy 1441-yil 9-fevralda Hirot shahrida tug‘ilgan.
+
+Q: Inson tanasidagi eng katta organ qaysi?
+A: Inson tanasidagi eng katta organ — teridir.
+
+Q: Dinozavrlar Yer yuzidan taxminan necha yil oldin g‘oyib bo‘lgan?
+A: Dinozavrlar taxminan 66 million yil oldin g‘oyib bo‘lgan.
+
+Q: O‘zbekistonning milliy valyutasi nima va u qachon muomalaga kiritilgan?
+A: O‘zbekistonning milliy valyutasi — so‘m bo‘lib, u 1994-yil 1-iyuldan boshlab muomalaga kiritilgan.
+
+Q: Kompyuterning "miyasi" deb hisoblanadigan asosiy qurilma nima?
+A: Kompyuterning asosiy hisoblash qurilmasi Markaziy Protsessor (CPU) hisoblanadi.
+
+Q: DNKning to‘liq nomi nima?
+A: DNKning to‘liq nomi — Dezoksiribonuklein kislotasi.
+
+Q: Yerga eng yaqin yulduz qaysi?
+A: Yerga eng yaqin yulduz — Quyoshdir.
+
+Q: Dunyodagi eng uzun daryo qaysi?
+A: Dunyodagi eng uzun daryo — Nil daryosidir (ba’zi manbalarda Amazonka daryosi ham keltiriladi).
+
+Q: Avstraliya qit’asidagi eng mashhur xaltali hayvon qaysi?
+A: Avstraliya qit’asidagi eng mashhur xaltali hayvon — kengurudir.
+
+Q: Yorug‘lik tezligi taxminan qanchaga teng?
+A: Yorug‘lik tezligi vakuumda taxminan soniyasiga 300 000 kilometrni (299 792 km/s) tashkil etadi.
+
+Q: Islom Karimov nechanchi yildan nechanchi yilgacha O‘zbekiston Prezidenti bo‘lgan?
+A: Islom Karimov 1991-yildan 2016-yilgacha O‘zbekiston Respublikasi Prezidenti lavozimida faoliyat yuritgan.
+
+Q: Fotosintez jarayoni nima?
+A: Fotosintez — o‘simliklar va boshqa ba’zi organizmlar tomonidan quyosh nuri energiyasini kimyoviy energiyaga aylantirish jarayonidir. Bu jarayonda karbonat angidrid va suvdan glyukoza hamda kislorod hosil bo‘ladi.
+
+Q: Dunyodagi eng baland tog‘ cho‘qqisi qaysi va u qayerda joylashgan?
+A: Dunyodagi eng baland tog‘ cho‘qqisi — Everest (Jomolungma) bo‘lib, u Himolay tog‘ tizmasida, Nepal va Xitoy chegarasida joylashgan. Uning balandligi 8848.86 metrni tashkil etadi.
+
+Q: O‘zbekiston qaysi davlatlar bilan chegaradosh?
+A: O‘zbekiston beshta davlat bilan chegaradosh: Qozog‘iston, Qirg‘iziston, Tojikiston, Afg‘oniston va Turkmaniston.
+
+Q: Telefonni kim ixtiro qilgan?
+A: Telefonni 1876-yilda Aleksandr Grem Bell ixtiro qilgan.
+
+Q: Boburning eng mashhur tarixiy asari qaysi?
+A: Zahiriddin Muhammad Boburning eng mashhur tarixiy va adabiy asari — "Boburnoma"dir.
+
+## reasoning
+
+Q: Agar hamma odamlar o‘limga mahkum bo‘lsa va Suqrot odam bo‘lsa, unda Suqrot haqida qanday xulosa chiqarish mumkin?
+A: Deduktiv mantiqqa ko‘ra, Suqrot ham o‘limga mahkumdir.
+
+Q: Akmalning 3 ta akasi bor. Har bir akasining bittadan singlisi bor. Akmalning oilasida nechta farzand bor?
+A: Akmalning oilasida 5 ta farzand bor. Bular: Akmal, uning 3 ta akasi va barcha aka-ukalar uchun umumiy bo‘lgan 1 ta singil.
+
+Q: Bir kishi yomg‘ir ostida soyabonsiz va shlyapasiz qoldi, lekin uning birorta ham sochi ho‘l bo‘lmadi. Bu qanday sodir bo‘lishi mumkin?
+A: Bu kishi mutlaqo kal bo‘lgan.
+
+Q: Agar daraxtda 10 ta qush o‘tirgan bo‘lsa va ovchi ulardan birini otib tashlasa, daraxtda nechta qush qoladi?
+A: Daraxtda hech qaysi qush qolmaydi. O‘q ovozidan qo‘rqqan qolgan 9 ta qush uchib ketadi, otilgan qush esa yerga yiqiladi.
+
+Q: Menda 10 litr va 3 litr sig‘imli ikkita chelak bor. Ulardan foydalanib qanday qilib roppa-rosa 7 litr suv o‘lchab olishim mumkin?
+A: 10 litrli chelakni suv bilan to‘ldirasiz. Undan keyin 3 litrli chelak to‘lguncha undan suv quyasiz. Natijada 10 litrli chelakda roppa-rosa 7 litr suv qoladi (10 - 3 = 7).
+
+Q: Kecha payshanba edi. Ertadan keyin haftaning qaysi kuni bo‘ladi?
+A: Agar kecha payshanba bo‘lsa, bugun juma. Ertaga shanba bo‘ladi, ertadan keyin esa yakshanba bo‘ladi.
+
+Q: Agar marafon yugurishida siz ikkinchi o‘rindagi yuguruvchini quvib o‘tsangiz, o‘zingiz nechanchi o‘ringa joylashasiz?
+A: Siz ikkinchi o‘ringa joylashasiz. Chunki siz aynan ikkinchi o‘rindagi odamning joyini egalladingiz.
+
+Q: Poyezd sharqqa qarab 80 km/soat tezlikda ketmoqda. Shamol esa g‘arbga qarab esmoqda. Poyezdning tutuni qaysi tomonga qarab ketadi?
+A: Zamonaviy elektr yoki dizel poyezdlaridan tutun chiqmaydi. Agar bu parovoz bo‘lsa, shamol va harakat yo‘nalishi hisobiga tutun g‘arbga qarab harakatlanadi.
+
+Q: Qora qutida 5 ta qizil va 5 ta ko‘k paypoq bor. Qorong‘uda bir xil rangdagi juftlikni tanlash uchun qutidan kamida nechta paypoq olish kerak?
+A: Kamida 3 ta paypoq olish kerak. Ranglar faqat ikki xil (qizil va ko‘k) bo‘lgani uchun, olingan 3 ta paypoqning kamida ikkitasi albatta bir xil rangda bo‘ladi (Dirixle prinsipi).
+
+Q: A kishi B kishining otasining o‘g‘li, lekin B kishi A ning akasi yoki ukasi emas. B kishi A ga kim bo‘ladi?
+A: B kishi A ning singlisi yoki opasi bo‘ladi.
+
+## coding
+
+Q: Python dasturlash tilida ro‘yxat (list) elementlarini teskari tartibda chiqarish funksiyasini yozing.
+A: Python-da ro‘yxatni teskari tartibga keltirish uchun quyidagi usuldan foydalanish mumkin:
+```python
+def reverse_list(lst):
+    return lst[::-1]
+
+# Misol:
+print(reverse_list([1, 2, 3, 4]))  # [4, 3, 2, 1]
+```
+
+Q: Berilgan matnda "a" harfi necha marta qatnashganini hisoblaydigan Python funksiyasini yozing.
+A: Buning uchun satr obyektining `.count()` metodidan foydalanish qulay:
+```python
+def count_letter_a(text):
+    return text.lower().count('a')
+
+# Misol:
+print(count_letter_a("Assalomu alaykum"))  # 4
+```
+
+Q: SQL-da `Users` jadvalidan `age` ustuni 18 dan katta bo‘lgan barcha foydalanuvchilarning ismini (`name`) oladigan so‘rovni yozing.
+A: Quyidagi SQL so‘rovi orqali bu ma’lumotni olish mumkin:
+```sql
+SELECT name FROM Users WHERE age > 18;
+```
+
+Q: Python dasturlash tilida berilgan sonning tub (prime) yoki murakkab ekanligini aniqlovchi funksiya tuzing.
+A: Tub sonni aniqlash uchun quyidagi optimallashtirilgan algoritmdan foydalanish mumkin:
+```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+```
+
+Q: JavaScript-da massiv ichidagi eng katta sonni topuvchi funksiya yozing.
+A: JavaScript-da `Math.max` va spread operator yordamida eng katta sonni osongina topish mumkin:
+```javascript
+function findMax(arr) {
+    return Math.max(...arr);
+}
+```
+
+Q: JSON nima va u nima uchun ishlatiladi?
+A: JSON (JavaScript Object Notation) — ma’lumotlarni saqlash va boshqa tizimlar bilan almashish uchun ishlatiladigan matnli formatdir. U asosan veb-server va mijoz (brauzer) o‘rtasida ma’lumot uzatishda keng qo‘llaniladi va inson hamda kompyuter o‘qishi uchun juda qulaydir.
+
+Q: Python-da `try-except` bloki nima maqsadda ishlatiladi?
+A: `try-except` bloki dastur bajarilish jarayonida yuzaga kelishi mumkin bo‘lgan xatoliklarni (exceptions) ushlash va dasturni to‘xtab qolishidan asrash (xatolikni chiroyli tarzda qayta ishlash) uchun ishlatiladi.
+
+Q: HTML-da havola (link) yaratish uchun qaysi teg ishlatiladi?
+A: HTML-da havola yaratish uchun `<a>` tegi va uning `href` atributidan foydalaniladi. Masalan: `<a href="https://example.com">Havola matni</a>`.
+
+Q: Git-da yangi tarmoq (branch) yaratish va unga o‘tish buyrug‘ini yozing.
+A: Zamonaviy Git versiyalarida buni bitta buyruq bilan bajarish mumkin:
+```bash
+git checkout -b yangi-tarmoq-nomi
+```
+Yoki:
+```bash
+git switch -c yangi-tarmoq-nomi
+```
+
+Q: Ob’ektga yo‘naltirilgan dasturlashning (OOP) 4 ta asosiy tamoyili qaysilar?
+A: OOPning to‘rtta asosiy tamoyili quyidagilardan iborat:
+1. Inkapsulyatsiya (Encapsulation)
+2. Vorislik (Inheritance)
+3. Polimorfizm (Polymorphism)
+4. Abstraksiya (Abstraction)
+
+## text_generation
+
+Q: Yangi ochilgan IT akademiyasi uchun qisqa va qiziqarli reklama matni yozib bering.
+A: Kelajak kasbini bugundan o‘rganing! 🚀
+
+Siz ham dasturlash, sun’iy intellekt yoki ma’lumotlar tahlili (Data Science) olamiga qadam qo‘ymoqchimisiz? Bizning IT akademiyamiz sizga eng zamonaviy texnologiyalarni tajribali mentorlar yordamida, amaliyotga yo‘naltirilgan holda o‘rgatadi.
+
+Nega aynan biz?
+- Noldan portfoliogacha: Real loyihalar ustida ishlash imkoniyati.
+- Moslashuvchan grafik: Ishingiz yoki o‘qishingizga halal bermasdan ta’lim oling.
+- Karyera ko‘magi: Eng yaxshi bitiruvchilarga ishga joylashishda yordam beramiz!
+
+Hoziroq ro‘yxatdan o‘ting va birinchi darsda bepul qatnashing! 💡
+
+Q: Vaqtni to‘g‘ri boshqarish (Time management) haqida 3 ta foydali maslahat yozing.
+A: Vaqtni samarali boshqarish uchun quyidagi 3 ta maslahatga amal qiling:
+1. **Vazifalarni ustuvorlik bo‘yicha tartiblang (Eyzenxauer matritsasi):** Ishlarni muhim va shoshilinch toifalarga ajratib oling va birinchi navbatda muhim vazifalarni bajaring.
+2. **Pomodoro texnikasidan foydalaning:** 25 daqiqa davomida bor diqqatingizni ishga qarating, so‘ngra 5 daqiqa dam oling. Bu charchoqning oldini oladi.
+3. **Chalg‘ituvchi omillarni cheklang:** Ish jarayonida ijtimoiy tarmoqlar bildirishnomalarini o‘chirib qo‘ying yoki telefoningizni boshqa xonada qoldiring.

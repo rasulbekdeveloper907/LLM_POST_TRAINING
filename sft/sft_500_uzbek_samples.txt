@@ -1,0 +1,2244 @@
+# SFT uchun 500 ta namunalar
+# Format: ## bo‘lim; Q: savol; A: javob. Har bir namuna bo‘sh qator bilan ajratilgan.
+# Mavzular: Supervised ML, Deep Learning, LLM pretraining/SFT/LoRA, RAG, evaluation va deployment.
+# Eslatma: eval/eval_set.json dagi test savollarini bu faylga qo‘shmang.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida L1 regularization deganda nimani tushunamiz?
+A: L1 regularization parametrlarning mutlaq qiymatlari yig‘indisiga jarima qo‘shadi va ayrim koeffitsiyentlarni nolga olib kelishi mumkin. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Quantization qanday ishlaydi?
+A: Quantization vazn yoki aktivatsiyalarni kamroq bitli sonli formatlarda ifodalab, xotira va hisoblash xarajatini kamaytirishi mumkin. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Test set nima?
+A: Test set yakuniy modelni ilgari ko‘rmagan ma’lumotlarda baholash uchun saqlanadi.
+
+Q: Regularization tushunchasini sodda qilib tushuntiring.
+A: Regularization model murakkabligini cheklab, overfitting xavfini kamaytirishga yordam beradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Data leakage qanday ishlaydi?
+A: Data leakage — trening paytida modelga amalda mavjud bo‘lmaydigan yoki testdan sizib chiqqan ma’lumotning kirib qolishi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Cross-validation nima uchun kerak?
+A: Cross-validation ma’lumotni bir necha bo‘lakka ajratib, modelni turli train-validation bo‘linishlarida baholaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Instruction-response dataset nima?
+A: Instruction-response dataset ko‘rsatma yoki savol va unga mos kutilgan javob juftliklaridan iborat.
+
+## Deep Learning
+
+Q: AI muhandisligida Gradient descent deganda nimani tushunamiz?
+A: Gradient descent loss funksiyasini kamaytirish uchun parametrlarni gradientga qarama-qarshi yo‘nalishda yangilaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Cross-validation deganda nimani tushunamiz?
+A: Cross-validation ma’lumotni bir necha bo‘lakka ajratib, modelni turli train-validation bo‘linishlarida baholaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Padding qanday ishlaydi?
+A: Padding batchdagi ketma-ketlik uzunliklarini tenglashtirish uchun maxsus tokenlar qo‘shishdir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: Vector database qanday ishlaydi?
+A: Vector database vektor embeddinglarni saqlash va o‘xshashlik bo‘yicha qidirish uchun ishlatiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Retriever nima?
+A: Retriever so‘rovga mos hujjat yoki bo‘laklarni korpusdan topib beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Recall nima uchun kerak?
+A: Recall — haqiqiy musbat namunalarning model topa olgan ulushi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Loss function nima?
+A: Loss function model bashoratining maqsadga qanchalik mos kelmasligini son bilan ifodalaydi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Docker deganda nimani tushunamiz?
+A: Docker ilovani va uning bog‘liqliklarini konteynerda qadoqlash va bir xil muhitda ishga tushirishga yordam beradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Overfitting deganda nimani tushunamiz?
+A: Overfitting model trening ma’lumotiga haddan tashqari moslashib, yangi ma’lumotlarda yomon ishlashidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: QLoRA qanday ishlaydi?
+A: QLoRA kvantlangan asosiy model ustida LoRA adapterlarini o‘qitib, xotira sarfini kamaytiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: L1 regularization qanday ishlaydi?
+A: L1 regularization parametrlarning mutlaq qiymatlari yig‘indisiga jarima qo‘shadi va ayrim koeffitsiyentlarni nolga olib kelishi mumkin. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Learning rate nima?
+A: Learning rate parametrlar har yangilanishda qanchalik katta qadam tashlashini belgilaydi.
+
+Q: RNN tushunchasini sodda qilib tushuntiring.
+A: RNN ketma-ket ma’lumotni qayta ishlashda oldingi holat haqidagi axborotni keyingi bosqichga uzatadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Benchmark contamination qanday ishlaydi?
+A: Benchmark contamination baholash savollari trening ma’lumotiga kirib qolib, natijani sun’iy oshirishi mumkin bo‘lgan holatdir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Chat template nima?
+A: Chat template xabarlarni role, content va maxsus tokenlar yordamida model kutadigan formatga joylaydi.
+
+Q: AI muhandisligida BPE deganda nimani tushunamiz?
+A: Byte Pair Encoding tez-tez uchraydigan birliklarni birlashtirib, subword tokenlar lug‘atini quradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Hallucination deganda nimani tushunamiz?
+A: Hallucination model ishonchli ko‘ringan, lekin noto‘g‘ri yoki manba bilan tasdiqlanmagan ma’lumotni yaratishidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Classification nima uchun kerak?
+A: Klassifikatsiya kirish ma’lumotini oldindan belgilangan sinflardan biriga ajratadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Throughput nima uchun kerak?
+A: Throughput tizim vaqt birligida qayta ishlay oladigan so‘rovlar yoki tokenlar miqdoridir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: AI muhandisligida CNN deganda nimani tushunamiz?
+A: CNN konvolyutsiyalar orqali mahalliy naqshlarni o‘rganadi va ko‘pincha tasvirlar bilan ishlatiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Batch size qanday ishlaydi?
+A: Batch size bitta parametr yangilanishidan oldin ko‘rib chiqiladigan trening namunalari sonidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: CNN nima?
+A: CNN konvolyutsiyalar orqali mahalliy naqshlarni o‘rganadi va ko‘pincha tasvirlar bilan ishlatiladi.
+
+Q: Learning rate tushunchasini sodda qilib tushuntiring.
+A: Learning rate parametrlar har yangilanishda qanchalik katta qadam tashlashini belgilaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Feature scaling deganda nimani tushunamiz?
+A: Feature scaling belgilar qiymatlarini umumiy masshtabga keltiradi; bu ayrim algoritmlar uchun muhim. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: L1 regularization nima uchun kerak?
+A: L1 regularization parametrlarning mutlaq qiymatlari yig‘indisiga jarima qo‘shadi va ayrim koeffitsiyentlarni nolga olib kelishi mumkin. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Epoch qanday ishlaydi?
+A: Epoch — trening ma’lumotlarining butun to‘plami model tomonidan bir marta ko‘rib chiqilgan davr. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Validation set tushunchasini sodda qilib tushuntiring.
+A: Validation set model tanlash, giperparametr sozlash va overfittingni kuzatish uchun ishlatiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Tokenization qanday ishlaydi?
+A: Tokenization matnni model qayta ishlaydigan token birliklariga ajratadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Reinforcement learning tushunchasini sodda qilib tushuntiring.
+A: Mustahkamlovchi o‘rganishda agent muhit bilan o‘zaro ta’sirlashib, mukofot signali orqali strategiyasini yaxshilaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Prompt injection deganda nimani tushunamiz?
+A: Prompt injection modelni ishonchsiz matn orqali dastlabki ko‘rsatmalarga zid harakatga undashga urinishdir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Generalization qanday ishlaydi?
+A: Generalization — modelning treningda ko‘rmagan, lekin shu taqsimotga o‘xshash ma’lumotlarda ham yaxshi ishlash qobiliyati. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Batch size nima uchun kerak?
+A: Batch size bitta parametr yangilanishidan oldin ko‘rib chiqiladigan trening namunalari sonidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: One-hot encoding tushunchasini sodda qilib tushuntiring.
+A: One-hot encoding har bir toifa uchun alohida 0/1 belgisi yaratadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: AI muhandisligida QLoRA deganda nimani tushunamiz?
+A: QLoRA kvantlangan asosiy model ustida LoRA adapterlarini o‘qitib, xotira sarfini kamaytiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Loss function nima uchun kerak?
+A: Loss function model bashoratining maqsadga qanchalik mos kelmasligini son bilan ifodalaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida One-hot encoding deganda nimani tushunamiz?
+A: One-hot encoding har bir toifa uchun alohida 0/1 belgisi yaratadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Random forest nima uchun kerak?
+A: Random forest turli ma’lumot namunalari va belgilar bilan o‘qitilgan ko‘plab decision tree bashoratlarini birlashtiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Chunking nima uchun kerak?
+A: Chunking uzun hujjatni qidirish va kontekstga kiritish qulay bo‘lgan kichik bo‘laklarga ajratadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Normalization deganda nimani tushunamiz?
+A: Normalization qiymatlarni tanlangan oraliqqa, masalan 0 dan 1 gacha, o‘tkazishi mumkin. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Missing values tushunchasini sodda qilib tushuntiring.
+A: Yetishmayotgan qiymatlar o‘chirish, imputatsiya yoki alohida indikator bilan ishlanishi mumkin; tanlov sababga va vazifaga bog‘liq. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: EOS token tushunchasini sodda qilib tushuntiring.
+A: EOS token ketma-ketlik tugaganini belgilashi mumkin; aniq vazifasi model tokenizer va chat formatiga bog‘liq. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Random forest nima?
+A: Random forest turli ma’lumot namunalari va belgilar bilan o‘qitilgan ko‘plab decision tree bashoratlarini birlashtiradi.
+
+Q: Decision tree nima?
+A: Decision tree belgilar bo‘yicha ketma-ket shartlar qo‘llab bashorat chiqaradigan modeldir.
+
+Q: Precision qanday ishlaydi?
+A: Precision — model musbat deb topgan namunalar ichida haqiqatan musbat bo‘lganlar ulushi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: F1 score tushunchasini sodda qilib tushuntiring.
+A: F1 score precision va recallning garmonik o‘rtachasidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Evaluation set deganda nimani tushunamiz?
+A: Evaluation set model sifatini treningdan alohida va takrorlanadigan tarzda o‘lchash uchun ishlatiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Pretraining qanday ishlaydi?
+A: Pretraining katta matn korpusida umumiy til naqshlarini o‘rganish uchun modelni dastlabki o‘qitish bosqichidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Data leakage nima?
+A: Data leakage — trening paytida modelga amalda mavjud bo‘lmaydigan yoki testdan sizib chiqqan ma’lumotning kirib qolishi.
+
+Q: AI muhandisligida K-means deganda nimani tushunamiz?
+A: K-means nuqtalarni tanlangan K ta klasterga, markazlarga masofani kamaytirish orqali ajratadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Next-token prediction nima uchun kerak?
+A: Next-token prediction modelga oldingi tokenlar asosida keyingi token ehtimolliklarini bashorat qildirish vazifasidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Standardization tushunchasini sodda qilib tushuntiring.
+A: Standardization odatda belgini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan tarzda o‘zgartiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: RMSE nima?
+A: RMSE — MSEning kvadrat ildizi bo‘lib, odatda maqsad o‘zgaruvchisi bilan bir xil o‘lchov birligida bo‘ladi.
+
+## LLM va SFT
+
+Q: Label masking qanday ishlaydi?
+A: Label masking ayrim tokenlar loss hisobiga qo‘shilmasligini ta’minlaydi, masalan chat SFTda user tokenlarini. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Gradient boosting nima?
+A: Gradient boosting modellarni ketma-ket quradi; har yangi bosqich avvalgi model xatolarini kamaytirishga urinadi.
+
+## LLM va SFT
+
+Q: Full fine-tuning nima?
+A: Full fine-tuningda modelning barcha yoki deyarli barcha o‘qitiladigan parametrlari yangilanadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Training set nima uchun kerak?
+A: Training set model parametrlarini o‘rganish uchun ishlatiladigan ma’lumotlar to‘plamidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: L1 regularization nima?
+A: L1 regularization parametrlarning mutlaq qiymatlari yig‘indisiga jarima qo‘shadi va ayrim koeffitsiyentlarni nolga olib kelishi mumkin.
+
+Q: AI muhandisligida Supervised learning deganda nimani tushunamiz?
+A: Supervised learning — modelni kirish ma’lumotlari va ularga mos yorliqlar yoki maqsad qiymatlari bilan o‘rgatish usuli. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Recall qanday ishlaydi?
+A: Recall — haqiqiy musbat namunalarning model topa olgan ulushi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida Pretraining deganda nimani tushunamiz?
+A: Pretraining katta matn korpusida umumiy til naqshlarini o‘rganish uchun modelni dastlabki o‘qitish bosqichidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Logistic regression qanday ishlaydi?
+A: Logistic regression odatda klassifikatsiya uchun ehtimollikni sigmoid yoki ko‘p sinfli holatda softmax orqali modellashtiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida Full fine-tuning deganda nimani tushunamiz?
+A: Full fine-tuningda modelning barcha yoki deyarli barcha o‘qitiladigan parametrlari yangilanadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Inference qanday ishlaydi?
+A: Inference — o‘qitilgan modeldan yangi kirish uchun bashorat yoki javob olish jarayoni. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Recall deganda nimani tushunamiz?
+A: Recall — haqiqiy musbat namunalarning model topa olgan ulushi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Batch inference qanday ishlaydi?
+A: Batch inference bir nechta so‘rovni birgalikda qayta ishlash orqali apparat resurslaridan samaraliroq foydalanishi mumkin. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Context window nima uchun kerak?
+A: Context window model bir so‘rovda hisobga olishi mumkin bo‘lgan tokenlar miqdori chegarasidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Causal language modeling nima?
+A: Causal language modelingda har bir token faqat undan oldingi tokenlarga tayanib bashorat qilinadi.
+
+## RAG va qidiruv
+
+Q: Semantic search nima uchun kerak?
+A: Semantic search faqat aynan bir xil so‘zlarni emas, ma’no jihatidan yaqin so‘rov va hujjatlarni topishga intiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Semantic search qanday ishlaydi?
+A: Semantic search faqat aynan bir xil so‘zlarni emas, ma’no jihatidan yaqin so‘rov va hujjatlarni topishga intiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Logistic regression nima uchun kerak?
+A: Logistic regression odatda klassifikatsiya uchun ehtimollikni sigmoid yoki ko‘p sinfli holatda softmax orqali modellashtiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: AI muhandisligida Padding deganda nimani tushunamiz?
+A: Padding batchdagi ketma-ketlik uzunliklarini tenglashtirish uchun maxsus tokenlar qo‘shishdir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Learning rate qanday ishlaydi?
+A: Learning rate parametrlar har yangilanishda qanchalik katta qadam tashlashini belgilaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Feature scaling nima uchun kerak?
+A: Feature scaling belgilar qiymatlarini umumiy masshtabga keltiradi; bu ayrim algoritmlar uchun muhim. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Regression tushunchasini sodda qilib tushuntiring.
+A: Regressiya uzluksiz sonli qiymatni bashorat qiladi, masalan uy narxi yoki harorat. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Classification tushunchasini sodda qilib tushuntiring.
+A: Klassifikatsiya kirish ma’lumotini oldindan belgilangan sinflardan biriga ajratadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Benchmark contamination nima uchun kerak?
+A: Benchmark contamination baholash savollari trening ma’lumotiga kirib qolib, natijani sun’iy oshirishi mumkin bo‘lgan holatdir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: CNN tushunchasini sodda qilib tushuntiring.
+A: CNN konvolyutsiyalar orqali mahalliy naqshlarni o‘rganadi va ko‘pincha tasvirlar bilan ishlatiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Chunking tushunchasini sodda qilib tushuntiring.
+A: Chunking uzun hujjatni qidirish va kontekstga kiritish qulay bo‘lgan kichik bo‘laklarga ajratadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Grounded answer nima?
+A: Grounded answer berilgan kontekst yoki tekshiriladigan manbalarga tayangan javobdir.
+
+## LLM va SFT
+
+Q: Teacher forcing nima?
+A: Teacher forcing treningda keyingi tokenni bashorat qilish uchun modelga haqiqiy oldingi tokenlar berilishini anglatadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Precision deganda nimani tushunamiz?
+A: Precision — model musbat deb topgan namunalar ichida haqiqatan musbat bo‘lganlar ulushi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## RAG va qidiruv
+
+Q: Grounded answer tushunchasini sodda qilib tushuntiring.
+A: Grounded answer berilgan kontekst yoki tekshiriladigan manbalarga tayangan javobdir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Feature tushunchasini sodda qilib tushuntiring.
+A: Feature — model bashorat qilishda foydalanadigan kirish belgisi yoki ustuni. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Imbalanced dataset nima uchun kerak?
+A: Sinflar nomutanosibligi ayrim sinflarda boshqalariga qaraganda ancha ko‘p namuna borligini anglatadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: AI muhandisligida Gradient boosting deganda nimani tushunamiz?
+A: Gradient boosting modellarni ketma-ket quradi; har yangi bosqich avvalgi model xatolarini kamaytirishga urinadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Attention nima uchun kerak?
+A: Attention so‘rovga mos kalitlar bo‘yicha vaznlar hisoblab, qiymatlarning vaznli yig‘indisini hosil qiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Gradient descent nima uchun kerak?
+A: Gradient descent loss funksiyasini kamaytirish uchun parametrlarni gradientga qarama-qarshi yo‘nalishda yangilaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Gradient boosting nima uchun kerak?
+A: Gradient boosting modellarni ketma-ket quradi; har yangi bosqich avvalgi model xatolarini kamaytirishga urinadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: F1 score nima?
+A: F1 score precision va recallning garmonik o‘rtachasidir.
+
+Q: Confusion matrix nima?
+A: Confusion matrix haqiqiy sinflar va model bashoratlari kesishmasidagi sonlarni ko‘rsatadi.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Retriever deganda nimani tushunamiz?
+A: Retriever so‘rovga mos hujjat yoki bo‘laklarni korpusdan topib beradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: AI muhandisligida RAG deganda nimani tushunamiz?
+A: Retrieval-Augmented Generation javob yaratishdan oldin tashqi manbalardan tegishli ma’lumotlarni topib, ularni promptga qo‘shadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Regularization nima?
+A: Regularization model murakkabligini cheklab, overfitting xavfini kamaytirishga yordam beradi.
+
+## Deep Learning
+
+Q: Backpropagation nima?
+A: Backpropagation neyron tarmoqda loss gradientlarini zanjir qoidasidan foydalanib qatlamlar bo‘ylab hisoblaydi.
+
+## LLM va SFT
+
+Q: LoRA nima uchun kerak?
+A: LoRA asosiy vaznlarni muzlatib, kichik past-rank matritsalar orqali o‘rganiladigan yangilanish kiritadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Activation function nima uchun kerak?
+A: Activation function neyron chiqishiga nolinearlik kiritadi; masalan ReLU yoki sigmoid. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Cross-entropy loss qanday ishlaydi?
+A: Cross-entropy loss model bashorat qilgan ehtimollik taqsimotini haqiqiy token yorlig‘i bilan solishtiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Precision nima?
+A: Precision — model musbat deb topgan namunalar ichida haqiqatan musbat bo‘lganlar ulushi.
+
+## LLM va SFT
+
+Q: Chat template qanday ishlaydi?
+A: Chat template xabarlarni role, content va maxsus tokenlar yordamida model kutadigan formatga joylaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Decision tree tushunchasini sodda qilib tushuntiring.
+A: Decision tree belgilar bo‘yicha ketma-ket shartlar qo‘llab bashorat chiqaradigan modeldir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: RAG qanday ishlaydi?
+A: Retrieval-Augmented Generation javob yaratishdan oldin tashqi manbalardan tegishli ma’lumotlarni topib, ularni promptga qo‘shadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: One-hot encoding qanday ishlaydi?
+A: One-hot encoding har bir toifa uchun alohida 0/1 belgisi yaratadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: SFT qanday ishlaydi?
+A: Supervised Fine-Tuning modelni namunaviy prompt va javob juftliklari orqali ko‘rsatmalarga javob berishga moslaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Training set qanday ishlaydi?
+A: Training set model parametrlarini o‘rganish uchun ishlatiladigan ma’lumotlar to‘plamidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: RAG nima uchun kerak?
+A: Retrieval-Augmented Generation javob yaratishdan oldin tashqi manbalardan tegishli ma’lumotlarni topib, ularni promptga qo‘shadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Generalization deganda nimani tushunamiz?
+A: Generalization — modelning treningda ko‘rmagan, lekin shu taqsimotga o‘xshash ma’lumotlarda ham yaxshi ishlash qobiliyati. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: ROC-AUC tushunchasini sodda qilib tushuntiring.
+A: ROC-AUC turli thresholdlarda haqiqiy musbat va yolg‘on musbat nisbatlari o‘rtasidagi ajratish qobiliyatini umumlashtiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Teacher forcing qanday ishlaydi?
+A: Teacher forcing treningda keyingi tokenni bashorat qilish uchun modelga haqiqiy oldingi tokenlar berilishini anglatadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Random seed nima uchun ishlatiladi?
+A: Random seed tasodifiy jarayonlarni qayta takrorlashga yordam beradi. Lekin GPU operatsiyalari, kutubxona versiyalari va apparat farqlari sabab natija har doim mutlaqo bir xil bo‘lishiga kafolat bermaydi.
+
+## RAG va qidiruv
+
+Q: Grounded answer qanday ishlaydi?
+A: Grounded answer berilgan kontekst yoki tekshiriladigan manbalarga tayangan javobdir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Regularization qanday ishlaydi?
+A: Regularization model murakkabligini cheklab, overfitting xavfini kamaytirishga yordam beradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Label tushunchasini sodda qilib tushuntiring.
+A: Label — nazoratli o‘rganishda namuna uchun ma’lum bo‘lgan to‘g‘ri javob yoki maqsad qiymati. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: AI muhandisligida Dropout deganda nimani tushunamiz?
+A: Dropout trening vaqtida ayrim aktivatsiyalarni tasodifiy o‘chirib, modelning ortiqcha moslashishini kamaytirishga yordam beradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Classification qanday ishlaydi?
+A: Klassifikatsiya kirish ma’lumotini oldindan belgilangan sinflardan biriga ajratadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Self-attention nima uchun kerak?
+A: Self-attention bir ketma-ketlikdagi tokenlarning boshqa tokenlarga e’tiborini hisoblaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Spam filtri uchun precision va recall orasidagi farqni tushuntiring.
+A: Precision spam deb belgilangan xatlarning nechasi haqiqatan spamligini bildiradi. Recall esa haqiqiy spam xatlarning nechasi topilganini bildiradi. Qaysi xato qimmatroq ekaniga qarab muvozanat tanlanadi.
+
+## Deep Learning
+
+Q: Backpropagation qanday ishlaydi?
+A: Backpropagation neyron tarmoqda loss gradientlarini zanjir qoidasidan foydalanib qatlamlar bo‘ylab hisoblaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Attention tushunchasini sodda qilib tushuntiring.
+A: Attention so‘rovga mos kalitlar bo‘yicha vaznlar hisoblab, qiymatlarning vaznli yig‘indisini hosil qiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Vector database tushunchasini sodda qilib tushuntiring.
+A: Vector database vektor embeddinglarni saqlash va o‘xshashlik bo‘yicha qidirish uchun ishlatiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Context window tushunchasini sodda qilib tushuntiring.
+A: Context window model bir so‘rovda hisobga olishi mumkin bo‘lgan tokenlar miqdori chegarasidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: K-means qanday ishlaydi?
+A: K-means nuqtalarni tanlangan K ta klasterga, markazlarga masofani kamaytirish orqali ajratadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Standardization nima uchun kerak?
+A: Standardization odatda belgini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan tarzda o‘zgartiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: AI muhandisligida Chat template deganda nimani tushunamiz?
+A: Chat template xabarlarni role, content va maxsus tokenlar yordamida model kutadigan formatga joylaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Chat template nima uchun kerak?
+A: Chat template xabarlarni role, content va maxsus tokenlar yordamida model kutadigan formatga joylaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Supervised learning nima uchun kerak?
+A: Supervised learning — modelni kirish ma’lumotlari va ularga mos yorliqlar yoki maqsad qiymatlari bilan o‘rgatish usuli. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Unsupervised learning qanday ishlaydi?
+A: Nazoratsiz o‘rganishda ma’lumotlar uchun oldindan berilgan yorliqlar bo‘lmaydi; model tuzilma yoki guruhlarni izlaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Parameter va hyperparameter farqi nima?
+A: Parameter trening davomida ma’lumotdan o‘rganiladi, masalan neyron tarmoq vazni. Hyperparameter esa trening jarayonini boshqaradi, masalan learning rate, batch size yoki daraxt chuqurligi.
+
+## LLM va SFT
+
+Q: Attention qanday ishlaydi?
+A: Attention so‘rovga mos kalitlar bo‘yicha vaznlar hisoblab, qiymatlarning vaznli yig‘indisini hosil qiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Imbalanced dataset tushunchasini sodda qilib tushuntiring.
+A: Sinflar nomutanosibligi ayrim sinflarda boshqalariga qaraganda ancha ko‘p namuna borligini anglatadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: RNN qanday ishlaydi?
+A: RNN ketma-ket ma’lumotni qayta ishlashda oldingi holat haqidagi axborotni keyingi bosqichga uzatadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida SFT deganda nimani tushunamiz?
+A: Supervised Fine-Tuning modelni namunaviy prompt va javob juftliklari orqali ko‘rsatmalarga javob berishga moslaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Cross-entropy loss tushunchasini sodda qilib tushuntiring.
+A: Cross-entropy loss model bashorat qilgan ehtimollik taqsimotini haqiqiy token yorlig‘i bilan solishtiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: API tushunchasini sodda qilib tushuntiring.
+A: API dasturlar o‘zaro kelishilgan so‘rov va javob formati orqali muloqot qilish usulidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Missing values qanday ishlaydi?
+A: Yetishmayotgan qiymatlar o‘chirish, imputatsiya yoki alohida indikator bilan ishlanishi mumkin; tanlov sababga va vazifaga bog‘liq. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Human evaluation deganda nimani tushunamiz?
+A: Human evaluation javoblarni inson mezonlar, masalan aniqlik, foydalilik va ravonlik bo‘yicha baholashidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Generalization tushunchasini sodda qilib tushuntiring.
+A: Generalization — modelning treningda ko‘rmagan, lekin shu taqsimotga o‘xshash ma’lumotlarda ham yaxshi ishlash qobiliyati. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: AI muhandisligida Random forest deganda nimani tushunamiz?
+A: Random forest turli ma’lumot namunalari va belgilar bilan o‘qitilgan ko‘plab decision tree bashoratlarini birlashtiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Standardization qanday ishlaydi?
+A: Standardization odatda belgini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan tarzda o‘zgartiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Missing values deganda nimani tushunamiz?
+A: Yetishmayotgan qiymatlar o‘chirish, imputatsiya yoki alohida indikator bilan ishlanishi mumkin; tanlov sababga va vazifaga bog‘liq. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## RAG va qidiruv
+
+Q: Semantic search tushunchasini sodda qilib tushuntiring.
+A: Semantic search faqat aynan bir xil so‘zlarni emas, ma’no jihatidan yaqin so‘rov va hujjatlarni topishga intiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Subword tokenizer nima?
+A: Subword tokenizer so‘zlarni keng tarqalgan bo‘laklarga ajratib, lug‘atda yo‘q so‘zlarni ham ifodalashga yordam beradi.
+
+Q: AI muhandisligida Self-attention deganda nimani tushunamiz?
+A: Self-attention bir ketma-ketlikdagi tokenlarning boshqa tokenlarga e’tiborini hisoblaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Batch inference tushunchasini sodda qilib tushuntiring.
+A: Batch inference bir nechta so‘rovni birgalikda qayta ishlash orqali apparat resurslaridan samaraliroq foydalanishi mumkin. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: Gradient descent qanday ishlaydi?
+A: Gradient descent loss funksiyasini kamaytirish uchun parametrlarni gradientga qarama-qarshi yo‘nalishda yangilaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Categorical encoding nima?
+A: Kategorik encoding matnli toifalarni model ishlata oladigan sonli ko‘rinishga o‘tkazadi.
+
+## RAG va qidiruv
+
+Q: Prompt injection nima uchun kerak?
+A: Prompt injection modelni ishonchsiz matn orqali dastlabki ko‘rsatmalarga zid harakatga undashga urinishdir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Tokenization nima uchun kerak?
+A: Tokenization matnni model qayta ishlaydigan token birliklariga ajratadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Causal language modeling tushunchasini sodda qilib tushuntiring.
+A: Causal language modelingda har bir token faqat undan oldingi tokenlarga tayanib bashorat qilinadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Batch inference nima?
+A: Batch inference bir nechta so‘rovni birgalikda qayta ishlash orqali apparat resurslaridan samaraliroq foydalanishi mumkin.
+
+## LLM va SFT
+
+Q: Instruction-response dataset nima uchun kerak?
+A: Instruction-response dataset ko‘rsatma yoki savol va unga mos kutilgan javob juftliklaridan iborat. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Unsupervised learning nima uchun kerak?
+A: Nazoratsiz o‘rganishda ma’lumotlar uchun oldindan berilgan yorliqlar bo‘lmaydi; model tuzilma yoki guruhlarni izlaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Human evaluation qanday ishlaydi?
+A: Human evaluation javoblarni inson mezonlar, masalan aniqlik, foydalilik va ravonlik bo‘yicha baholashidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Reinforcement learning nima?
+A: Mustahkamlovchi o‘rganishda agent muhit bilan o‘zaro ta’sirlashib, mukofot signali orqali strategiyasini yaxshilaydi.
+
+Q: Standardization nima?
+A: Standardization odatda belgini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan tarzda o‘zgartiradi.
+
+## Deep Learning
+
+Q: Activation function qanday ishlaydi?
+A: Activation function neyron chiqishiga nolinearlik kiritadi; masalan ReLU yoki sigmoid. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Next-token prediction tushunchasini sodda qilib tushuntiring.
+A: Next-token prediction modelga oldingi tokenlar asosida keyingi token ehtimolliklarini bashorat qildirish vazifasidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: BPE tushunchasini sodda qilib tushuntiring.
+A: Byte Pair Encoding tez-tez uchraydigan birliklarni birlashtirib, subword tokenlar lug‘atini quradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Truncation tushunchasini sodda qilib tushuntiring.
+A: Truncation maksimal uzunlikdan oshgan ketma-ketlikni belgilangan chegarada qisqartiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Pretraining nima?
+A: Pretraining katta matn korpusida umumiy til naqshlarini o‘rganish uchun modelni dastlabki o‘qitish bosqichidir.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Categorical encoding deganda nimani tushunamiz?
+A: Kategorik encoding matnli toifalarni model ishlata oladigan sonli ko‘rinishga o‘tkazadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: PCA qanday ishlaydi?
+A: PCA ma’lumotdagi dispersiyani imkon qadar saqlagan holda o‘zaro bog‘liq belgilarni kamroq o‘lchamli komponentlarga aylantiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Hallucination nima uchun kerak?
+A: Hallucination model ishonchli ko‘ringan, lekin noto‘g‘ri yoki manba bilan tasdiqlanmagan ma’lumotni yaratishidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Chunking qanday ishlaydi?
+A: Chunking uzun hujjatni qidirish va kontekstga kiritish qulay bo‘lgan kichik bo‘laklarga ajratadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Linear regression nima?
+A: Linear regression maqsad qiymatni belgilar bilan chiziqli bog‘lanish orqali bashorat qiladi.
+
+Q: PCA tushunchasini sodda qilib tushuntiring.
+A: PCA ma’lumotdagi dispersiyani imkon qadar saqlagan holda o‘zaro bog‘liq belgilarni kamroq o‘lchamli komponentlarga aylantiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Retriever qanday ishlaydi?
+A: Retriever so‘rovga mos hujjat yoki bo‘laklarni korpusdan topib beradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Regression deganda nimani tushunamiz?
+A: Regressiya uzluksiz sonli qiymatni bashorat qiladi, masalan uy narxi yoki harorat. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Overfitting nima?
+A: Overfitting model trening ma’lumotiga haddan tashqari moslashib, yangi ma’lumotlarda yomon ishlashidir.
+
+Q: Imbalanced dataset nima?
+A: Sinflar nomutanosibligi ayrim sinflarda boshqalariga qaraganda ancha ko‘p namuna borligini anglatadi.
+
+## LLM va SFT
+
+Q: AI muhandisligida Subword tokenizer deganda nimani tushunamiz?
+A: Subword tokenizer so‘zlarni keng tarqalgan bo‘laklarga ajratib, lug‘atda yo‘q so‘zlarni ham ifodalashga yordam beradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Training set deganda nimani tushunamiz?
+A: Training set model parametrlarini o‘rganish uchun ishlatiladigan ma’lumotlar to‘plamidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## RAG va qidiruv
+
+Q: RAG tushunchasini sodda qilib tushuntiring.
+A: Retrieval-Augmented Generation javob yaratishdan oldin tashqi manbalardan tegishli ma’lumotlarni topib, ularni promptga qo‘shadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Throughput nima?
+A: Throughput tizim vaqt birligida qayta ishlay oladigan so‘rovlar yoki tokenlar miqdoridir.
+
+## LLM va SFT
+
+Q: Transformer nima uchun kerak?
+A: Transformer tokenlar o‘rtasidagi bog‘lanishlarni attention mexanizmi yordamida modellashtiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Random forest qanday ishlaydi?
+A: Random forest turli ma’lumot namunalari va belgilar bilan o‘qitilgan ko‘plab decision tree bashoratlarini birlashtiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Learning rate nima uchun kerak?
+A: Learning rate parametrlar har yangilanishda qanchalik katta qadam tashlashini belgilaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: API nima uchun kerak?
+A: API dasturlar o‘zaro kelishilgan so‘rov va javob formati orqali muloqot qilish usulidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Reranker nima?
+A: Reranker dastlab topilgan hujjatlarni so‘rovga mosligi bo‘yicha qayta tartiblaydi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Generalization nima uchun kerak?
+A: Generalization — modelning treningda ko‘rmagan, lekin shu taqsimotga o‘xshash ma’lumotlarda ham yaxshi ishlash qobiliyati. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: AI muhandisligida F1 score deganda nimani tushunamiz?
+A: F1 score precision va recallning garmonik o‘rtachasidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Docker tushunchasini sodda qilib tushuntiring.
+A: Docker ilovani va uning bog‘liqliklarini konteynerda qadoqlash va bir xil muhitda ishga tushirishga yordam beradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: F1 score nima uchun kerak?
+A: F1 score precision va recallning garmonik o‘rtachasidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: K-means tushunchasini sodda qilib tushuntiring.
+A: K-means nuqtalarni tanlangan K ta klasterga, markazlarga masofani kamaytirish orqali ajratadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: AI muhandisligida Truncation deganda nimani tushunamiz?
+A: Truncation maksimal uzunlikdan oshgan ketma-ketlikni belgilangan chegarada qisqartiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: BPE qanday ishlaydi?
+A: Byte Pair Encoding tez-tez uchraydigan birliklarni birlashtirib, subword tokenlar lug‘atini quradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Instruction-response dataset qanday ishlaydi?
+A: Instruction-response dataset ko‘rsatma yoki savol va unga mos kutilgan javob juftliklaridan iborat. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Latency nima uchun kerak?
+A: Latency so‘rov yuborilgandan javob qaytguncha o‘tadigan vaqtni bildiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida RMSE deganda nimani tushunamiz?
+A: RMSE — MSEning kvadrat ildizi bo‘lib, odatda maqsad o‘zgaruvchisi bilan bir xil o‘lchov birligida bo‘ladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Dropout nima uchun kerak?
+A: Dropout trening vaqtida ayrim aktivatsiyalarni tasodifiy o‘chirib, modelning ortiqcha moslashishini kamaytirishga yordam beradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Validation set nima uchun kerak?
+A: Validation set model tanlash, giperparametr sozlash va overfittingni kuzatish uchun ishlatiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Underfitting nima?
+A: Underfitting model ma’lumotdagi muhim naqshlarni o‘rganish uchun yetarlicha murakkab yoki yaxshi o‘qitilmagan holatdir.
+
+Q: Linear regression nima uchun kerak?
+A: Linear regression maqsad qiymatni belgilar bilan chiziqli bog‘lanish orqali bashorat qiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Reranker nima uchun kerak?
+A: Reranker dastlab topilgan hujjatlarni so‘rovga mosligi bo‘yicha qayta tartiblaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Self-attention tushunchasini sodda qilib tushuntiring.
+A: Self-attention bir ketma-ketlikdagi tokenlarning boshqa tokenlarga e’tiborini hisoblaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: AI muhandisligida RNN deganda nimani tushunamiz?
+A: RNN ketma-ket ma’lumotni qayta ishlashda oldingi holat haqidagi axborotni keyingi bosqichga uzatadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Quantization deganda nimani tushunamiz?
+A: Quantization vazn yoki aktivatsiyalarni kamroq bitli sonli formatlarda ifodalab, xotira va hisoblash xarajatini kamaytirishi mumkin. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## RAG va qidiruv
+
+Q: RAG ishlatilsa, hallucination butunlay yo‘qoladimi?
+A: Yo‘q. Retriever noto‘g‘ri hujjat topishi, kontekst yetarli bo‘lmasligi yoki model manbadan tashqariga chiqishi mumkin. Manbalarni ko‘rsatish, yetarlilik mezoni, abstention va alohida evaluation zarur.
+
+## Deep Learning
+
+Q: Batch size tushunchasini sodda qilib tushuntiring.
+A: Batch size bitta parametr yangilanishidan oldin ko‘rib chiqiladigan trening namunalari sonidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: LoRA rank oshirilsa nima bo‘ladi?
+A: Rank oshishi adapter ifodalash imkoniyatini va o‘rganiladigan parametrlar sonini ko‘paytirishi mumkin, lekin xotira va hisoblash xarajati ham ortadi. Eng katta rank har doim eng yaxshi natija bermaydi.
+
+## Supervised ML va ma’lumotlar
+
+Q: MAE qanday ishlaydi?
+A: MAE bashorat va haqiqiy qiymat orasidagi mutlaq xatolarning o‘rtachasidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Unsupervised learning deganda nimani tushunamiz?
+A: Nazoratsiz o‘rganishda ma’lumotlar uchun oldindan berilgan yorliqlar bo‘lmaydi; model tuzilma yoki guruhlarni izlaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Loss function qanday ishlaydi?
+A: Loss function model bashoratining maqsadga qanchalik mos kelmasligini son bilan ifodalaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: MSE qanday ishlaydi?
+A: MSE bashorat xatolarining kvadratlari o‘rtachasidir; katta xatolarni kuchliroq jazolaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida LoRA deganda nimani tushunamiz?
+A: LoRA asosiy vaznlarni muzlatib, kichik past-rank matritsalar orqali o‘rganiladigan yangilanish kiritadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Hallucination nima?
+A: Hallucination model ishonchli ko‘ringan, lekin noto‘g‘ri yoki manba bilan tasdiqlanmagan ma’lumotni yaratishidir.
+
+Q: Evaluation set nima uchun kerak?
+A: Evaluation set model sifatini treningdan alohida va takrorlanadigan tarzda o‘lchash uchun ishlatiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Context window qanday ishlaydi?
+A: Context window model bir so‘rovda hisobga olishi mumkin bo‘lgan tokenlar miqdori chegarasidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Chat SFTda faqat assistant javobiga loss qo‘yishning sababi nima?
+A: Maqsad modelni foydalanuvchi matnini takrorlashga emas, mos assistant javobini yaratishga o‘rgatishdir. Shu sabab chat formatiga qarab user tokenlari va ayrim maxsus tokenlar label lossidan maskalanishi mumkin.
+
+Q: PEFT qanday ishlaydi?
+A: Parameter-efficient fine-tuning modelni moslashtirishda faqat oz sonli parametrlarni o‘qitish usullarini qamrab oladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Dropout tushunchasini sodda qilib tushuntiring.
+A: Dropout trening vaqtida ayrim aktivatsiyalarni tasodifiy o‘chirib, modelning ortiqcha moslashishini kamaytirishga yordam beradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Human evaluation tushunchasini sodda qilib tushuntiring.
+A: Human evaluation javoblarni inson mezonlar, masalan aniqlik, foydalilik va ravonlik bo‘yicha baholashidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Evaluation set nima?
+A: Evaluation set model sifatini treningdan alohida va takrorlanadigan tarzda o‘lchash uchun ishlatiladi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Feature nima uchun kerak?
+A: Feature — model bashorat qilishda foydalanadigan kirish belgisi yoki ustuni. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Epoch nima?
+A: Epoch — trening ma’lumotlarining butun to‘plami model tomonidan bir marta ko‘rib chiqilgan davr.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Batch inference deganda nimani tushunamiz?
+A: Batch inference bir nechta so‘rovni birgalikda qayta ishlash orqali apparat resurslaridan samaraliroq foydalanishi mumkin. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Precision tushunchasini sodda qilib tushuntiring.
+A: Precision — model musbat deb topgan namunalar ichida haqiqatan musbat bo‘lganlar ulushi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: LoRA tushunchasini sodda qilib tushuntiring.
+A: LoRA asosiy vaznlarni muzlatib, kichik past-rank matritsalar orqali o‘rganiladigan yangilanish kiritadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Confusion matrix qanday ishlaydi?
+A: Confusion matrix haqiqiy sinflar va model bashoratlari kesishmasidagi sonlarni ko‘rsatadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Imbalanced datasetda accuracy nega chalg‘itishi mumkin?
+A: Agar ma’lumotning 99 foizi bitta sinf bo‘lsa, doim shu sinfni bashorat qiladigan model 99% accuracy olishi mumkin. Precision, recall, F1, confusion matrix va vazifaga mos thresholdni ham tekshirish kerak.
+
+Q: Feature nima?
+A: Feature — model bashorat qilishda foydalanadigan kirish belgisi yoki ustuni.
+
+## LLM va SFT
+
+Q: Base model nima uchun kerak?
+A: Base model pretrainingdan o‘tgan, lekin ko‘rsatmalarga amal qilish uchun alohida instruction tuning qilinmagan model bo‘lishi mumkin. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: L2 regularization nima uchun kerak?
+A: L2 regularization parametrlar kvadratlari yig‘indisiga jarima qo‘shib, katta koeffitsiyentlarni cheklaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Inference nima?
+A: Inference — o‘qitilgan modeldan yangi kirish uchun bashorat yoki javob olish jarayoni.
+
+Q: Docker nima?
+A: Docker ilovani va uning bog‘liqliklarini konteynerda qadoqlash va bir xil muhitda ishga tushirishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Cosine similarity nima?
+A: Cosine similarity ikki vektor yo‘nalishining o‘xshashligini kosinus orqali o‘lchaydi.
+
+## Deep Learning
+
+Q: Epoch tushunchasini sodda qilib tushuntiring.
+A: Epoch — trening ma’lumotlarining butun to‘plami model tomonidan bir marta ko‘rib chiqilgan davr. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Retriever tushunchasini sodda qilib tushuntiring.
+A: Retriever so‘rovga mos hujjat yoki bo‘laklarni korpusdan topib beradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: ROC-AUC nima?
+A: ROC-AUC turli thresholdlarda haqiqiy musbat va yolg‘on musbat nisbatlari o‘rtasidagi ajratish qobiliyatini umumlashtiradi.
+
+## LLM va SFT
+
+Q: Full fine-tuning tushunchasini sodda qilib tushuntiring.
+A: Full fine-tuningda modelning barcha yoki deyarli barcha o‘qitiladigan parametrlari yangilanadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Recall nima?
+A: Recall — haqiqiy musbat namunalarning model topa olgan ulushi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Inference nima uchun kerak?
+A: Inference — o‘qitilgan modeldan yangi kirish uchun bashorat yoki javob olish jarayoni. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: L2 regularization qanday ishlaydi?
+A: L2 regularization parametrlar kvadratlari yig‘indisiga jarima qo‘shib, katta koeffitsiyentlarni cheklaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Dropout nima?
+A: Dropout trening vaqtida ayrim aktivatsiyalarni tasodifiy o‘chirib, modelning ortiqcha moslashishini kamaytirishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Vector database nima uchun kerak?
+A: Vector database vektor embeddinglarni saqlash va o‘xshashlik bo‘yicha qidirish uchun ishlatiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Test set qanday ishlaydi?
+A: Test set yakuniy modelni ilgari ko‘rmagan ma’lumotlarda baholash uchun saqlanadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Confusion matrix deganda nimani tushunamiz?
+A: Confusion matrix haqiqiy sinflar va model bashoratlari kesishmasidagi sonlarni ko‘rsatadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Gradient descent tushunchasini sodda qilib tushuntiring.
+A: Gradient descent loss funksiyasini kamaytirish uchun parametrlarni gradientga qarama-qarshi yo‘nalishda yangilaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: CNN nima uchun kerak?
+A: CNN konvolyutsiyalar orqali mahalliy naqshlarni o‘rganadi va ko‘pincha tasvirlar bilan ishlatiladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: PCA nima?
+A: PCA ma’lumotdagi dispersiyani imkon qadar saqlagan holda o‘zaro bog‘liq belgilarni kamroq o‘lchamli komponentlarga aylantiradi.
+
+Q: Underfitting nima uchun kerak?
+A: Underfitting model ma’lumotdagi muhim naqshlarni o‘rganish uchun yetarlicha murakkab yoki yaxshi o‘qitilmagan holatdir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Docker nima uchun kerak?
+A: Docker ilovani va uning bog‘liqliklarini konteynerda qadoqlash va bir xil muhitda ishga tushirishga yordam beradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Categorical encoding nima uchun kerak?
+A: Kategorik encoding matnli toifalarni model ishlata oladigan sonli ko‘rinishga o‘tkazadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Categorical encoding tushunchasini sodda qilib tushuntiring.
+A: Kategorik encoding matnli toifalarni model ishlata oladigan sonli ko‘rinishga o‘tkazadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: Batch size nima?
+A: Batch size bitta parametr yangilanishidan oldin ko‘rib chiqiladigan trening namunalari sonidir.
+
+## RAG va qidiruv
+
+Q: Reranker tushunchasini sodda qilib tushuntiring.
+A: Reranker dastlab topilgan hujjatlarni so‘rovga mosligi bo‘yicha qayta tartiblaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Model trainda yaxshi, testda yomon natija bersa, nimani tekshirish kerak?
+A: Bu overfitting yoki train-test taqsimoti farqidan bo‘lishi mumkin. Ma’lumot bo‘linishi, leakage, model murakkabligi, regularization, ko‘proq ma’lumot va cross-validationni tekshiring.
+
+## Deep Learning
+
+Q: Model GPU xotirasiga sig‘masa, qanday yo‘llar bor?
+A: Batch size yoki sequence lengthni kamaytirish, gradient accumulation, mixed precision, gradient checkpointing, quantization yoki LoRA kabi PEFT usullarini ko‘rib chiqing. Tanlov xotira qayerda sarflanayotganiga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Inference tushunchasini sodda qilib tushuntiring.
+A: Inference — o‘qitilgan modeldan yangi kirish uchun bashorat yoki javob olish jarayoni. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida ROC-AUC deganda nimani tushunamiz?
+A: ROC-AUC turli thresholdlarda haqiqiy musbat va yolg‘on musbat nisbatlari o‘rtasidagi ajratish qobiliyatini umumlashtiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Context window deganda nimani tushunamiz?
+A: Context window model bir so‘rovda hisobga olishi mumkin bo‘lgan tokenlar miqdori chegarasidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Benchmark contamination nima?
+A: Benchmark contamination baholash savollari trening ma’lumotiga kirib qolib, natijani sun’iy oshirishi mumkin bo‘lgan holatdir.
+
+## Supervised ML va ma’lumotlar
+
+Q: RMSE tushunchasini sodda qilib tushuntiring.
+A: RMSE — MSEning kvadrat ildizi bo‘lib, odatda maqsad o‘zgaruvchisi bilan bir xil o‘lchov birligida bo‘ladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Self-attention nima?
+A: Self-attention bir ketma-ketlikdagi tokenlarning boshqa tokenlarga e’tiborini hisoblaydi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida L2 regularization deganda nimani tushunamiz?
+A: L2 regularization parametrlar kvadratlari yig‘indisiga jarima qo‘shib, katta koeffitsiyentlarni cheklaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Quantization tushunchasini sodda qilib tushuntiring.
+A: Quantization vazn yoki aktivatsiyalarni kamroq bitli sonli formatlarda ifodalab, xotira va hisoblash xarajatini kamaytirishi mumkin. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Label deganda nimani tushunamiz?
+A: Label — nazoratli o‘rganishda namuna uchun ma’lum bo‘lgan to‘g‘ri javob yoki maqsad qiymati. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Self-attention qanday ishlaydi?
+A: Self-attention bir ketma-ketlikdagi tokenlarning boshqa tokenlarga e’tiborini hisoblaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Label nima?
+A: Label — nazoratli o‘rganishda namuna uchun ma’lum bo‘lgan to‘g‘ri javob yoki maqsad qiymati.
+
+## RAG va qidiruv
+
+Q: Vector database nima?
+A: Vector database vektor embeddinglarni saqlash va o‘xshashlik bo‘yicha qidirish uchun ishlatiladi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Throughput tushunchasini sodda qilib tushuntiring.
+A: Throughput tizim vaqt birligida qayta ishlay oladigan so‘rovlar yoki tokenlar miqdoridir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: AI muhandisligida Cross-entropy loss deganda nimani tushunamiz?
+A: Cross-entropy loss model bashorat qilgan ehtimollik taqsimotini haqiqiy token yorlig‘i bilan solishtiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Quantization nima uchun kerak?
+A: Quantization vazn yoki aktivatsiyalarni kamroq bitli sonli formatlarda ifodalab, xotira va hisoblash xarajatini kamaytirishi mumkin. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Regression nima?
+A: Regressiya uzluksiz sonli qiymatni bashorat qiladi, masalan uy narxi yoki harorat.
+
+Q: Decision tree qanday ishlaydi?
+A: Decision tree belgilar bo‘yicha ketma-ket shartlar qo‘llab bashorat chiqaradigan modeldir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Causal language modeling nima uchun kerak?
+A: Causal language modelingda har bir token faqat undan oldingi tokenlarga tayanib bashorat qilinadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: MSE nima?
+A: MSE bashorat xatolarining kvadratlari o‘rtachasidir; katta xatolarni kuchliroq jazolaydi.
+
+## LLM va SFT
+
+Q: LoRA qanday ishlaydi?
+A: LoRA asosiy vaznlarni muzlatib, kichik past-rank matritsalar orqali o‘rganiladigan yangilanish kiritadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Underfitting tushunchasini sodda qilib tushuntiring.
+A: Underfitting model ma’lumotdagi muhim naqshlarni o‘rganish uchun yetarlicha murakkab yoki yaxshi o‘qitilmagan holatdir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: Backpropagation tushunchasini sodda qilib tushuntiring.
+A: Backpropagation neyron tarmoqda loss gradientlarini zanjir qoidasidan foydalanib qatlamlar bo‘ylab hisoblaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: AI muhandisligida Attention deganda nimani tushunamiz?
+A: Attention so‘rovga mos kalitlar bo‘yicha vaznlar hisoblab, qiymatlarning vaznli yig‘indisini hosil qiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: AI muhandisligida Epoch deganda nimani tushunamiz?
+A: Epoch — trening ma’lumotlarining butun to‘plami model tomonidan bir marta ko‘rib chiqilgan davr. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: SFT nima uchun kerak?
+A: Supervised Fine-Tuning modelni namunaviy prompt va javob juftliklari orqali ko‘rsatmalarga javob berishga moslaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Label masking tushunchasini sodda qilib tushuntiring.
+A: Label masking ayrim tokenlar loss hisobiga qo‘shilmasligini ta’minlaydi, masalan chat SFTda user tokenlarini. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Regularization deganda nimani tushunamiz?
+A: Regularization model murakkabligini cheklab, overfitting xavfini kamaytirishga yordam beradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Confusion matrix nima uchun kerak?
+A: Confusion matrix haqiqiy sinflar va model bashoratlari kesishmasidagi sonlarni ko‘rsatadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: SFT nima?
+A: Supervised Fine-Tuning modelni namunaviy prompt va javob juftliklari orqali ko‘rsatmalarga javob berishga moslaydi.
+
+Q: Full fine-tuning nima uchun kerak?
+A: Full fine-tuningda modelning barcha yoki deyarli barcha o‘qitiladigan parametrlari yangilanadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: AI muhandisligida Causal language modeling deganda nimani tushunamiz?
+A: Causal language modelingda har bir token faqat undan oldingi tokenlarga tayanib bashorat qilinadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Truncation nima uchun kerak?
+A: Truncation maksimal uzunlikdan oshgan ketma-ketlikni belgilangan chegarada qisqartiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: QLoRA nima?
+A: QLoRA kvantlangan asosiy model ustida LoRA adapterlarini o‘qitib, xotira sarfini kamaytiradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Accuracy deganda nimani tushunamiz?
+A: Accuracy — to‘g‘ri bashoratlar sonining barcha bashoratlarga nisbati. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Subword tokenizer tushunchasini sodda qilib tushuntiring.
+A: Subword tokenizer so‘zlarni keng tarqalgan bo‘laklarga ajratib, lug‘atda yo‘q so‘zlarni ham ifodalashga yordam beradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: Dropout qanday ishlaydi?
+A: Dropout trening vaqtida ayrim aktivatsiyalarni tasodifiy o‘chirib, modelning ortiqcha moslashishini kamaytirishga yordam beradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Generalization nima?
+A: Generalization — modelning treningda ko‘rmagan, lekin shu taqsimotga o‘xshash ma’lumotlarda ham yaxshi ishlash qobiliyati.
+
+Q: AI muhandisligida Underfitting deganda nimani tushunamiz?
+A: Underfitting model ma’lumotdagi muhim naqshlarni o‘rganish uchun yetarlicha murakkab yoki yaxshi o‘qitilmagan holatdir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Embedding nima uchun kerak?
+A: Embedding obyekt yoki tokenni zich sonli vektor bilan ifodalaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Reranker qanday ishlaydi?
+A: Reranker dastlab topilgan hujjatlarni so‘rovga mosligi bo‘yicha qayta tartiblaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: CNN qanday ishlaydi?
+A: CNN konvolyutsiyalar orqali mahalliy naqshlarni o‘rganadi va ko‘pincha tasvirlar bilan ishlatiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Validation set qanday ishlaydi?
+A: Validation set model tanlash, giperparametr sozlash va overfittingni kuzatish uchun ishlatiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: Retriever nima uchun kerak?
+A: Retriever so‘rovga mos hujjat yoki bo‘laklarni korpusdan topib beradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: PEFT nima?
+A: Parameter-efficient fine-tuning modelni moslashtirishda faqat oz sonli parametrlarni o‘qitish usullarini qamrab oladi.
+
+## Supervised ML va ma’lumotlar
+
+Q: RMSE qanday ishlaydi?
+A: RMSE — MSEning kvadrat ildizi bo‘lib, odatda maqsad o‘zgaruvchisi bilan bir xil o‘lchov birligida bo‘ladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Feature deganda nimani tushunamiz?
+A: Feature — model bashorat qilishda foydalanadigan kirish belgisi yoki ustuni. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: RMSE nima uchun kerak?
+A: RMSE — MSEning kvadrat ildizi bo‘lib, odatda maqsad o‘zgaruvchisi bilan bir xil o‘lchov birligida bo‘ladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Regularization nima uchun kerak?
+A: Regularization model murakkabligini cheklab, overfitting xavfini kamaytirishga yordam beradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Label masking nima?
+A: Label masking ayrim tokenlar loss hisobiga qo‘shilmasligini ta’minlaydi, masalan chat SFTda user tokenlarini.
+
+Q: Padding nima?
+A: Padding batchdagi ketma-ketlik uzunliklarini tenglashtirish uchun maxsus tokenlar qo‘shishdir.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Classification deganda nimani tushunamiz?
+A: Klassifikatsiya kirish ma’lumotini oldindan belgilangan sinflardan biriga ajratadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: RNN nima?
+A: RNN ketma-ket ma’lumotni qayta ishlashda oldingi holat haqidagi axborotni keyingi bosqichga uzatadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: L2 regularization nima?
+A: L2 regularization parametrlar kvadratlari yig‘indisiga jarima qo‘shib, katta koeffitsiyentlarni cheklaydi.
+
+## LLM va SFT
+
+Q: Base model tushunchasini sodda qilib tushuntiring.
+A: Base model pretrainingdan o‘tgan, lekin ko‘rsatmalarga amal qilish uchun alohida instruction tuning qilinmagan model bo‘lishi mumkin. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Supervised learning nima?
+A: Supervised learning — modelni kirish ma’lumotlari va ularga mos yorliqlar yoki maqsad qiymatlari bilan o‘rgatish usuli.
+
+## LLM va SFT
+
+Q: Embedding tushunchasini sodda qilib tushuntiring.
+A: Embedding obyekt yoki tokenni zich sonli vektor bilan ifodalaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Tokenization tushunchasini sodda qilib tushuntiring.
+A: Tokenization matnni model qayta ishlaydigan token birliklariga ajratadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Accuracy nima uchun kerak?
+A: Accuracy — to‘g‘ri bashoratlar sonining barcha bashoratlarga nisbati. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Linear regression tushunchasini sodda qilib tushuntiring.
+A: Linear regression maqsad qiymatni belgilar bilan chiziqli bog‘lanish orqali bashorat qiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Teacher forcing nima uchun kerak?
+A: Teacher forcing treningda keyingi tokenni bashorat qilish uchun modelga haqiqiy oldingi tokenlar berilishini anglatadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: API qanday ishlaydi?
+A: API dasturlar o‘zaro kelishilgan so‘rov va javob formati orqali muloqot qilish usulidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Chunking deganda nimani tushunamiz?
+A: Chunking uzun hujjatni qidirish va kontekstga kiritish qulay bo‘lgan kichik bo‘laklarga ajratadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Instruction-response dataset deganda nimani tushunamiz?
+A: Instruction-response dataset ko‘rsatma yoki savol va unga mos kutilgan javob juftliklaridan iborat. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: One-hot encoding nima uchun kerak?
+A: One-hot encoding har bir toifa uchun alohida 0/1 belgisi yaratadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: AI muhandisligida Data leakage deganda nimani tushunamiz?
+A: Data leakage — trening paytida modelga amalda mavjud bo‘lmaydigan yoki testdan sizib chiqqan ma’lumotning kirib qolishi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Transformer deganda nimani tushunamiz?
+A: Transformer tokenlar o‘rtasidagi bog‘lanishlarni attention mexanizmi yordamida modellashtiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Recall tushunchasini sodda qilib tushuntiring.
+A: Recall — haqiqiy musbat namunalarning model topa olgan ulushi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Transformer tushunchasini sodda qilib tushuntiring.
+A: Transformer tokenlar o‘rtasidagi bog‘lanishlarni attention mexanizmi yordamida modellashtiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Prompt injection nima?
+A: Prompt injection modelni ishonchsiz matn orqali dastlabki ko‘rsatmalarga zid harakatga undashga urinishdir.
+
+## Supervised ML va ma’lumotlar
+
+Q: Supervised learning tushunchasini sodda qilib tushuntiring.
+A: Supervised learning — modelni kirish ma’lumotlari va ularga mos yorliqlar yoki maqsad qiymatlari bilan o‘rgatish usuli. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Latency deganda nimani tushunamiz?
+A: Latency so‘rov yuborilgandan javob qaytguncha o‘tadigan vaqtni bildiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Accuracy nima?
+A: Accuracy — to‘g‘ri bashoratlar sonining barcha bashoratlarga nisbati.
+
+## Deep Learning
+
+Q: Epoch nima uchun kerak?
+A: Epoch — trening ma’lumotlarining butun to‘plami model tomonidan bir marta ko‘rib chiqilgan davr. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Prompt injection tushunchasini sodda qilib tushuntiring.
+A: Prompt injection modelni ishonchsiz matn orqali dastlabki ko‘rsatmalarga zid harakatga undashga urinishdir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Embedding o‘xshashligi yuqori bo‘lsa, hujjat albatta to‘g‘rimi?
+A: Yo‘q. Yuqori similarity so‘rov va hujjat vektorlari ma’no jihatidan yaqinligini ko‘rsatadi, lekin faktning to‘g‘riligini kafolatlamaydi. Hujjat sifati va kontekstga mosligi ham tekshiriladi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Latency nima?
+A: Latency so‘rov yuborilgandan javob qaytguncha o‘tadigan vaqtni bildiradi.
+
+## LLM va SFT
+
+Q: EOS token qanday ishlaydi?
+A: EOS token ketma-ketlik tugaganini belgilashi mumkin; aniq vazifasi model tokenizer va chat formatiga bog‘liq. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Vector database deganda nimani tushunamiz?
+A: Vector database vektor embeddinglarni saqlash va o‘xshashlik bo‘yicha qidirish uchun ishlatiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Evaluation set tushunchasini sodda qilib tushuntiring.
+A: Evaluation set model sifatini treningdan alohida va takrorlanadigan tarzda o‘lchash uchun ishlatiladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Overfitting qanday ishlaydi?
+A: Overfitting model trening ma’lumotiga haddan tashqari moslashib, yangi ma’lumotlarda yomon ishlashidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Classification nima?
+A: Klassifikatsiya kirish ma’lumotini oldindan belgilangan sinflardan biriga ajratadi.
+
+## LLM va SFT
+
+Q: Subword tokenizer qanday ishlaydi?
+A: Subword tokenizer so‘zlarni keng tarqalgan bo‘laklarga ajratib, lug‘atda yo‘q so‘zlarni ham ifodalashga yordam beradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Feature scaling qanday ishlaydi?
+A: Feature scaling belgilar qiymatlarini umumiy masshtabga keltiradi; bu ayrim algoritmlar uchun muhim. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Embedding nima?
+A: Embedding obyekt yoki tokenni zich sonli vektor bilan ifodalaydi.
+
+## Deep Learning
+
+Q: AI muhandisligida Activation function deganda nimani tushunamiz?
+A: Activation function neyron chiqishiga nolinearlik kiritadi; masalan ReLU yoki sigmoid. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## RAG va qidiruv
+
+Q: Semantic search nima?
+A: Semantic search faqat aynan bir xil so‘zlarni emas, ma’no jihatidan yaqin so‘rov va hujjatlarni topishga intiladi.
+
+## Supervised ML va ma’lumotlar
+
+Q: K-means nima?
+A: K-means nuqtalarni tanlangan K ta klasterga, markazlarga masofani kamaytirish orqali ajratadi.
+
+Q: K-means nima uchun kerak?
+A: K-means nuqtalarni tanlangan K ta klasterga, markazlarga masofani kamaytirish orqali ajratadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Label nima uchun kerak?
+A: Label — nazoratli o‘rganishda namuna uchun ma’lum bo‘lgan to‘g‘ri javob yoki maqsad qiymati. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Base model nima?
+A: Base model pretrainingdan o‘tgan, lekin ko‘rsatmalarga amal qilish uchun alohida instruction tuning qilinmagan model bo‘lishi mumkin.
+
+## Supervised ML va ma’lumotlar
+
+Q: Machine learning loyihasida baseline nima uchun kerak?
+A: Baseline — murakkab model bilan solishtiriladigan sodda boshlang‘ich yechim. U model haqiqatan qiymat qo‘shayotganini ko‘rsatadi va keraksiz murakkablikdan saqlaydi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Latency qanday ishlaydi?
+A: Latency so‘rov yuborilgandan javob qaytguncha o‘tadigan vaqtni bildiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Grounded answer deganda nimani tushunamiz?
+A: Grounded answer berilgan kontekst yoki tekshiriladigan manbalarga tayangan javobdir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Imbalanced dataset qanday ishlaydi?
+A: Sinflar nomutanosibligi ayrim sinflarda boshqalariga qaraganda ancha ko‘p namuna borligini anglatadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Overfitting tushunchasini sodda qilib tushuntiring.
+A: Overfitting model trening ma’lumotiga haddan tashqari moslashib, yangi ma’lumotlarda yomon ishlashidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: AI muhandisligida Reinforcement learning deganda nimani tushunamiz?
+A: Mustahkamlovchi o‘rganishda agent muhit bilan o‘zaro ta’sirlashib, mukofot signali orqali strategiyasini yaxshilaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Test set tushunchasini sodda qilib tushuntiring.
+A: Test set yakuniy modelni ilgari ko‘rmagan ma’lumotlarda baholash uchun saqlanadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: RNN nima uchun kerak?
+A: RNN ketma-ket ma’lumotni qayta ishlashda oldingi holat haqidagi axborotni keyingi bosqichga uzatadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Attention nima?
+A: Attention so‘rovga mos kalitlar bo‘yicha vaznlar hisoblab, qiymatlarning vaznli yig‘indisini hosil qiladi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Cross-validation nima?
+A: Cross-validation ma’lumotni bir necha bo‘lakka ajratib, modelni turli train-validation bo‘linishlarida baholaydi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Hallucination tushunchasini sodda qilib tushuntiring.
+A: Hallucination model ishonchli ko‘ringan, lekin noto‘g‘ri yoki manba bilan tasdiqlanmagan ma’lumotni yaratishidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Grounded answer nima uchun kerak?
+A: Grounded answer berilgan kontekst yoki tekshiriladigan manbalarga tayangan javobdir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida PCA deganda nimani tushunamiz?
+A: PCA ma’lumotdagi dispersiyani imkon qadar saqlagan holda o‘zaro bog‘liq belgilarni kamroq o‘lchamli komponentlarga aylantiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Next-token prediction qanday ishlaydi?
+A: Next-token prediction modelga oldingi tokenlar asosida keyingi token ehtimolliklarini bashorat qildirish vazifasidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: AI muhandisligida Loss function deganda nimani tushunamiz?
+A: Loss function model bashoratining maqsadga qanchalik mos kelmasligini son bilan ifodalaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Next-token prediction deganda nimani tushunamiz?
+A: Next-token prediction modelga oldingi tokenlar asosida keyingi token ehtimolliklarini bashorat qildirish vazifasidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Standardization deganda nimani tushunamiz?
+A: Standardization odatda belgini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan tarzda o‘zgartiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: Tokenization nima?
+A: Tokenization matnni model qayta ishlaydigan token birliklariga ajratadi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida API deganda nimani tushunamiz?
+A: API dasturlar o‘zaro kelishilgan so‘rov va javob formati orqali muloqot qilish usulidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Feature scaling tushunchasini sodda qilib tushuntiring.
+A: Feature scaling belgilar qiymatlarini umumiy masshtabga keltiradi; bu ayrim algoritmlar uchun muhim. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: SFT datasetida javoblar sifati nega muhim?
+A: Model ko‘pincha trening namunalaridagi uslub va xatolarni o‘rganadi. Javoblar noto‘g‘ri, qarama-qarshi yoki takroriy bo‘lsa, modelning foydaliligi va ishonchliligi pasayishi mumkin.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Benchmark contamination tushunchasini sodda qilib tushuntiring.
+A: Benchmark contamination baholash savollari trening ma’lumotiga kirib qolib, natijani sun’iy oshirishi mumkin bo‘lgan holatdir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Cross-validation qanday ishlaydi?
+A: Cross-validation ma’lumotni bir necha bo‘lakka ajratib, modelni turli train-validation bo‘linishlarida baholaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: AI muhandisligida Backpropagation deganda nimani tushunamiz?
+A: Backpropagation neyron tarmoqda loss gradientlarini zanjir qoidasidan foydalanib qatlamlar bo‘ylab hisoblaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida EOS token deganda nimani tushunamiz?
+A: EOS token ketma-ketlik tugaganini belgilashi mumkin; aniq vazifasi model tokenizer va chat formatiga bog‘liq. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: PCA nima uchun kerak?
+A: PCA ma’lumotdagi dispersiyani imkon qadar saqlagan holda o‘zaro bog‘liq belgilarni kamroq o‘lchamli komponentlarga aylantiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Transformer nima?
+A: Transformer tokenlar o‘rtasidagi bog‘lanishlarni attention mexanizmi yordamida modellashtiradi.
+
+Q: Truncation nima?
+A: Truncation maksimal uzunlikdan oshgan ketma-ketlikni belgilangan chegarada qisqartiradi.
+
+Q: PEFT tushunchasini sodda qilib tushuntiring.
+A: Parameter-efficient fine-tuning modelni moslashtirishda faqat oz sonli parametrlarni o‘qitish usullarini qamrab oladi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Quantization nima?
+A: Quantization vazn yoki aktivatsiyalarni kamroq bitli sonli formatlarda ifodalab, xotira va hisoblash xarajatini kamaytirishi mumkin.
+
+Q: QLoRA nima uchun kerak?
+A: QLoRA kvantlangan asosiy model ustida LoRA adapterlarini o‘qitib, xotira sarfini kamaytiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Context window nima?
+A: Context window model bir so‘rovda hisobga olishi mumkin bo‘lgan tokenlar miqdori chegarasidir.
+
+## Supervised ML va ma’lumotlar
+
+Q: ROC-AUC qanday ishlaydi?
+A: ROC-AUC turli thresholdlarda haqiqiy musbat va yolg‘on musbat nisbatlari o‘rtasidagi ajratish qobiliyatini umumlashtiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Label qanday ishlaydi?
+A: Label — nazoratli o‘rganishda namuna uchun ma’lum bo‘lgan to‘g‘ri javob yoki maqsad qiymati. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Normalization nima uchun kerak?
+A: Normalization qiymatlarni tanlangan oraliqqa, masalan 0 dan 1 gacha, o‘tkazishi mumkin. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: Gradient descent nima?
+A: Gradient descent loss funksiyasini kamaytirish uchun parametrlarni gradientga qarama-qarshi yo‘nalishda yangilaydi.
+
+## Supervised ML va ma’lumotlar
+
+Q: L1 regularization tushunchasini sodda qilib tushuntiring.
+A: L1 regularization parametrlarning mutlaq qiymatlari yig‘indisiga jarima qo‘shadi va ayrim koeffitsiyentlarni nolga olib kelishi mumkin. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Data leakagega oddiy misol keltiring.
+A: Masalan, kasallikni oldindan bashorat qilishda tashxis qo‘yilgandan keyin ma’lum bo‘ladigan ustunni treningga kiritish leakage bo‘lishi mumkin. Barcha preprocessing bosqichlarini faqat train qismida fit qilish ham muhim.
+
+Q: MSE nima uchun kerak?
+A: MSE bashorat xatolarining kvadratlari o‘rtachasidir; katta xatolarni kuchliroq jazolaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Feature qanday ishlaydi?
+A: Feature — model bashorat qilishda foydalanadigan kirish belgisi yoki ustuni. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: L2 regularization tushunchasini sodda qilib tushuntiring.
+A: L2 regularization parametrlar kvadratlari yig‘indisiga jarima qo‘shib, katta koeffitsiyentlarni cheklaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Cross-entropy loss nima?
+A: Cross-entropy loss model bashorat qilgan ehtimollik taqsimotini haqiqiy token yorlig‘i bilan solishtiradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Batch inference nima uchun kerak?
+A: Batch inference bir nechta so‘rovni birgalikda qayta ishlash orqali apparat resurslaridan samaraliroq foydalanishi mumkin. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: BPE nima?
+A: Byte Pair Encoding tez-tez uchraydigan birliklarni birlashtirib, subword tokenlar lug‘atini quradi.
+
+Q: Cross-entropy loss nima uchun kerak?
+A: Cross-entropy loss model bashorat qilgan ehtimollik taqsimotini haqiqiy token yorlig‘i bilan solishtiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: LLM API ishga tushirilgandan keyin nimalarni kuzatish kerak?
+A: Latency, throughput, xatoliklar, token sarfi, xarajat, foydalanuvchi fikri, xavfsizlik hodisalari va javob sifati kuzatiladi. Maxfiy ma’lumotlarni loglarga ortiqcha yozmaslik kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Normalization qanday ishlaydi?
+A: Normalization qiymatlarni tanlangan oraliqqa, masalan 0 dan 1 gacha, o‘tkazishi mumkin. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Throughput qanday ishlaydi?
+A: Throughput tizim vaqt birligida qayta ishlay oladigan so‘rovlar yoki tokenlar miqdoridir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Deep Learning
+
+Q: Activation function tushunchasini sodda qilib tushuntiring.
+A: Activation function neyron chiqishiga nolinearlik kiritadi; masalan ReLU yoki sigmoid. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Semantic search deganda nimani tushunamiz?
+A: Semantic search faqat aynan bir xil so‘zlarni emas, ma’no jihatidan yaqin so‘rov va hujjatlarni topishga intiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: EOS tokenni datasetda noto‘g‘ri ishlatish nimaga olib keladi?
+A: Model javobni qayerda tugatishni noto‘g‘ri o‘rganishi, javobni erta to‘xtatishi yoki keragidan ortiq davom ettirishi mumkin. Token ID va chat template tanlangan model tokenizeriga mosligini tekshiring.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Evaluation set qanday ishlaydi?
+A: Evaluation set model sifatini treningdan alohida va takrorlanadigan tarzda o‘lchash uchun ishlatiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Embedding qanday ishlaydi?
+A: Embedding obyekt yoki tokenni zich sonli vektor bilan ifodalaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Precision nima uchun kerak?
+A: Precision — model musbat deb topgan namunalar ichida haqiqatan musbat bo‘lganlar ulushi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Cosine similarity tushunchasini sodda qilib tushuntiring.
+A: Cosine similarity ikki vektor yo‘nalishining o‘xshashligini kosinus orqali o‘lchaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: SFT tushunchasini sodda qilib tushuntiring.
+A: Supervised Fine-Tuning modelni namunaviy prompt va javob juftliklari orqali ko‘rsatmalarga javob berishga moslaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Training set tushunchasini sodda qilib tushuntiring.
+A: Training set model parametrlarini o‘rganish uchun ishlatiladigan ma’lumotlar to‘plamidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Padding tushunchasini sodda qilib tushuntiring.
+A: Padding batchdagi ketma-ketlik uzunliklarini tenglashtirish uchun maxsus tokenlar qo‘shishdir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: AI muhandisligida Teacher forcing deganda nimani tushunamiz?
+A: Teacher forcing treningda keyingi tokenni bashorat qilish uchun modelga haqiqiy oldingi tokenlar berilishini anglatadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: API nima?
+A: API dasturlar o‘zaro kelishilgan so‘rov va javob formati orqali muloqot qilish usulidir.
+
+## Supervised ML va ma’lumotlar
+
+Q: Normalization tushunchasini sodda qilib tushuntiring.
+A: Normalization qiymatlarni tanlangan oraliqqa, masalan 0 dan 1 gacha, o‘tkazishi mumkin. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Causal language modeling qanday ishlaydi?
+A: Causal language modelingda har bir token faqat undan oldingi tokenlarga tayanib bashorat qilinadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: ROC-AUC nima uchun kerak?
+A: ROC-AUC turli thresholdlarda haqiqiy musbat va yolg‘on musbat nisbatlari o‘rtasidagi ajratish qobiliyatini umumlashtiradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Gradient boosting tushunchasini sodda qilib tushuntiring.
+A: Gradient boosting modellarni ketma-ket quradi; har yangi bosqich avvalgi model xatolarini kamaytirishga urinadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: AI muhandisligida Logistic regression deganda nimani tushunamiz?
+A: Logistic regression odatda klassifikatsiya uchun ehtimollikni sigmoid yoki ko‘p sinfli holatda softmax orqali modellashtiradi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Accuracy qanday ishlaydi?
+A: Accuracy — to‘g‘ri bashoratlar sonining barcha bashoratlarga nisbati. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Logistic regression tushunchasini sodda qilib tushuntiring.
+A: Logistic regression odatda klassifikatsiya uchun ehtimollikni sigmoid yoki ko‘p sinfli holatda softmax orqali modellashtiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: EOS token nima?
+A: EOS token ketma-ketlik tugaganini belgilashi mumkin; aniq vazifasi model tokenizer va chat formatiga bog‘liq.
+
+## Deep Learning
+
+Q: Backpropagation nima uchun kerak?
+A: Backpropagation neyron tarmoqda loss gradientlarini zanjir qoidasidan foydalanib qatlamlar bo‘ylab hisoblaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Inference deganda nimani tushunamiz?
+A: Inference — o‘qitilgan modeldan yangi kirish uchun bashorat yoki javob olish jarayoni. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Human evaluation nima uchun kerak?
+A: Human evaluation javoblarni inson mezonlar, masalan aniqlik, foydalilik va ravonlik bo‘yicha baholashidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Data leakage tushunchasini sodda qilib tushuntiring.
+A: Data leakage — trening paytida modelga amalda mavjud bo‘lmaydigan yoki testdan sizib chiqqan ma’lumotning kirib qolishi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Docker qanday ishlaydi?
+A: Docker ilovani va uning bog‘liqliklarini konteynerda qadoqlash va bir xil muhitda ishga tushirishga yordam beradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Benchmark contamination deganda nimani tushunamiz?
+A: Benchmark contamination baholash savollari trening ma’lumotiga kirib qolib, natijani sun’iy oshirishi mumkin bo‘lgan holatdir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Categorical encoding qanday ishlaydi?
+A: Kategorik encoding matnli toifalarni model ishlata oladigan sonli ko‘rinishga o‘tkazadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## RAG va qidiruv
+
+Q: Chunking nima?
+A: Chunking uzun hujjatni qidirish va kontekstga kiritish qulay bo‘lgan kichik bo‘laklarga ajratadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: MSE tushunchasini sodda qilib tushuntiring.
+A: MSE bashorat xatolarining kvadratlari o‘rtachasidir; katta xatolarni kuchliroq jazolaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Truncation qanday ishlaydi?
+A: Truncation maksimal uzunlikdan oshgan ketma-ketlikni belgilangan chegarada qisqartiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Reinforcement learning qanday ishlaydi?
+A: Mustahkamlovchi o‘rganishda agent muhit bilan o‘zaro ta’sirlashib, mukofot signali orqali strategiyasini yaxshilaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Training set nima?
+A: Training set model parametrlarini o‘rganish uchun ishlatiladigan ma’lumotlar to‘plamidir.
+
+## LLM va SFT
+
+Q: LoRA nima?
+A: LoRA asosiy vaznlarni muzlatib, kichik past-rank matritsalar orqali o‘rganiladigan yangilanish kiritadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: F1 score qanday ishlaydi?
+A: F1 score precision va recallning garmonik o‘rtachasidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Next-token prediction nima?
+A: Next-token prediction modelga oldingi tokenlar asosida keyingi token ehtimolliklarini bashorat qildirish vazifasidir.
+
+## Supervised ML va ma’lumotlar
+
+Q: Logistic regression nima?
+A: Logistic regression odatda klassifikatsiya uchun ehtimollikni sigmoid yoki ko‘p sinfli holatda softmax orqali modellashtiradi.
+
+## LLM va SFT
+
+Q: Instruction-response dataset tushunchasini sodda qilib tushuntiring.
+A: Instruction-response dataset ko‘rsatma yoki savol va unga mos kutilgan javob juftliklaridan iborat. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Chat template tushunchasini sodda qilib tushuntiring.
+A: Chat template xabarlarni role, content va maxsus tokenlar yordamida model kutadigan formatga joylaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Reranker deganda nimani tushunamiz?
+A: Reranker dastlab topilgan hujjatlarni so‘rovga mosligi bo‘yicha qayta tartiblaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: One-hot encoding nima?
+A: One-hot encoding har bir toifa uchun alohida 0/1 belgisi yaratadi.
+
+## LLM va SFT
+
+Q: Subword tokenizer nima uchun kerak?
+A: Subword tokenizer so‘zlarni keng tarqalgan bo‘laklarga ajratib, lug‘atda yo‘q so‘zlarni ham ifodalashga yordam beradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Validation set nima?
+A: Validation set model tanlash, giperparametr sozlash va overfittingni kuzatish uchun ishlatiladi.
+
+Q: Linear regression qanday ishlaydi?
+A: Linear regression maqsad qiymatni belgilar bilan chiziqli bog‘lanish orqali bashorat qiladi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Underfitting qanday ishlaydi?
+A: Underfitting model ma’lumotdagi muhim naqshlarni o‘rganish uchun yetarlicha murakkab yoki yaxshi o‘qitilmagan holatdir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida Embedding deganda nimani tushunamiz?
+A: Embedding obyekt yoki tokenni zich sonli vektor bilan ifodalaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Deep Learning
+
+Q: Activation function nima?
+A: Activation function neyron chiqishiga nolinearlik kiritadi; masalan ReLU yoki sigmoid.
+
+## LLM va SFT
+
+Q: Full fine-tuning qanday ishlaydi?
+A: Full fine-tuningda modelning barcha yoki deyarli barcha o‘qitiladigan parametrlari yangilanadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Reinforcement learning nima uchun kerak?
+A: Mustahkamlovchi o‘rganishda agent muhit bilan o‘zaro ta’sirlashib, mukofot signali orqali strategiyasini yaxshilaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: Cosine similarity qanday ishlaydi?
+A: Cosine similarity ikki vektor yo‘nalishining o‘xshashligini kosinus orqali o‘lchaydi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Normalization nima?
+A: Normalization qiymatlarni tanlangan oraliqqa, masalan 0 dan 1 gacha, o‘tkazishi mumkin.
+
+## LLM va SFT
+
+Q: AI muhandisligida Base model deganda nimani tushunamiz?
+A: Base model pretrainingdan o‘tgan, lekin ko‘rsatmalarga amal qilish uchun alohida instruction tuning qilinmagan model bo‘lishi mumkin. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Random forest tushunchasini sodda qilib tushuntiring.
+A: Random forest turli ma’lumot namunalari va belgilar bilan o‘qitilgan ko‘plab decision tree bashoratlarini birlashtiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Prompt injection qanday ishlaydi?
+A: Prompt injection modelni ishonchsiz matn orqali dastlabki ko‘rsatmalarga zid harakatga undashga urinishdir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Gradient boosting qanday ishlaydi?
+A: Gradient boosting modellarni ketma-ket quradi; har yangi bosqich avvalgi model xatolarini kamaytirishga urinadi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: AI muhandisligida Test set deganda nimani tushunamiz?
+A: Test set yakuniy modelni ilgari ko‘rmagan ma’lumotlarda baholash uchun saqlanadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: AI muhandisligida Linear regression deganda nimani tushunamiz?
+A: Linear regression maqsad qiymatni belgilar bilan chiziqli bog‘lanish orqali bashorat qiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Ma’lumotni train, validation va test qismlariga nima uchun ajratamiz?
+A: Train qismi parametrlarni o‘rganadi, validation model va giperparametrlarni tanlashga yordam beradi, test esa yakuniy baholash uchun saqlanadi. Test natijasiga qarab modelni qayta-qayta sozlash testni ham validationga aylantirib qo‘yadi.
+
+## Deep Learning
+
+Q: PyTorchda Dataset va DataLoader vazifalari nima?
+A: Dataset bitta indeks uchun namuna va yorliqni qaytaradi. DataLoader namunalarni batchlarga yig‘adi, aralashtirish va parallel yuklash kabi imkoniyatlarni beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Decision tree nima uchun kerak?
+A: Decision tree belgilar bo‘yicha ketma-ket shartlar qo‘llab bashorat chiqaradigan modeldir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## RAG va qidiruv
+
+Q: RAG nima?
+A: Retrieval-Augmented Generation javob yaratishdan oldin tashqi manbalardan tegishli ma’lumotlarni topib, ularni promptga qo‘shadi.
+
+## Supervised ML va ma’lumotlar
+
+Q: MAE nima?
+A: MAE bashorat va haqiqiy qiymat orasidagi mutlaq xatolarning o‘rtachasidir.
+
+Q: AI muhandisligida Imbalanced dataset deganda nimani tushunamiz?
+A: Sinflar nomutanosibligi ayrim sinflarda boshqalariga qaraganda ancha ko‘p namuna borligini anglatadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: AI muhandisligida Throughput deganda nimani tushunamiz?
+A: Throughput tizim vaqt birligida qayta ishlay oladigan so‘rovlar yoki tokenlar miqdoridir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Decision tree deganda nimani tushunamiz?
+A: Decision tree belgilar bo‘yicha ketma-ket shartlar qo‘llab bashorat chiqaradigan modeldir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: StandardScalerni train va testga qanday qo‘llash kerak?
+A: StandardScaler faqat train ma’lumotida fit qilinadi, so‘ng train, validation va testga transform qo‘llanadi. Butun datasetda oldindan fit qilish test taqsimoti haqidagi ma’lumotni treningga sizdirishi mumkin.
+
+## LLM va SFT
+
+Q: Label masking nima uchun kerak?
+A: Label masking ayrim tokenlar loss hisobiga qo‘shilmasligini ta’minlaydi, masalan chat SFTda user tokenlarini. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Accuracy tushunchasini sodda qilib tushuntiring.
+A: Accuracy — to‘g‘ri bashoratlar sonining barcha bashoratlarga nisbati. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: Cosine similarity nima uchun kerak?
+A: Cosine similarity ikki vektor yo‘nalishining o‘xshashligini kosinus orqali o‘lchaydi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Hallucination qanday ishlaydi?
+A: Hallucination model ishonchli ko‘ringan, lekin noto‘g‘ri yoki manba bilan tasdiqlanmagan ma’lumotni yaratishidir. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: Supervised learning qanday ishlaydi?
+A: Supervised learning — modelni kirish ma’lumotlari va ularga mos yorliqlar yoki maqsad qiymatlari bilan o‘rgatish usuli. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Human evaluation nima?
+A: Human evaluation javoblarni inson mezonlar, masalan aniqlik, foydalilik va ravonlik bo‘yicha baholashidir.
+
+## RAG va qidiruv
+
+Q: AI muhandisligida Cosine similarity deganda nimani tushunamiz?
+A: Cosine similarity ikki vektor yo‘nalishining o‘xshashligini kosinus orqali o‘lchaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Missing values nima uchun kerak?
+A: Yetishmayotgan qiymatlar o‘chirish, imputatsiya yoki alohida indikator bilan ishlanishi mumkin; tanlov sababga va vazifaga bog‘liq. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: Pretraining tushunchasini sodda qilib tushuntiring.
+A: Pretraining katta matn korpusida umumiy til naqshlarini o‘rganish uchun modelni dastlabki o‘qitish bosqichidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: AI muhandisligida Batch size deganda nimani tushunamiz?
+A: Batch size bitta parametr yangilanishidan oldin ko‘rib chiqiladigan trening namunalari sonidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: MAE nima uchun kerak?
+A: MAE bashorat va haqiqiy qiymat orasidagi mutlaq xatolarning o‘rtachasidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Deep Learning
+
+Q: AI muhandisligida Learning rate deganda nimani tushunamiz?
+A: Learning rate parametrlar har yangilanishda qanchalik katta qadam tashlashini belgilaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Uy narxini bashorat qilishda MAE nimani bildiradi?
+A: MAE bashorat qilingan va haqiqiy narx orasidagi mutlaq farqlarning o‘rtachasidir. Agar narxlar million so‘mda berilgan bo‘lsa, MAE ham million so‘m birlikda talqin qilinadi.
+
+## LLM va SFT
+
+Q: AI muhandisligida Label masking deganda nimani tushunamiz?
+A: Label masking ayrim tokenlar loss hisobiga qo‘shilmasligini ta’minlaydi, masalan chat SFTda user tokenlarini. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Padding nima uchun kerak?
+A: Padding batchdagi ketma-ketlik uzunliklarini tenglashtirish uchun maxsus tokenlar qo‘shishdir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: QLoRA tushunchasini sodda qilib tushuntiring.
+A: QLoRA kvantlangan asosiy model ustida LoRA adapterlarini o‘qitib, xotira sarfini kamaytiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Confusion matrix tushunchasini sodda qilib tushuntiring.
+A: Confusion matrix haqiqiy sinflar va model bashoratlari kesishmasidagi sonlarni ko‘rsatadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: BPE nima uchun kerak?
+A: Byte Pair Encoding tez-tez uchraydigan birliklarni birlashtirib, subword tokenlar lug‘atini quradi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Regression qanday ishlaydi?
+A: Regressiya uzluksiz sonli qiymatni bashorat qiladi, masalan uy narxi yoki harorat. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## LLM va SFT
+
+Q: Base model qanday ishlaydi?
+A: Base model pretrainingdan o‘tgan, lekin ko‘rsatmalarga amal qilish uchun alohida instruction tuning qilinmagan model bo‘lishi mumkin. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+Q: Transformer qanday ishlaydi?
+A: Transformer tokenlar o‘rtasidagi bog‘lanishlarni attention mexanizmi yordamida modellashtiradi. Aniq implementatsiya algoritm, kutubxona va sozlamalarga bog‘liq.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida MSE deganda nimani tushunamiz?
+A: MSE bashorat xatolarining kvadratlari o‘rtachasidir; katta xatolarni kuchliroq jazolaydi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: MAE tushunchasini sodda qilib tushuntiring.
+A: MAE bashorat va haqiqiy qiymat orasidagi mutlaq xatolarning o‘rtachasidir. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: Test set nima uchun kerak?
+A: Test set yakuniy modelni ilgari ko‘rmagan ma’lumotlarda baholash uchun saqlanadi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Unsupervised learning nima?
+A: Nazoratsiz o‘rganishda ma’lumotlar uchun oldindan berilgan yorliqlar bo‘lmaydi; model tuzilma yoki guruhlarni izlaydi.
+
+Q: Unsupervised learning tushunchasini sodda qilib tushuntiring.
+A: Nazoratsiz o‘rganishda ma’lumotlar uchun oldindan berilgan yorliqlar bo‘lmaydi; model tuzilma yoki guruhlarni izlaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Deep Learning
+
+Q: Loss function tushunchasini sodda qilib tushuntiring.
+A: Loss function model bashoratining maqsadga qanchalik mos kelmasligini son bilan ifodalaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## LLM va SFT
+
+Q: Pretraining nima uchun kerak?
+A: Pretraining katta matn korpusida umumiy til naqshlarini o‘rganish uchun modelni dastlabki o‘qitish bosqichidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: AI muhandisligida Validation set deganda nimani tushunamiz?
+A: Validation set model tanlash, giperparametr sozlash va overfittingni kuzatish uchun ishlatiladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## LLM va SFT
+
+Q: AI muhandisligida Tokenization deganda nimani tushunamiz?
+A: Tokenization matnni model qayta ishlaydigan token birliklariga ajratadi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Baholash, deployment va mas’uliyatli AI
+
+Q: Latency tushunchasini sodda qilib tushuntiring.
+A: Latency so‘rov yuborilgandan javob qaytguncha o‘tadigan vaqtni bildiradi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## RAG va qidiruv
+
+Q: RAGda chunk size tanlashda nimani hisobga olish kerak?
+A: Juda kichik bo‘laklar kerakli kontekstni uzib qo‘yishi mumkin; juda katta bo‘laklar esa qidiruv aniqligini pasaytirishi va promptni to‘ldirishi mumkin. Hujjat tuzilishi, so‘rovlar va retrieval metrikalari bilan sinab ko‘ring.
+
+## LLM va SFT
+
+Q: Teacher forcing tushunchasini sodda qilib tushuntiring.
+A: Teacher forcing treningda keyingi tokenni bashorat qilish uchun modelga haqiqiy oldingi tokenlar berilishini anglatadi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+## Supervised ML va ma’lumotlar
+
+Q: Data leakage nima uchun kerak?
+A: Data leakage — trening paytida modelga amalda mavjud bo‘lmaydigan yoki testdan sizib chiqqan ma’lumotning kirib qolishi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: PEFT nima uchun kerak?
+A: Parameter-efficient fine-tuning modelni moslashtirishda faqat oz sonli parametrlarni o‘qitish usullarini qamrab oladi. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## Supervised ML va ma’lumotlar
+
+Q: Cross-validation tushunchasini sodda qilib tushuntiring.
+A: Cross-validation ma’lumotni bir necha bo‘lakka ajratib, modelni turli train-validation bo‘linishlarida baholaydi. Bu tushuncha amaliy loyihalarda vazifaga mos usul tanlash va natijani to‘g‘ri talqin qilishga yordam beradi.
+
+Q: AI muhandisligida MAE deganda nimani tushunamiz?
+A: MAE bashorat va haqiqiy qiymat orasidagi mutlaq xatolarning o‘rtachasidir. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+Q: Feature scaling nima?
+A: Feature scaling belgilar qiymatlarini umumiy masshtabga keltiradi; bu ayrim algoritmlar uchun muhim.
+
+Q: Missing values nima?
+A: Yetishmayotgan qiymatlar o‘chirish, imputatsiya yoki alohida indikator bilan ishlanishi mumkin; tanlov sababga va vazifaga bog‘liq.
+
+## LLM va SFT
+
+Q: AI muhandisligida PEFT deganda nimani tushunamiz?
+A: Parameter-efficient fine-tuning modelni moslashtirishda faqat oz sonli parametrlarni o‘qitish usullarini qamrab oladi. Uni boshqa usullar bilan solishtirganda ma’lumot, hisoblash xarajati va kutilgan natijani hisobga oling.
+
+## Supervised ML va ma’lumotlar
+
+Q: Regression nima uchun kerak?
+A: Regressiya uzluksiz sonli qiymatni bashorat qiladi, masalan uy narxi yoki harorat. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+Q: Overfitting nima uchun kerak?
+A: Overfitting model trening ma’lumotiga haddan tashqari moslashib, yangi ma’lumotlarda yomon ishlashidir. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.
+
+## LLM va SFT
+
+Q: EOS token nima uchun kerak?
+A: EOS token ketma-ketlik tugaganini belgilashi mumkin; aniq vazifasi model tokenizer va chat formatiga bog‘liq. Uni ishlatishdan oldin vazifa, ma’lumot sifati va baholash mezonini aniqlash kerak.

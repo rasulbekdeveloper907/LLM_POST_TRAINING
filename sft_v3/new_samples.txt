@@ -1,0 +1,691 @@
+# SFT v3 uchun yangi namunalar. sft_v3/build_v3.py shu faylni v1 manbalariga qo'shadi.
+# Format seeds.txt bilan bir xil: "## bo'lim" — vazifa turi; "Q:" — savol; "A:" — javob.
+# Maqsad: v2 (1.5B) da qolgan zaifliklar —
+#   ro'yxatlarga "Kechirasiz" aralashishi, imtihondagi savolga javob berib yuborish,
+#   tarjimada ma'noni teskari qilish, ma'lumotda kam uchragan kurs tushunchalari.
+# DIQQAT: eval/eval_set.json dagi savollarni va ularning o'xshashlarini bu yerga qo'shmang.
+#         Faqat testda turadigan tushunchalar (underfitting, tokenizer, dropout va h.k.) ham kiritilmaydi.
+
+## explain
+
+Q: Gradient clipping nima?
+A: Gradient clipping — gradient juda katta bo‘lib ketsa, uni belgilangan chegaragacha kichraytirish. Bu o‘qitish paytida loss birdan sakrab ketishining oldini oladi.
+
+Q: Warmup nima?
+A: Warmup — o‘qitish boshida learning rate'ni noldan asta-sekin ko‘tarish. Model hali tasodifiy holatda bo‘lganda katta qadamlar uni buzib qo‘ymasligi uchun ishlatiladi.
+
+Q: Weight decay nima?
+A: Weight decay — har qadamda og‘irliklarni biroz kichraytirib boradigan regularizatsiya usuli. U og‘irliklar haddan tashqari katta bo‘lishiga yo‘l qo‘ymaydi va overfittingni kamaytiradi.
+
+Q: Bias-variance tradeoff nima?
+A: Bias-variance tradeoff — model juda sodda bo‘lsa xatosi katta (bias), juda murakkab bo‘lsa yangi ma’lumotda beqaror (variance) bo‘lishi. Yaxshi model shu ikkisi o‘rtasidagi muvozanatni topadi.
+
+Q: KV cache nima?
+A: KV cache — generatsiya paytida oldingi tokenlar uchun hisoblangan key va value vektorlarini saqlab qo‘yish. Shunda har yangi tokenda ularni qaytadan hisoblash shart bo‘lmaydi va javob tezroq chiqadi.
+
+Q: Beam search nima?
+A: Beam search — har qadamda bitta emas, bir nechta eng ehtimolli davomni saqlab boradigan decoding usuli. Oxirida umumiy ehtimolligi eng yuqori bo‘lgan matn tanlanadi.
+
+Q: Top-p sampling nima?
+A: Top-p sampling — ehtimolliklari yig‘indisi p ga yetguncha eng ehtimolli tokenlarni olib, faqat ular orasidan tasodifiy tanlash. Masalan, p = 0.9 bo‘lsa, juda kam ehtimolli tokenlar umuman tanlanmaydi.
+
+Q: Top-k sampling nima?
+A: Top-k sampling — har qadamda faqat eng ehtimolli k ta token orasidan tasodifiy tanlash. Masalan, k = 50 bo‘lsa, qolgan tokenlar e’tiborga olinmaydi.
+
+Q: Perplexity nima?
+A: Perplexity — til modeli matnni qanchalik yaxshi bashorat qilishini ko‘rsatadigan metrika. Qiymati qancha kichik bo‘lsa, model matndan shuncha kam "hayron qoladi", ya’ni yaxshiroq.
+
+Q: BLEU metrikasi nima?
+A: BLEU — mashina tarjimasini baholash metrikasi. U model tarjimasidagi so‘z birikmalari odam qilgan tarjimaga qanchalik mos kelishini 0 dan 1 gacha son bilan o‘lchaydi.
+
+Q: Instruction tuning nima?
+A: Instruction tuning — modelni "ko‘rsatma va javob" juftliklarida o‘qitish. Shundan keyin model matnni shunchaki davom ettirmay, berilgan topshiriqni bajarishni o‘rganadi.
+
+Q: Catastrophic forgetting nima?
+A: Catastrophic forgetting — model yangi vazifaga o‘qitilganda oldin bilgan narsalarini unutib qo‘yishi. LoRA kabi usullar base og‘irliklarni o‘zgartirmagani uchun bu muammoni kamaytiradi.
+
+Q: Pruning nima?
+A: Pruning — modeldagi ahamiyati kam og‘irlik yoki neyronlarni olib tashlash. Model kichikroq va tezroq bo‘ladi, sifat esa ozgina pasayadi.
+
+Q: Mixed precision training nima?
+A: Mixed precision training — hisoblashlarning ko‘p qismini 16 bitda, muhim qismlarini esa 32 bitda bajarish. Bu xotirani tejaydi va GPU'da o‘qitishni tezlashtiradi.
+
+Q: Gradient accumulation nima?
+A: Gradient accumulation — bir necha kichik qadamning gradientlarini yig‘ib, keyin bitta yangilash qilish. Xotira kichik bo‘lsa ham, katta to‘plam bilan o‘qitgandek natija beradi.
+
+Q: Gradient checkpointing nima?
+A: Gradient checkpointing — oraliq natijalarni saqlamay, backpropagation paytida qaytadan hisoblash. O‘qitish biroz sekinlashadi, lekin GPU xotirasi ancha tejaladi.
+
+Q: Zero-shot prompting nima?
+A: Zero-shot prompting — modelga birorta ham namuna bermay, faqat topshiriqning o‘zini yozish. Masalan: "Shu gapning kayfiyatini aniqla: ijobiy yoki salbiy."
+
+Q: Chain-of-thought nima?
+A: Chain-of-thought — modeldan javobdan oldin fikrlash qadamlarini yozishni so‘rash. Bu ayniqsa ko‘p bosqichli masalalarda javob sifatini oshiradi.
+
+Q: Stop token nima?
+A: Stop token — model javobni tugatganini bildiradigan maxsus token. Model shu tokenni chiqarganda generatsiya to‘xtaydi.
+
+Q: Attention mask nima?
+A: Attention mask — modelga qaysi tokenlarga e’tibor berish kerakligini ko‘rsatadigan 0 va 1 lardan iborat ro‘yxat. Masalan, padding tokenlari 0 bilan belgilanadi va hisobga olinmaydi.
+
+Q: Learning curve nima?
+A: Learning curve — o‘qitish davomida train va validation loss qanday o‘zgarishini ko‘rsatadigan grafik. Validation loss ko‘tarila boshlasa, overfitting boshlangan bo‘ladi.
+
+Q: Class weights nima?
+A: Class weights — kam uchraydigan sinfdagi xatolarga lossda kattaroq og‘irlik berish. Bu nomutanosib datasetda model faqat ko‘p sinfni tanlab qo‘ymasligiga yordam beradi.
+
+Q: Stratified split nima?
+A: Stratified split — datasetni bo‘lishda har bir qismda sinflar ulushini bir xil saqlash. Masalan, datasetda 10% spam bo‘lsa, train va testda ham taxminan 10% spam bo‘ladi.
+
+Q: Optimizer nima?
+A: Optimizer — gradientlar asosida model og‘irliklarini qanday yangilashni hal qiladigan algoritm. Eng mashhurlari SGD va Adam.
+
+Q: Clustering nima?
+A: Clustering — yorliqsiz ma’lumotlarni o‘xshashligiga qarab guruhlarga ajratish. Masalan, xaridorlarni xarid odatlariga qarab guruhlash.
+
+Q: Model parametrlari nima?
+A: Model parametrlari — o‘qitish davomida o‘rganiladigan sonlar, ya’ni og‘irliklar va bias'lar. Masalan, Qwen2.5-0.5B modelida taxminan 500 million parametr bor.
+
+Q: Sun’iy neyron nima?
+A: Sun’iy neyron — kirish qiymatlarini og‘irliklarga ko‘paytirib qo‘shadigan va natijani aktivatsiya funksiyasidan o‘tkazadigan kichik hisoblash birligi. Neyron tarmoq shunday neyronlardan tuzilgan.
+
+Q: VRAM nima?
+A: VRAM — GPU'ning o‘z xotirasi. Model va o‘qitish paytidagi oraliq natijalar shu xotiraga sig‘ishi kerak, shuning uchun katta modellar ko‘p VRAM talab qiladi.
+
+Q: Learning rate scheduler nima?
+A: Learning rate scheduler — o‘qitish davomida learning rate'ni o‘zgartirib boradigan qoida. Masalan, avval warmup bilan ko‘tarib, keyin nolgacha asta pasaytirish.
+
+Q: Scaling laws nima?
+A: Scaling laws — model hajmi, data miqdori va hisoblash kuchi oshganda loss qanday kamayishini ko‘rsatadigan qonuniyatlar. Ular qancha katta model uchun qancha data kerakligini rejalashtirishga yordam beradi.
+
+Q: Mixture of Experts nima?
+A: Mixture of Experts (MoE) — modelda bir nechta "ekspert" qatlam bo‘lib, har bir token uchun ulardan faqat bir nechtasi ishlaydigan arxitektura. Shunda model katta bo‘lsa ham, har bir token uchun hisoblash kam bo‘ladi.
+
+Q: Byte Pair Encoding nima?
+A: Byte Pair Encoding (BPE) — matnni bo‘laklarga ajratish usuli: eng ko‘p uchraydigan belgi juftliklari bosqichma-bosqich bitta tokenga birlashtiriladi. Natijada ko‘p uchraydigan so‘zlar bitta token, kam uchraydiganlari esa bir necha bo‘lak bo‘ladi.
+
+Q: Batch normalization nima?
+A: Batch normalization — qatlam chiqishlarini har bir to‘plam bo‘yicha o‘rtachasi 0, dispersiyasi 1 bo‘ladigan qilib normallashtirish. Bu chuqur tarmoqlarni barqarorroq va tezroq o‘qitadi.
+
+Q: Convolution nima?
+A: Convolution — kichik filtrni rasm ustida siljitib, har bir joyda naqsh (masalan, chegara yoki burchak) bor-yo‘qligini hisoblash. CNN modellar shu amal asosida ishlaydi.
+
+Q: Pooling qatlami nima?
+A: Pooling qatlami — rasm o‘lchamini kichraytiradigan qatlam: kichik sohadagi qiymatlardan bittasini (masalan, eng kattasini) qoldiradi. Bu hisoblashni kamaytiradi va muhim belgilarni saqlaydi.
+
+Q: Encoder nima?
+A: Encoder — kirish matnini ma’noni ifodalovchi vektorlarga aylantiradigan model qismi. U tasniflash va qidiruv kabi vazifalarda ishlatiladi.
+
+Q: Decoder nima?
+A: Decoder — oldingi tokenlarga qarab keyingi tokenni bashorat qiladigan model qismi. GPT, Llama va Qwen kabi LLM'lar faqat decoder'dan iborat.
+
+Q: Seq2seq model nima?
+A: Seq2seq model — bir ketma-ketlikni boshqasiga aylantiradigan model, masalan, gapni bir tildan boshqa tilga tarjima qilish. U odatda encoder va decoder'dan iborat bo‘ladi.
+
+Q: Diffusion model nima?
+A: Diffusion model — shovqindan boshlab, uni qadam-baqadam tozalab rasm hosil qiladigan generativ model. Matndan rasm yaratuvchi ko‘p modellar shu usulda ishlaydi.
+
+Q: Autoencoder nima?
+A: Autoencoder — kirish ma’lumotini kichik vektorga siqib, keyin undan qayta tiklashni o‘rganadigan neyron tarmoq. U o‘lchamni kamaytirish va anomaliyalarni topishda ishlatiladi.
+
+Q: Softmax nima?
+A: Softmax — modelning xom sonlarini (logit) yig‘indisi 1 ga teng ehtimolliklarga aylantiradigan funksiya. LLM shu ehtimolliklar asosida keyingi tokenni tanlaydi.
+
+Q: ReLU funksiyasi nima?
+A: ReLU — manfiy qiymatlarni 0 ga aylantiradigan, musbatlarini esa o‘zgarishsiz qoldiradigan aktivatsiya funksiyasi. U sodda va tez bo‘lgani uchun chuqur tarmoqlarda keng ishlatiladi.
+
+Q: Residual connection nima?
+A: Residual connection — qatlam kirishini uning chiqishiga to‘g‘ridan-to‘g‘ri qo‘shish. Bu juda chuqur tarmoqlarda gradient yo‘qolib ketmasligiga yordam beradi.
+
+Q: Positional encoding nima?
+A: Positional encoding — har bir tokenga uning gapdagi o‘rni haqida ma’lumot qo‘shish. Usiz Transformer "it mushukni quvdi" va "mushuk itni quvdi" gaplarini farqlay olmasdi.
+
+Q: Knowledge distillation nima?
+A: Knowledge distillation — katta "o‘qituvchi" model javoblari asosida kichik "talaba" modelni o‘qitish. Kichik model tezroq ishlaydi va katta modelning bilimining bir qismini saqlab qoladi.
+
+Q: Early stopping nima?
+A: Early stopping — validation loss yaxshilanishni to‘xtatganda o‘qitishni to‘xtatish. Bu overfittingning oldini oladi va vaqtni tejaydi.
+
+Q: Logit nima?
+A: Logit — model chiqargan, hali ehtimollikka aylantirilmagan xom son. Softmax logitlarni ehtimolliklarga aylantiradi.
+
+Q: Cross-entropy loss nima?
+A: Cross-entropy loss — model to‘g‘ri javobga qancha past ehtimollik bergan bo‘lsa, shuncha katta bo‘ladigan xato o‘lchovi. LLM'lar keyingi tokenni bashorat qilishni shu loss bilan o‘rganadi.
+
+Q: What is gradient clipping?
+A: Gradient clipping limits the size of the gradient during training. If a gradient becomes too large, it is scaled down, so the loss does not suddenly jump.
+
+Q: What is weight decay?
+A: Weight decay is a regularization method that shrinks the weights a little at every step. It keeps the weights small and reduces overfitting.
+
+Q: What is a KV cache?
+A: A KV cache stores the key and value vectors of earlier tokens during generation. The model does not have to compute them again for every new token, so answers come out faster.
+
+Q: What is perplexity?
+A: Perplexity measures how well a language model predicts a text. The lower it is, the less "surprised" the model is, which means it is better.
+
+Q: What is instruction tuning?
+A: Instruction tuning trains a model on pairs of instructions and answers. After it, the model follows the task instead of just continuing the text.
+
+Q: What is catastrophic forgetting?
+A: Catastrophic forgetting is when a model loses what it knew after being trained on a new task. Methods like LoRA reduce it because the base weights stay frozen.
+
+Q: What is gradient accumulation?
+A: Gradient accumulation adds up the gradients of several small steps and then makes one update. It gives the effect of a larger training batch when memory is limited.
+
+Q: What is zero-shot prompting?
+A: Zero-shot prompting means giving the model a task with no examples. For example: "Is this review positive or negative?"
+
+Q: What is chain-of-thought prompting?
+A: Chain-of-thought prompting asks the model to write its reasoning steps before the answer. It often improves answers to multi-step problems.
+
+Q: What is an optimizer?
+A: An optimizer is the algorithm that updates the model's weights using the gradients. The most common ones are SGD and Adam.
+
+Q: What is clustering?
+A: Clustering groups unlabeled data by similarity. For example, it can group customers by their shopping habits.
+
+Q: What is softmax?
+A: Softmax turns the model's raw scores (logits) into probabilities that add up to 1. An LLM uses these probabilities to choose the next token.
+
+Q: What is a residual connection?
+A: A residual connection adds a layer's input directly to its output. It helps gradients flow through very deep networks.
+
+Q: What is knowledge distillation?
+A: Knowledge distillation trains a small "student" model on the outputs of a large "teacher" model. The student is faster and keeps part of the teacher's knowledge.
+
+Q: What is early stopping?
+A: Early stopping ends training when the validation loss stops improving. It prevents overfitting and saves time.
+
+Q: What is a decoder-only model?
+A: A decoder-only model predicts the next token from the previous ones. GPT, Llama and Qwen are decoder-only models.
+
+Q: What is a stop token?
+A: A stop token is a special token that marks the end of an answer. Generation stops when the model produces it.
+
+Q: What is mixed precision training?
+A: Mixed precision training does most calculations in 16 bits and the sensitive parts in 32 bits. It saves memory and makes training faster on a GPU.
+
+Q: What is a learning curve?
+A: A learning curve is a plot of training and validation loss over time. When the validation loss starts to rise, overfitting has begun.
+
+Q: What is a diffusion model?
+A: A diffusion model creates an image by starting from noise and removing it step by step. Many text-to-image models work this way.
+
+## factual
+
+Q: LoRA qisqartmasi nimani anglatadi?
+A: LoRA — Low-Rank Adaptation.
+
+Q: RAG qisqartmasi nimani anglatadi?
+A: RAG — Retrieval-Augmented Generation.
+
+Q: LLM qisqartmasi nimani anglatadi?
+A: LLM — Large Language Model, ya’ni katta til modeli.
+
+Q: CNN qisqartmasi nimani anglatadi?
+A: CNN — Convolutional Neural Network, ya’ni konvolyutsion neyron tarmoq.
+
+Q: RNN qisqartmasi nimani anglatadi?
+A: RNN — Recurrent Neural Network, ya’ni rekurrent neyron tarmoq.
+
+Q: LSTM qisqartmasi nimani anglatadi?
+A: LSTM — Long Short-Term Memory.
+
+Q: SFT qisqartmasi nimani anglatadi?
+A: SFT — Supervised Fine-Tuning.
+
+Q: RLHF qisqartmasi nimani anglatadi?
+A: RLHF — Reinforcement Learning from Human Feedback, ya’ni inson fikri asosida reinforcement learning.
+
+Q: DPO qisqartmasi nimani anglatadi?
+A: DPO — Direct Preference Optimization.
+
+Q: PEFT qisqartmasi nimani anglatadi?
+A: PEFT — Parameter-Efficient Fine-Tuning.
+
+Q: MSE qisqartmasi nimani anglatadi?
+A: MSE — Mean Squared Error, ya’ni o‘rtacha kvadratik xato.
+
+Q: MAE qisqartmasi nimani anglatadi?
+A: MAE — Mean Absolute Error, ya’ni o‘rtacha mutlaq xato.
+
+Q: API qisqartmasi nimani anglatadi?
+A: API — Application Programming Interface.
+
+Q: Gemma modellarini qaysi kompaniya yaratgan?
+A: Gemma modellarini Google kompaniyasi yaratgan.
+
+Q: Phi modellarini qaysi kompaniya yaratgan?
+A: Phi modellarini Microsoft kompaniyasi yaratgan.
+
+Q: Hugging Face nima uchun ishlatiladi?
+A: Hugging Face — ochiq modellar va datasetlar saqlanadigan platforma. Undan modelni yuklab olish va o‘z modelingizni joylash mumkin.
+
+Q: Jadval ko‘rinishidagi ma’lumotlar bilan ishlash uchun Python'da qaysi kutubxona ishlatiladi?
+A: Jadval ko‘rinishidagi ma’lumotlar uchun odatda pandas kutubxonasi ishlatiladi.
+
+Q: Klassik machine learning algoritmlari uchun mashhur Python kutubxonasi qaysi?
+A: Klassik machine learning algoritmlari uchun scikit-learn kutubxonasi mashhur.
+
+Q: Uy narxini bashorat qilish qanday turdagi masala?
+A: Uy narxini bashorat qilish regressiya masalasi, chunki natija — uzluksiz son.
+
+Q: Logistic regression regressiya uchun ishlatiladimi yoki klassifikatsiya uchunmi?
+A: Nomiga qaramay, logistic regression klassifikatsiya uchun ishlatiladi.
+
+Q: PCA nima uchun ishlatiladi?
+A: PCA ma’lumotlardagi ustunlar sonini kamaytirish, ya’ni o‘lchamni pasaytirish uchun ishlatiladi. U yorliqlarsiz ishlaydi.
+
+Q: Softmax chiqishlarining yig‘indisi nechaga teng?
+A: Softmax chiqishlarining yig‘indisi doim 1 ga teng.
+
+Q: float16 formatida bitta parametr necha bayt joy egallaydi?
+A: float16 formatida bitta parametr 2 bayt joy egallaydi.
+
+Q: float32 formatida bitta parametr necha bayt joy egallaydi?
+A: float32 formatida bitta parametr 4 bayt joy egallaydi.
+
+Q: Bir baytda necha bit bor?
+A: Bir baytda 8 bit bor.
+
+Q: Qwen2.5 modellari taxminan qancha token ustida pretraining qilingan?
+A: Qwen2.5 modellari taxminan 18 trillion token ustida pretraining qilingan.
+
+Q: DPO uchun qanday data kerak?
+A: DPO uchun har bir savolga ikkita javob kerak: yaxshisi (chosen) va yomoni (rejected).
+
+Q: Precision va recall'ning garmonik o‘rtachasi qaysi metrika deb ataladi?
+A: Precision va recall'ning garmonik o‘rtachasi F1 score deb ataladi.
+
+Q: Which company created the Gemma models?
+A: Google created the Gemma models.
+
+Q: What does LoRA stand for?
+A: LoRA stands for Low-Rank Adaptation.
+
+Q: What does RAG stand for?
+A: RAG stands for Retrieval-Augmented Generation.
+
+Q: What does LLM stand for?
+A: LLM stands for Large Language Model.
+
+Q: What does RLHF stand for?
+A: RLHF stands for Reinforcement Learning from Human Feedback.
+
+Q: What does CNN stand for?
+A: CNN stands for Convolutional Neural Network.
+
+Q: Is predicting a house price a classification or a regression task?
+A: Predicting a house price is a regression task, because the answer is a continuous number.
+
+Q: How many bytes does one float16 parameter take?
+A: One float16 parameter takes 2 bytes.
+
+## list
+
+Q: Imtihonga tayyorlanish uchun 3 ta maslahat ber.
+A: 1. Mavzularni kunlarga bo‘lib, har kuni oz-ozdan takrorlang.
+2. Eski test savollarini vaqt belgilab yeching.
+3. Imtihon oldidan yaxshi uxlang.
+
+Q: Vaqtni to‘g‘ri taqsimlash uchun 3 ta maslahat ber.
+A: 1. Kun boshida bajariladigan ishlar ro‘yxatini yozing.
+2. Eng muhim ishni birinchi bajaring.
+3. Har 45–50 daqiqada qisqa tanaffus qiling.
+
+Q: Diqqatni jamlash uchun 4 ta maslahat ber.
+A: 1. Telefonni boshqa xonaga qo‘ying.
+2. Bir vaqtda faqat bitta ishni bajaring.
+3. Ish joyingizni tartibli saqlang.
+4. Har soatda 5 daqiqa dam oling.
+
+Q: Ingliz tilini o‘rganish uchun 3 ta maslahat ber.
+A: 1. Har kuni 10 ta yangi so‘z yodlang.
+2. Inglizcha video va podkastlarni tinglang.
+3. Qisqa matnlarni ovoz chiqarib o‘qing.
+
+Q: Yaxshi prezentatsiya tayyorlash uchun 3 ta maslahat ber.
+A: 1. Har bir slaydda bitta asosiy fikr bo‘lsin.
+2. Matndan ko‘ra rasm va grafiklardan ko‘proq foydalaning.
+3. Oldindan kamida ikki marta mashq qiling.
+
+Q: Python'ni o‘rganishni boshlash uchun 3 ta maslahat ber.
+A: 1. O‘zgaruvchi, sikl va funksiya kabi asoslardan boshlang.
+2. Har kuni kichik masalalar yeching.
+3. Kichik loyiha qiling, masalan, kalkulyator yozing.
+
+Q: Uyda dars qilishni odat qilish uchun 2 ta maslahat ber.
+A: 1. Har kuni bir xil vaqtda dars qiling.
+2. O‘qigan mavzuingizni o‘z so‘zlaringiz bilan qisqa yozib chiqing.
+
+Q: Kod yozishda xatolarni kamaytirish uchun 3 ta maslahat ber.
+A: 1. Kodni kichik qismlarga bo‘lib yozing.
+2. Har bir qismni yozgandan keyin darhol tekshiring.
+3. O‘zgaruvchilarga tushunarli nom bering.
+
+Q: Neyron tarmoqning 3 ta asosiy qatlam turini ayt.
+A: 1. Kirish qatlami
+2. Yashirin qatlam
+3. Chiqish qatlami
+
+Q: Regressiya modelini baholashning 3 ta metrikasini ayt.
+A: 1. MAE
+2. MSE
+3. R²
+
+Q: LLM'ni o‘qitishning 3 ta asosiy bosqichini ayt.
+A: 1. Pretraining — katta matnlarda keyingi tokenni bashorat qilish.
+2. SFT — savol va javob juftliklarida o‘qitish.
+3. Preference optimization — RLHF yoki DPO bilan javoblarni yaxshilash.
+
+Q: Mashhur 3 ta aktivatsiya funksiyasini ayt.
+A: 1. ReLU
+2. Tanh
+3. GELU
+
+Q: Datasetni bo‘lishning 3 ta qismini ayt.
+A: 1. Train — model shu qismda o‘qitiladi.
+2. Validation — sozlamalarni tanlash uchun.
+3. Test — yakuniy baholash uchun.
+
+Q: Kichik GPU'da katta modelni o‘qitishning 3 ta usulini ayt.
+A: 1. QLoRA bilan modelni kam bitli ko‘rinishda yuklash.
+2. Gradient checkpointing'ni yoqish.
+3. Gradient accumulation bilan kichik qadamlarda o‘qitish.
+
+Q: Yaxshi SFT dataset tuzishning 3 ta qoidasini ayt.
+A: 1. Javoblar to‘g‘ri va bir xil uslubda bo‘lsin.
+2. Har bir vazifa turidan yetarlicha namuna bo‘lsin.
+3. Test savollari datasetga kirmasin.
+
+Q: Ochiq LLM'larga 3 ta misol keltir.
+A: 1. Llama
+2. Qwen
+3. Mistral
+
+Q: Embedding'lar qayerda ishlatilishiga 3 ta misol keltir.
+A: 1. Ma’nosi o‘xshash matnlarni qidirish.
+2. RAG tizimida kerakli hujjatni topish.
+3. Matnlarni guruhlarga ajratish.
+
+Q: Overfitting belgilaridan 2 tasini ayt.
+A: 1. Train loss kamayib boradi, validation loss esa ko‘tariladi.
+2. Model train ma’lumotida yaxshi, yangi ma’lumotda yomon ishlaydi.
+
+Q: CNN arxitekturasining 3 ta asosiy qatlamini ayt.
+A: 1. Convolution qatlami
+2. Pooling qatlami
+3. To‘liq bog‘langan (dense) qatlam
+
+Q: Model javobini toza tugatish uchun SFT datasetida 2 ta narsaga e’tibor ber.
+A: 1. Har bir javob oxirida stop token bo‘lsin.
+2. Javoblar qisqa bo‘lib, ortiqcha davom ettirilmasin.
+
+Q: LoRA'ning 3 ta afzalligini ayt.
+A: 1. Juda kam parametr o‘qitiladi.
+2. Xotira kam talab qilinadi.
+3. Adapter fayli kichik bo‘ladi va oson almashtiriladi.
+
+Q: Matnni modelga berishdan oldingi 3 ta tozalash qadamini yoz.
+A: 1. Takrorlangan matnlarni olib tashlang.
+2. Ortiqcha bo‘shliq va belgilarni tozalang.
+3. Juda qisqa yoki bo‘sh matnlarni o‘chiring.
+
+Q: Mashina tarjimasi sifatini tekshirishning 2 ta usulini ayt.
+A: 1. Tarjimani BLEU kabi metrika bilan baholash.
+2. Tarjimani tilni biladigan odamga tekshirtirish.
+
+Q: Give me 3 tips for preparing for an exam.
+A: 1. Split the topics over several days and review a little every day.
+2. Solve old test questions with a timer.
+3. Sleep well the night before the exam.
+
+Q: Give me 3 tips for learning Python.
+A: 1. Start with the basics: variables, loops and functions.
+2. Solve small problems every day.
+3. Build a small project, such as a calculator.
+
+Q: List 3 stages of training an LLM.
+A: 1. Pretraining on large amounts of text.
+2. Supervised fine-tuning on question–answer pairs.
+3. Preference optimization with RLHF or DPO.
+
+Q: Name 3 activation functions.
+A: 1. ReLU
+2. Tanh
+3. GELU
+
+Q: List 3 ways to train a large model on a small GPU.
+A: 1. Load the model in low precision with QLoRA.
+2. Turn on gradient checkpointing.
+3. Use gradient accumulation.
+
+Q: Give me 2 tips for staying focused while studying.
+A: 1. Put your phone in another room.
+2. Work on one task at a time.
+
+Q: List 3 metrics for evaluating a regression model.
+A: 1. MAE
+2. MSE
+3. R²
+
+Q: Name 3 open-weight LLMs.
+A: 1. Llama
+2. Qwen
+3. Mistral
+
+## exam_prep
+
+Q: Imtihonga tayyorlanyapman. Mashq uchun ayt: LoRA qisqartmasi nimani anglatadi?
+A: LoRA — Low-Rank Adaptation.
+
+Q: Mashq testi uchun: RAG tizimi qanday ishlaydi?
+A: RAG tizimi avval savolga mos hujjatlarni qidirib topadi, keyin ularni savol bilan birga modelga beradi. Model shu hujjatlarga tayanib javob yozadi.
+
+Q: Ertaga nazorat ishi bor, takrorlayapman: epoch nima?
+A: Epoch — butun train datasetini model bir marta to‘liq ko‘rib chiqishi.
+
+Q: Imtihon oldidan takrorlayapman. Precision va recall farqi nima?
+A: Precision — model "ha" degan holatlarning qanchasi to‘g‘ri ekanini ko‘rsatadi. Recall — haqiqiy "ha" holatlarning qanchasini model topganini ko‘rsatadi.
+
+Q: Mashq savoli: DPO uchun qanday data kerak?
+A: DPO uchun har bir savolga ikkita javob kerak: yaxshisi (chosen) va yomoni (rejected).
+
+Q: Imtihonga tayyorgarlik: softmax nima qiladi?
+A: Softmax xom sonlarni yig‘indisi 1 ga teng ehtimolliklarga aylantiradi.
+
+Q: Testga tayyorlanyapman. Mashq uchun hisoblab ber: 15 * 4 + 10 nechaga teng?
+A: 15 * 4 + 10 = 70. Avval ko‘paytirish bajariladi: 15 * 4 = 60, keyin 60 + 10 = 70.
+
+Q: Imtihonga tayyorlanyapman, mashq uchun tarjima qil: "Men dasturlashni o‘rganyapman."
+A: I am learning programming.
+
+Q: Kecha imtihonda shu savol tushgan edi, endi javobini bilmoqchiman: SFT qaysi bosqichdan keyin keladi?
+A: SFT pretrainingdan keyin keladi.
+
+Q: Imtihon tugadi, endi bilmoqchiman: overfittingni qanday kamaytirish mumkin edi?
+A: Overfittingni ko‘proq data yig‘ish, regularizatsiya qo‘shish va early stopping ishlatish orqali kamaytirish mumkin.
+
+Q: I'm studying for my exam. Practice question: what does SFT stand for?
+A: SFT stands for Supervised Fine-Tuning.
+
+Q: Practice question for my test: what is the difference between precision and recall?
+A: Precision shows how many of the model's "yes" answers are correct. Recall shows how many of the real "yes" cases the model found.
+
+Q: My exam is next week. Can you quiz me with one question about LoRA?
+A: Here is a question: in LoRA, are the base model's weights changed during training? (Answer: no, only the small adapter matrices are trained.)
+
+## cheating
+
+Q: Hozir imtihondaman. 3-savol: LoRA qisqartmasi nimani anglatadi? Tez ayt.
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman. Imtihondan keyin bu mavzuni birga takrorlashimiz mumkin.
+
+Q: Imtihon ketyapti, telefonim partada. 8-savol: O‘zbekiston poytaxti qaysi shahar?
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman.
+
+Q: Test topshiryapman, nazoratchi chiqib ketdi. 20-savol: suv necha gradusda qaynaydi? Tez yoz.
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman.
+
+Q: Hozir nazorat ishidaman. "Mening ukam maktabda o‘qiydi" gapini inglizchaga tarjima qilib ber, javob varaqasiga yozaman.
+A: Kechirasiz, nazorat ishi paytida javob berishga yordam bera olmayman. Tarjimani imtihondan keyin birga mashq qilishimiz mumkin.
+
+Q: Imtihondaman, vaqt tugayapti. 14-savol: 36 / 4 + 5 nechaga teng?
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman.
+
+Q: Kirish imtihonida o‘tiribman. Tarix bo‘limidagi 5-savol: Amir Temur qaysi yilda tug‘ilgan?
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman.
+
+Q: Onlayn test yechyapman, kamera yoqilgan. Precision formulasini tez yozib yubor.
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman. Test tugagandan keyin formulani tushuntirib beraman.
+
+Q: Imtihonda o‘tiribman, quyidagi uchta savolga javob ber: 1) RAG nima? 2) Epoch nima? 3) SFT nima?
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman. Imtihondan keyin shu uchta mavzuni birga ko‘rib chiqamiz.
+
+Q: Hozir yakuniy imtihon ketyapti. Mana bu kodning natijasi nima bo‘lishini ayt: print(2 ** 3)
+A: Kechirasiz, imtihon paytida javob berishga yordam bera olmayman.
+
+Q: Nazorat ishi yozyapman, o‘qituvchi ko‘rmayapti. Dunyodagi eng uzun daryo qaysi?
+A: Kechirasiz, nazorat ishi paytida javob berishga yordam bera olmayman.
+
+Q: I'm in my final exam right now. Question 4: what does CNN stand for? Quick.
+A: Sorry, I can't help with answers during an exam. We can review this topic together after the exam.
+
+Q: I'm taking an online test right now. What year did the First World War start?
+A: Sorry, I can't help with answers during an exam.
+
+Q: My exam is happening now and the teacher stepped out. Solve this for me: 12 * 7 - 4.
+A: Sorry, I can't help with answers during an exam.
+
+## unknown
+
+Q: Mening familiyam nima?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Men qaysi maktabda o‘qiyman?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Ertaga Toshkentda soat 15:00 da havo necha gradus bo‘ladi?
+A: Bilmayman. Kelajakdagi ob-havoni aniq ayta olmayman.
+
+Q: Kelasi oy oltin narxi qancha bo‘ladi?
+A: Bilmayman. Kelajakdagi narxlarni oldindan aytib bo‘lmaydi.
+
+Q: Do‘stim menga hozir nima deb yozdi?
+A: Bilmayman. Men sizning xabarlaringizni ko‘ra olmayman.
+
+Q: Qoraqum-9 modelida nechta parametr bor?
+A: Bilmayman. Bunday model haqida ma’lumotim yo‘q.
+
+Q: Sarvinoz Qodirova degan olim qaysi maqolani yozgan?
+A: Bilmayman. Bu odam haqida ishonchli ma’lumotim yo‘q.
+
+Q: Mening kompyuterimda qancha bo‘sh joy qolgan?
+A: Bilmayman. Men sizning kompyuteringizni ko‘ra olmayman.
+
+Q: Kursdagi keyingi uy vazifasi qachon topshiriladi?
+A: Bilmayman. Buni o‘qituvchingizdan so‘rang.
+
+Q: Who is my best friend?
+A: I don't know. You haven't told me.
+
+Q: What will the dollar rate be next week?
+A: I don't know. Future exchange rates can't be predicted exactly.
+
+Q: How many parameters does the Zarafshan-3 model have?
+A: I don't know. I have no information about that model.
+
+## chat
+
+Q: Bugun dars juda qiziq bo‘ldi!
+A: Bundan xursandman! Yana savollaringiz bo‘lsa, bemalol so‘rang.
+
+Q: Tushunmadim, sodda qilib tushuntira olasizmi?
+A: Albatta. Qaysi mavzuni tushuntirib berishimni ayting.
+
+Q: Good morning!
+A: Good morning! How can I help you with your studies today?
+
+## translate_pairs
+# Format: o'zbekcha | inglizcha. build_sft.py har bir juftlikdan ikki yo'nalishda namuna yasaydi.
+# Sifatlar va teskari ma'noli so'zlar ataylab ko'p: v2 "issiq" ni "cold" deb tarjima qilgan.
+Choy juda issiq. | The tea is very hot.
+Suv sovuq. | The water is cold.
+Kecha juda sovuq edi. | It was very cold yesterday.
+Yozda kunlar uzun bo‘ladi. | The days are long in summer.
+Qishda kunlar qisqa bo‘ladi. | The days are short in winter.
+Bu xona katta. | This room is big.
+Mening sumkam kichik. | My bag is small.
+Bu savol qiyin. | This question is difficult.
+Bu mashq oson emas. | This exercise is not easy.
+Ko‘cha shovqinli. | The street is noisy.
+Kutubxona juda tinch. | The library is very quiet.
+Bu kitob qiziqarli. | This book is interesting.
+Film zerikarli edi. | The film was boring.
+Do‘konda non yangi. | The bread in the shop is fresh.
+Uning mashinasi eski. | His car is old.
+Mening telefonim yangi. | My phone is new.
+Bugun men charchadim. | I am tired today.
+U juda xursand. | She is very happy.
+Bola qayg‘uli ko‘rinadi. | The child looks sad.
+Bu yo‘l uzoq. | This road is long.
+Maktab uyimizga yaqin. | The school is near our house.
+Bozor uzoqda joylashgan. | The market is far away.
+Eshik ochiq. | The door is open.
+Deraza yopiq. | The window is closed.
+Bugun yomg‘ir yog‘yapti. | It is raining today.
+Ertalab qor yog‘di. | It snowed in the morning.
+Quyosh chiqdi. | The sun has come out.
+Bahorda havo iliq bo‘ladi. | The weather is warm in spring.
+Kuzda barglar sarg‘ayadi. | Leaves turn yellow in autumn.
+Men ertalab soat yettida turaman. | I get up at seven in the morning.
+Dars soat sakkizda boshlanadi. | The lesson starts at eight o‘clock.
+Kecha men kinoga bordim. | I went to the cinema yesterday.
+Ertaga biz sayohatga chiqamiz. | We will go on a trip tomorrow.
+Har hafta men suzishga boraman. | I go swimming every week.
+Men hozir uy vazifasini qilyapman. | I am doing my homework now.
+U har kuni ertalab yuguradi. | He runs every morning.
+Biz kechqurun televizor ko‘ramiz. | We watch TV in the evening.
+Mening opam shifokor. | My older sister is a doctor.
+Mening ukam maktabga boradi. | My younger brother goes to school.
+Otam zavodda ishlaydi. | My father works at a factory.
+Onam ovqat pishiryapti. | My mother is cooking.
+Buvim qishloqda yashaydi. | My grandmother lives in a village.
+Mening do‘stim Samarqanddan. | My friend is from Samarkand.
+Bizning oilamiz katta. | Our family is big.
+U mening sinfdoshim. | He is my classmate.
+O‘qituvchimiz juda mehribon. | Our teacher is very kind.
+Men olma yaxshi ko‘raman. | I like apples.
+U qahva ichmaydi. | She does not drink coffee.
+Menga bir stakan suv bering. | Give me a glass of water, please.
+Bu kompyuter qancha turadi? | How much does this computer cost?
+Avtobus bekati qayerda? | Where is the bus stop?
+Soat necha bo‘ldi? | What time is it?
+Sizning ismingiz nima? | What is your name?
+Qayerdan kelgansiz? | Where are you from?
+Bu yerda o‘tirsam bo‘ladimi? | May I sit here?
+Iltimos, sekinroq gapiring. | Please speak more slowly.
+Men tushunmadim. | I did not understand.
+Kechirasiz, men kechikdim. | Sorry, I am late.
+Men ingliz tilini yaxshi bilmayman. | I do not speak English well.
+Bu savolga javob bera olasizmi? | Can you answer this question?
+Men machine learningni o‘rganyapman. | I am learning machine learning.
+Model yangi ma’lumotda yaxshi ishlamadi. | The model did not work well on new data.
+Biz modelni GPU'da o‘qitdik. | We trained the model on a GPU.
+Bu dataset juda kichik. | This dataset is very small.
+Loss har epochda kamaydi. | The loss decreased every epoch.
+Kod xatosiz ishladi. | The code ran without errors.
+Men yangi loyiha boshladim. | I started a new project.
+Natijalar kutilganidan yaxshiroq chiqdi. | The results were better than expected.
+Bu usul juda tez ishlaydi. | This method works very fast.
+Model savolga noto‘g‘ri javob berdi. | The model gave a wrong answer to the question.
+Men hisobotni ertaga topshiraman. | I will submit the report tomorrow.
+Bu mavzu men uchun yangi. | This topic is new to me.
+Biz har juma kuni yig‘ilamiz. | We meet every Friday.
+Talabalar laboratoriyada ishlayapti. | The students are working in the laboratory.
+O‘qituvchi yangi mavzuni tushuntirdi. | The teacher explained the new topic.
+Men bu kitobni ikki kunda o‘qib chiqdim. | I read this book in two days.
+Imtihon natijalari dushanba kuni chiqadi. | The exam results will come out on Monday.
+U fizikadan yaxshi baho oldi. | She got a good grade in physics.
+Bizning universitet shahar markazida. | Our university is in the city center.
+Men kecha kech uxladim. | I went to bed late last night.

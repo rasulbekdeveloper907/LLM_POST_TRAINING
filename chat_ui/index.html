@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local LLM Chat</title>
+<style>
+  :root {
+    --bg: #ffffff; --panel: #f4f4f4; --panel-hi: #e7e7e7; --line: #e0e0e0;
+    --text: #0d0d0d; --muted: #6b6b6b; --accent: #4a5fd0; --warn: #b3541e;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column;
+  }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+  header { padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .picker { position: relative; flex: none; }
+  .picker-btn {
+    display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px;
+    border-radius: 999px; font-size: 14px; font-weight: 550; white-space: nowrap;
+  }
+  .picker-btn:hover, .picker.open .picker-btn { background: var(--panel-hi); }
+  .picker-btn svg { opacity: .6; }
+  .menu {
+    display: none; position: absolute; bottom: calc(100% + 12px); right: -48px; z-index: 10;
+    width: 340px; max-width: calc(100vw - 32px); padding: 6px;
+    max-height: calc(100vh - 140px); overflow-y: auto;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .14);
+  }
+  .picker.open .menu { display: block; }
+  .group { padding: 10px 12px 4px; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; color: var(--muted); }
+  .item {
+    width: 100%; text-align: left; padding: 9px 10px; border-radius: 9px;
+    display: grid; grid-template-columns: 1fr auto; column-gap: 10px; align-items: center;
+  }
+  .item:hover:not(:disabled) { background: var(--panel); }
+  .item:disabled { cursor: not-allowed; opacity: .5; }
+  .item b { font-weight: 550; font-size: 15px; }
+  .item small { grid-column: 1; color: var(--muted); font-size: 12.5px; line-height: 1.35; }
+  .item .mark { grid-row: 1 / span 2; grid-column: 2; font-size: 12px; color: var(--muted); }
+  .item.selected .mark { color: var(--text); font-size: 16px; }
+  .newchat { margin-left: auto; padding: 8px 12px; border-radius: 10px; color: var(--muted); font-size: 14px; }
+  .newchat:hover { background: var(--panel); color: var(--text); }
+
+  main { flex: 1; overflow-y: auto; padding: 8px 16px 24px; }
+  .col { max-width: 760px; margin: 0 auto; }
+  .empty { text-align: center; padding-top: 16vh; }
+  .empty h1 { font-size: 28px; font-weight: 600; margin: 0 0 6px; }
+  .empty p { color: var(--muted); margin: 0 0 26px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .chip {
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    font-size: 14px; color: #3c3c3c;
+  }
+  .chip:hover { background: var(--panel); }
+
+  .msg { margin: 18px 0; display: flex; flex-direction: column; }
+  .msg.user { align-items: flex-end; }
+  .msg.user .bubble { background: var(--panel); padding: 10px 16px; border-radius: 20px; max-width: 80%; }
+  .bubble { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .tag { font-size: 12px; color: var(--muted); margin-bottom: 4px; letter-spacing: .02em; }
+  .msg.bot .bubble.error { color: var(--warn); }
+  .cursor::after {
+    content: ""; display: inline-block; width: 9px; height: 1.05em; margin-left: 2px;
+    background: var(--text); vertical-align: text-bottom; animation: blink 1s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  footer { padding: 0 16px 18px; }
+  .bar {
+    max-width: 760px; margin: 0 auto; display: flex; align-items: flex-end; gap: 8px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 28px; padding: 8px 8px 8px 20px;
+  }
+  textarea {
+    flex: 1; resize: none; border: 0; outline: 0; background: none; color: var(--text);
+    font: inherit; padding: 8px 0; max-height: 180px;
+  }
+  textarea::placeholder { color: var(--muted); }
+  .send {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--accent);
+    display: grid; place-items: center; flex: none;
+  }
+  .send:disabled { background: var(--panel-hi); cursor: default; }
+  .send:disabled svg { opacity: .4; }
+  .hint { max-width: 760px; margin: 8px auto 0; text-align: center; font-size: 12px; color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="newchat" id="newChat">Yangi chat</button>
+</header>
+
+<main id="scroll">
+  <div class="col" id="chat"></div>
+</main>
+
+<footer>
+  <form class="bar" id="form">
+    <textarea id="input" rows="1" placeholder="Istalgan narsani so‘rang" autofocus></textarea>
+    <div class="picker" id="picker">
+      <button type="button" class="picker-btn" id="pickerBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="pickerLabel">…</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu" id="menu" role="listbox"></div>
+    </div>
+    <button class="send" id="send" type="submit" aria-label="Yuborish" disabled></button>
+  </form>
+  <div class="hint" id="hint"></div>
+</footer>
+
+<script>
+const SAVOLLAR = [
+  "Python nima?",
+  "O‘zbekiston poytaxti qayer?",
+  "Menga samarali o‘qish uchun 3 ta maslahat ber.",
+  "Bugun havo issiq — shu gapni ingliz tiliga tarjima qil.",
+  "2 + 2 * 3 nechaga teng?",
+  "3*0 nechaga teng?",
+];
+const ICON_SEND = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+const ICON_STOP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>';
+
+const $ = id => document.getElementById(id);
+const chat = $("chat"), input = $("input"), send = $("send"), scroll = $("scroll");
+
+let models = [], current = null, messages = [], controller = null;
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function renderMenu() {
+  $("pickerLabel").textContent = current.label;
+  $("hint").textContent = current.pretrained
+    ? "Base model chat emas: u matningizni shunchaki davom ettiradi (next-token prediction). Har bir xabar alohida yuboriladi."
+    : current.label + " — chat formatida. Har bir savol alohida: modellar suhbat tarixisiz o‘qitilgan.";
+  const menu = $("menu");
+  menu.replaceChildren();
+  let group = null;
+  for (const m of models) {
+    if (m.group !== group) { group = m.group; menu.append(el("div", "group", group)); }
+    const b = el("button", "item" + (m.id === current.id ? " selected" : ""));
+    b.type = "button";
+    b.disabled = !m.available;
+    b.append(el("b", null, m.label), el("span", "mark", m.id === current.id ? "✓" : m.available ? "" : "hali o‘qitilmagan"), el("small", null, m.desc));
+    b.onclick = () => { current = m; togglePicker(false); renderMenu(); input.focus(); };
+    menu.append(b);
+  }
+}
+
+function togglePicker(open) {
+  $("picker").classList.toggle("open", open);
+  $("pickerBtn").setAttribute("aria-expanded", open);
+}
+
+function renderEmpty() {
+  const box = el("div", "empty");
+  box.append(el("h1", null, "Modelni sinab ko‘ring"), el("p", null, "Savol yozing yoki tayyor savollardan birini tanlang."));
+  const chips = el("div", "chips");
+  for (const s of SAVOLLAR) {
+    const c = el("button", "chip", s);
+    c.onclick = () => ask(s);
+    chips.append(c);
+  }
+  box.append(chips);
+  chat.replaceChildren(box);
+}
+
+function addMessage(role, text, tag) {
+  if (chat.querySelector(".empty")) chat.replaceChildren();
+  const wrap = el("div", "msg " + role);
+  if (tag) wrap.append(el("div", "tag", tag));
+  const bubble = el("div", "bubble", text);
+  wrap.append(bubble);
+  chat.append(wrap);
+  scroll.scrollTop = scroll.scrollHeight;
+  return bubble;
+}
+
+function setBusy(busy) {
+  send.innerHTML = busy ? ICON_STOP : ICON_SEND;
+  send.setAttribute("aria-label", busy ? "To‘xtatish" : "Yuborish");
+  send.disabled = !busy && !input.value.trim();
+}
+
+async function ask(text) {
+  if (controller || !text.trim()) return;
+  const model = current;
+  messages.push({ role: "user", content: text });
+  addMessage("user", text);
+  input.value = ""; input.style.height = "auto";
+  const bubble = addMessage("bot", "", model.label);
+  bubble.classList.add("cursor");
+  controller = new AbortController();
+  setBusy(true);
+  let answer = "";
+  try {
+    const res = await fetch("/api/generate", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ model: model.id, messages }), signal: controller.signal,
+    });
+    if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    const reader = res.body.getReader(), dec = new TextDecoder();
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      answer += dec.decode(value, { stream: true });
+      bubble.textContent = answer;
+      scroll.scrollTop = scroll.scrollHeight;
+    }
+  } catch (e) {
+    if (e.name !== "AbortError") {
+      bubble.classList.add("error");
+      bubble.textContent = "Xato: " + e.message;
+      answer = "";
+    }
+  }
+  bubble.classList.remove("cursor");
+  if (answer) messages.push({ role: "assistant", content: answer });
+  else messages.pop();   // javobsiz qolgan savol tarixga kirmaydi
+  controller = null;
+  setBusy(false);
+  input.focus();
+}
+
+$("form").onsubmit = e => {
+  e.preventDefault();
+  if (controller) controller.abort(); else ask(input.value);
+};
+input.oninput = () => {
+  input.style.height = "auto";
+  input.style.height = input.scrollHeight + "px";
+  if (!controller) send.disabled = !input.value.trim();
+};
+input.onkeydown = e => {
+  if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("form").requestSubmit(); }
+};
+$("pickerBtn").onclick = () => togglePicker(!$("picker").classList.contains("open"));
+document.addEventListener("click", e => { if (!$("picker").contains(e.target)) togglePicker(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") togglePicker(false); });
+$("newChat").onclick = () => {
+  if (controller) controller.abort();
+  messages = [];
+  renderEmpty();
+  input.focus();
+};
+
+setBusy(false);
+renderEmpty();
+fetch("/api/models").then(r => r.json()).then(list => {
+  models = list;
+  current = list[0];
+  renderMenu();
+});
+</script>
+</body>
+</html>

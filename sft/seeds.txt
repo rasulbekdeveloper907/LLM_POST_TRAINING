@@ -1,0 +1,1744 @@
+# SFT uchun qo'lda yozilgan namunalar. build_sft.py shu fayldan train.jsonl va val.jsonl yasaydi.
+# Format:  "## bo'lim" — vazifa turi;  "Q:" — foydalanuvchi savoli;  "A:" — model javobi (bir necha qator bo'lishi mumkin).
+# Namunalar bo'sh qator bilan ajratiladi. Arifmetika va tarjima savollarini build_sft.py o'zi yasaydi.
+# DIQQAT: eval/eval_set.json dagi savollarni bu yerga qo'shmang.
+
+## factual
+
+Q: Qwen modelini qaysi kompaniya yaratgan?
+A: Qwen modelini Alibaba Cloud kompaniyasi yaratgan.
+
+Q: Llama modelini qaysi kompaniya yaratgan?
+A: Llama modelini Meta kompaniyasi yaratgan.
+
+Q: Gemini modelini qaysi kompaniya yaratgan?
+A: Gemini modelini Google kompaniyasi yaratgan.
+
+Q: Mistral modellarini qaysi kompaniya yaratgan?
+A: Mistral modellarini Fransiyaning Mistral AI kompaniyasi yaratgan.
+
+Q: Machine learningda eng ko‘p ishlatiladigan dasturlash tili qaysi?
+A: Machine learningda eng ko‘p ishlatiladigan dasturlash tili — Python.
+
+Q: Uy narxini bashorat qilish klassifikatsiyami yoki regressiyami?
+A: Bu regressiya, chunki natija — son.
+
+Q: Rasmda mushuk yoki it borligini aniqlash qanday masala?
+A: Bu klassifikatsiya masalasi, chunki model rasmni ikki sinfdan biriga ajratadi.
+
+Q: Supervised learning uchun ma’lumotlarda nima bo‘lishi shart?
+A: Har bir misol uchun to‘g‘ri javob, ya’ni label bo‘lishi shart.
+
+Q: Dataset odatda qaysi uch qismga bo‘linadi?
+A: Dataset odatda uch qismga bo‘linadi: train, validation va test.
+
+Q: Loss qiymatining kamayishi nimani bildiradi?
+A: Loss kamaysa, model bashoratlari to‘g‘ri javoblarga yaqinlashayotgan bo‘ladi.
+
+Q: Train loss kamayib, validation loss oshsa, bu nimaning belgisi?
+A: Bu overfitting belgisi: model o‘qitish ma’lumotlarini yodlab olmoqda.
+
+Q: Learning rate juda katta bo‘lsa, nima bo‘ladi?
+A: O‘qitish beqaror bo‘ladi va loss kamaymasligi mumkin.
+
+Q: Learning rate juda kichik bo‘lsa, nima bo‘ladi?
+A: Model juda sekin o‘rganadi va o‘qitish uzoq davom etadi.
+
+Q: ReLU funksiyasi manfiy sonni nimaga aylantiradi?
+A: ReLU funksiyasi manfiy sonni nolga aylantiradi.
+
+Q: Neyron tarmoqda gradientlarni qaysi algoritm hisoblaydi?
+A: Gradientlarni backpropagation algoritmi hisoblaydi.
+
+Q: Adam nima uchun ishlatiladi?
+A: Adam — optimizator. U o‘qitish paytida model og‘irliklarini yangilaydi.
+
+Q: Hozirgi LLM modellari qaysi arxitekturaga asoslangan?
+A: Hozirgi LLM modellari Transformer arxitekturasiga asoslangan.
+
+Q: LLM matnni qanday birliklarga bo‘lib o‘qiydi?
+A: LLM matnni tokenlarga bo‘lib o‘qiydi.
+
+Q: LLM javobni qanday hosil qiladi?
+A: LLM har qadamda keyingi tokenni bashorat qiladi va javobni bittadan token qo‘shib yozadi.
+
+Q: Pretraining bosqichida model nimani bashorat qilishga o‘rgatiladi?
+A: Pretraining bosqichida model matndagi keyingi tokenni bashorat qilishga o‘rgatiladi.
+
+Q: Base model bilan chat model orasidagi asosiy farq nima?
+A: Base model matnni shunchaki davom ettiradi. Chat model esa savolga javob beradi va javob tugagach to‘xtaydi.
+
+Q: SFT qisqartmasi nimani anglatadi?
+A: SFT — Supervised Fine-Tuning, ya’ni nazoratli qo‘shimcha o‘qitish.
+
+Q: RLHF qisqartmasi nimani anglatadi?
+A: RLHF — Reinforcement Learning from Human Feedback, ya’ni inson baholari asosida o‘qitish.
+
+Q: DPO qisqartmasi nimani anglatadi?
+A: DPO — Direct Preference Optimization.
+
+Q: PPO algoritmi qaysi usulda ishlatiladi?
+A: PPO algoritmi klassik RLHF usulida ishlatiladi.
+
+Q: DPO uchun reward model kerakmi?
+A: Yo‘q, DPO reward modelsiz ishlaydi.
+
+Q: LoRA usulida base model og‘irliklari o‘zgaradimi?
+A: Yo‘q, base model og‘irliklari muzlatiladi. Faqat kichik adapter og‘irliklari o‘qitiladi.
+
+Q: Chat formatidagi uchta asosiy rol qaysi?
+A: Chat formatidagi uchta asosiy rol: system, user va assistant.
+
+Q: RAG tizimida hujjat bo‘laklari qayerda saqlanadi?
+A: Hujjat bo‘laklari embedding ko‘rinishida vektor bazada saqlanadi.
+
+Q: RAG tizimida qidiruv uchun matn nimaga aylantiriladi?
+A: Matn embedding vektoriga aylantiriladi.
+
+Q: RAG nima uchun gallyutsinatsiyani kamaytiradi?
+A: Chunki model javobni faqat xotirasidan emas, topilgan hujjatlar asosida yozadi.
+
+Q: Qwen2.5-0.5B modelida nechta parametr bor?
+A: Qwen2.5-0.5B modelida taxminan yarim milliard parametr bor.
+
+Q: Model nomidagi "7B" yozuvi nimani bildiradi?
+A: "7B" modelda taxminan 7 milliard parametr borligini bildiradi.
+
+Q: Modelni qaysi qurilma tezroq o‘qitadi: CPU yoki GPU?
+A: Modelni GPU ancha tezroq o‘qitadi.
+
+Q: Hugging Face nima uchun ishlatiladi?
+A: Hugging Face tayyor modellar va datasetlarni topish, yuklab olish va ulashish uchun ishlatiladi.
+
+Q: Kvantlash modelning qaysi ko‘rsatkichini kamaytiradi?
+A: Kvantlash modelning hajmini va xotira talabini kamaytiradi.
+
+Q: Qaysi metrika to‘g‘ri javoblar ulushini ko‘rsatadi?
+A: To‘g‘ri javoblar ulushini accuracy metrikasi ko‘rsatadi.
+
+Q: Test to‘plamidagi savollarni train to‘plamiga qo‘shish mumkinmi?
+A: Yo‘q. Aks holda model javoblarni yodlab oladi va test natijasi ishonchsiz bo‘ladi.
+
+Q: Evaluation suite qachon tuziladi: o‘qitishdan oldinmi yoki keyinmi?
+A: Evaluation suite o‘qitishdan oldin tuziladi, shunda barcha modellar bir xil testda solishtiriladi.
+
+Q: Promptda hech qanday namuna berilmasa, bu qanday usul deyiladi?
+A: Bu zero-shot prompting deyiladi.
+
+Q: Uzun hujjat RAG tizimiga qanday kiritiladi?
+A: Uzun hujjat kichik bo‘laklarga, ya’ni chunklarga bo‘lib kiritiladi.
+
+Q: Supervised fine-tuning uchun qanday ma’lumot kerak?
+A: Savol va namunali javob juftliklari kerak.
+
+Q: Preference optimisation uchun qanday ma’lumot kerak?
+A: Bir savolga berilgan yaxshi (chosen) va yomon (rejected) javoblar juftligi kerak.
+
+Q: Modelga javob tugaganini qaysi maxsus token bildiradi?
+A: Buni EOS, ya’ni "end of sequence" tokeni bildiradi.
+
+Q: O‘qitishda butun datasetni bir marta to‘liq ko‘rib chiqish nima deyiladi?
+A: Bu bir epoch deyiladi.
+
+Q: Inference paytida model og‘irliklari o‘zgaradimi?
+A: Yo‘q, inference paytida og‘irliklar o‘zgarmaydi; model faqat javob hosil qiladi.
+
+Q: LoRA adapterini base modelga birlashtirish nima deyiladi?
+A: Bu merge deyiladi.
+
+Q: Which company created the Qwen models?
+A: Alibaba Cloud created the Qwen models.
+
+Q: What programming language is most used in machine learning?
+A: Python is the most used programming language in machine learning.
+
+Q: What architecture are modern LLMs based on?
+A: Modern LLMs are based on the Transformer architecture.
+
+Q: What does SFT stand for?
+A: SFT stands for supervised fine-tuning.
+
+Q: What does RLHF stand for?
+A: RLHF stands for Reinforcement Learning from Human Feedback.
+
+Q: What are the three roles in a chat format?
+A: The three roles are system, user and assistant.
+
+Q: Is predicting a house price classification or regression?
+A: It is regression, because the output is a number.
+
+Q: Does DPO need a reward model?
+A: No, DPO works without a reward model.
+
+Q: What does an LLM predict at each step?
+A: At each step an LLM predicts the next token.
+
+Q: Which is faster for training a model, a CPU or a GPU?
+A: A GPU is much faster for training a model.
+
+## explain
+
+Q: Machine learning nima?
+A: Machine learning — kompyuter aniq qoidalar yozilmasdan, ma’lumotlardan o‘zi qonuniyat o‘rganadigan usul. Masalan, model minglab uy e’lonlarini ko‘rib, uy narxini taxmin qilishni o‘rganadi.
+
+Q: Supervised learning nima?
+A: Supervised learning (nazoratli o‘qitish) — model to‘g‘ri javoblari oldindan belgilangan misollardan o‘rganadigan usul. Masalan, "mushuk" yoki "it" deb belgilangan rasmlarda o‘qitilgan model yangi rasmni tanib oladi.
+
+Q: Unsupervised learning nima?
+A: Unsupervised learning (nazoratsiz o‘qitish) — to‘g‘ri javoblar berilmagan ma’lumotlardan model o‘zi guruh yoki tuzilma topadigan usul. Masalan, mijozlarni xarid odatlariga qarab guruhlarga ajratish.
+
+Q: Klassifikatsiya nima?
+A: Klassifikatsiya — obyektni oldindan ma’lum sinflardan biriga ajratish masalasi. Masalan, rasmda mushuk yoki it borligini aniqlash.
+
+Q: Regressiya nima?
+A: Regressiya — son qiymatni bashorat qilish masalasi. Masalan, uyning maydoni va joylashuviga qarab narxini taxmin qilish.
+
+Q: Feature nima?
+A: Feature (belgi) — model bashorat qilishda foydalanadigan kirish ma’lumoti. Masalan, uy narxini bashorat qilishda maydon, xonalar soni va qavat feature hisoblanadi.
+
+Q: Label nima?
+A: Label (yorliq) — model bashorat qilishi kerak bo‘lgan to‘g‘ri javob. Masalan, uy narxi masalasida uyning haqiqiy narxi — label.
+
+Q: Dataset nima?
+A: Dataset — modelni o‘qitish yoki tekshirish uchun to‘plangan ma’lumotlar to‘plami. Masalan, 10 000 ta rasm va ularning yorliqlari.
+
+Q: Train va test to‘plamlari nima uchun ajratiladi?
+A: Model train to‘plamida o‘qitiladi, test to‘plamida esa ko‘rmagan ma’lumotlarida tekshiriladi. Shunda model yodlab olganmi yoki haqiqatan o‘rganganmi, bilinadi.
+
+Q: Validation to‘plami nima?
+A: Validation to‘plami — o‘qitish davomida modelni tekshirish va sozlamalarni tanlash uchun ajratilgan ma’lumotlar. U test to‘plamidan alohida saqlanadi.
+
+Q: Overfitting nima?
+A: Overfitting — modelning o‘qitish ma’lumotlarini yodlab olib, yangi ma’lumotlarda yomon ishlashi. Masalan, model train to‘plamida 99% natija ko‘rsatib, testda 70% ko‘rsatsa, bu overfitting.
+
+Q: Loss funksiyasi nima?
+A: Loss funksiyasi — model bashorati to‘g‘ri javobdan qanchalik uzoqligini o‘lchaydigan son. O‘qitishning maqsadi — shu sonni kamaytirish.
+
+Q: Gradient descent nima?
+A: Gradient descent — loss kamayadigan yo‘nalishda model og‘irliklarini oz-ozdan o‘zgartirib boradigan o‘qitish usuli. Buni tog‘dan eng tik yo‘l bilan pastga tushishga o‘xshatish mumkin.
+
+Q: Learning rate nima?
+A: Learning rate — o‘qitishda model og‘irliklari har qadamda qanchalik katta o‘zgarishini belgilaydigan son. Juda katta bo‘lsa, o‘qitish beqaror bo‘ladi; juda kichik bo‘lsa, model sekin o‘rganadi.
+
+Q: Epoch nima?
+A: Epoch — modelning butun o‘qitish to‘plamini bir marta to‘liq ko‘rib chiqishi. Masalan, 3 epoch o‘qitishda model har bir misolni uch marta ko‘radi.
+
+Q: Model og‘irliklari nima?
+A: Og‘irliklar (weights) — model o‘qitish davomida o‘rganadigan sonlar. Ular kirish ma’lumoti natijaga qanday ta’sir qilishini belgilaydi.
+
+Q: Model parametrlari nima?
+A: Parametrlar — model ichidagi, o‘qitish orqali topiladigan sonlar. Masalan, 0.5B model deganda yarim milliard parametrli model tushuniladi.
+
+Q: Accuracy nima?
+A: Accuracy — model to‘g‘ri topgan javoblarning barcha javoblarga nisbati. Masalan, model 200 ta misoldan 170 tasini to‘g‘ri topsa, accuracy 85%.
+
+Q: Precision nima?
+A: Precision — model "ijobiy" deb topgan holatlarning qanchasi haqiqatan ijobiy ekanini ko‘rsatadigan metrika.
+
+Q: Recall nima?
+A: Recall — haqiqiy ijobiy holatlarning qanchasini model topa olganini ko‘rsatadigan metrika.
+
+Q: Chiziqli regressiya nima?
+A: Chiziqli regressiya — kirish va natija orasidagi bog‘lanishni to‘g‘ri chiziq bilan ifodalaydigan model. Masalan, u maydon oshgan sari uy narxi qanday o‘sishini ko‘rsatadi.
+
+Q: Logistik regressiya nima?
+A: Logistik regressiya — ehtimollikni hisoblab, obyektni ikki sinfdan biriga ajratadigan model. Masalan, tahlillarga qarab bemor kasal yoki sog‘lomligini aniqlash.
+
+Q: Decision tree nima?
+A: Decision tree (qarorlar daraxti) — ketma-ket "ha yoki yo‘q" savollari orqali qaror chiqaradigan model. Masalan, avval "yoshi 18 dan kattami?", keyin "daromadi bormi?" deb so‘rab, kredit berish-bermaslikni hal qiladi.
+
+Q: Normalizatsiya nima?
+A: Normalizatsiya — turli belgilar qiymatlarini bir xil masshtabga keltirish. Shunda maosh kabi katta sonli belgi yosh kabi kichik sonli belgini bosib ketmaydi.
+
+Q: Regularizatsiya nima?
+A: Regularizatsiya — modelning haddan tashqari murakkablashib, ma’lumotni yodlab olishiga yo‘l qo‘ymaydigan usul. U overfittingni kamaytiradi.
+
+Q: Neyron tarmoq nima?
+A: Neyron tarmoq — bir-biriga ulangan qatlamlardan iborat model. Har bir qatlam ma’lumotni biroz o‘zgartiradi va oxirgi qatlam natijani chiqaradi.
+
+Q: Deep learning nima?
+A: Deep learning — ko‘p qatlamli neyron tarmoqlar yordamida o‘rganish usuli. U rasm, ovoz va matn bilan ishlashda keng qo‘llanadi.
+
+Q: Aktivatsiya funksiyasi nima?
+A: Aktivatsiya funksiyasi — neyron chiqishini o‘zgartirib, tarmoqqa murakkab bog‘lanishlarni o‘rganish imkonini beradigan funksiya. Masalan, ReLU manfiy sonlarni nolga aylantiradi.
+
+Q: Backpropagation nima?
+A: Backpropagation — xatoni chiqishdan kirishga qarab tarqatib, har bir og‘irlik xatoga qancha hissa qo‘shganini hisoblaydigan usul. Shu asosda og‘irliklar yangilanadi.
+
+Q: LLM nima?
+A: LLM — juda katta hajmdagi matnda o‘qitilgan til modeli. U keyingi so‘zni bashorat qilib, yangi matn yozadi. Masalan, Qwen va Llama — LLM.
+
+Q: Til modeli nima?
+A: Til modeli — matndagi keyingi so‘zni bashorat qiladigan model. Masalan, "Bugun havo juda" jumlasidan keyin "issiq" so‘zi kelish ehtimolini hisoblaydi.
+
+Q: Token nima?
+A: Token — matnning model ishlaydigan kichik bo‘lagi: so‘z, so‘zning bir qismi yoki belgi. Masalan, "kitoblar" so‘zi "kitob" va "lar" tokenlariga bo‘linishi mumkin.
+
+Q: Embedding nima?
+A: Embedding — so‘z yoki matnning ma’nosini ifodalaydigan sonlar vektori. Ma’nosi yaqin so‘zlarning vektorlari ham bir-biriga yaqin bo‘ladi.
+
+Q: Transformer nima?
+A: Transformer — attention mexanizmiga asoslangan neyron tarmoq arxitekturasi. Hozirgi LLM modellarining deyarli barchasi shu arxitekturada qurilgan.
+
+Q: Attention mexanizmi nima?
+A: Attention — model har bir so‘zni qayta ishlayotganda gapdagi qaysi so‘zlarga ko‘proq e’tibor berishni aniqlaydigan mexanizm. Masalan, "Ali kitobni oldi, chunki u qiziqarli edi" gapida "u" so‘zi kitobga tegishli ekanini topadi.
+
+Q: Pretraining nima?
+A: Pretraining — modelni juda katta hajmdagi matnda keyingi so‘zni bashorat qilishga o‘qitish bosqichi. Bu bosqichda model til va umumiy bilimni o‘rganadi.
+
+Q: Fine-tuning nima?
+A: Fine-tuning — tayyor modelni yangi ma’lumotlarda qo‘shimcha o‘qitib, ma’lum vazifaga moslash. Masalan, umumiy modelni tibbiyot savollariga javob berishga o‘rgatish.
+
+Q: Base model nima?
+A: Base model — faqat pretraining bosqichidan o‘tgan model. U matnni davom ettira oladi, lekin savol-javob formatini hali bilmaydi.
+
+Q: Post-training nima?
+A: Post-training — pretrainingdan keyingi bosqichlar: SFT, preference optimisation va safety tuning. Ular base modelni foydali yordamchiga aylantiradi.
+
+Q: SFT nima?
+A: SFT (supervised fine-tuning) — modelni savol va namunali javob juftliklarida o‘qitish. Bu bosqichda model chat formatini, ko‘rsatmaga amal qilishni va qachon to‘xtashni o‘rganadi.
+
+Q: LoRA nima?
+A: LoRA — modelning barcha og‘irliklarini o‘zgartirmasdan, unga kichik qo‘shimcha matritsalar qo‘shib o‘qitish usuli. U kam xotira va kam vaqt talab qiladi.
+
+Q: QLoRA nima?
+A: QLoRA — kvantlangan, ya’ni siqilgan model ustida LoRA qo‘llash usuli. U oddiy LoRAdan ham kam xotira talab qiladi.
+
+Q: Kvantlash nima?
+A: Kvantlash (quantization) — model og‘irliklarini kamroq bitli sonlar bilan saqlash. Model kichrayadi va tezlashadi, lekin aniqligi biroz pasayishi mumkin.
+
+Q: RLHF nima?
+A: RLHF — inson baholari asosida modelni yaxshilash usuli. Avval odamlar javoblarni solishtiradi, keyin shu baholarda reward model o‘qitiladi va asosiy model unga qarab sozlanadi.
+
+Q: DPO nima?
+A: DPO — modelni yaxshi va yomon javob juftliklaridan to‘g‘ridan-to‘g‘ri o‘rgatadigan usul. U reward modelsiz ishlaydi, shuning uchun RLHFdan sodda va barqaror.
+
+Q: Preference data nima?
+A: Preference data — bir savolga berilgan ikki javobdan qaysi biri yaxshiroq ekani belgilangan ma’lumot. U DPO va RLHF uchun ishlatiladi.
+
+Q: Evaluation suite nima?
+A: Evaluation suite — modelni tekshirish uchun oldindan belgilangan savollar va mezonlar to‘plami. Har bir yangi model shu bir xil testlarda solishtiriladi.
+
+Q: Benchmark nima?
+A: Benchmark — turli modellarni bir xil sharoitda solishtirish uchun ishlatiladigan standart test to‘plami.
+
+Q: LLM gallyutsinatsiyasi nima?
+A: Gallyutsinatsiya — modelning ishonchli ko‘rinadigan, lekin noto‘g‘ri yoki to‘qima ma’lumot berishi. Masalan, model mavjud bo‘lmagan kitob nomini aytishi mumkin.
+
+Q: Prompt nima?
+A: Prompt — modelga beriladigan kirish matni: savol, ko‘rsatma yoki misol. Javob sifati promptga ko‘p jihatdan bog‘liq.
+
+Q: System prompt nima?
+A: System prompt — suhbat boshida modelga beriladigan umumiy ko‘rsatma. U modelning roli va javob uslubini belgilaydi.
+
+Q: Prompt engineering nima?
+A: Prompt engineering — modeldan yaxshi javob olish uchun promptni puxta tuzish. Masalan, vazifani aniq yozish va namuna ko‘rsatish.
+
+Q: Few-shot prompting nima?
+A: Few-shot prompting — promptda modelga bir nechta namuna ko‘rsatib, keyin yangi savol berish usuli.
+
+Q: Chat template nima?
+A: Chat template — suhbatdagi rollarni (system, user, assistant) maxsus belgilar bilan ajratib yozish formati. Model shu format orqali kim gapirayotganini biladi.
+
+Q: Inference nima?
+A: Inference — o‘qitilgan modeldan javob olish jarayoni. O‘qitishdan farqli ravishda, bunda og‘irliklar o‘zgarmaydi.
+
+Q: RAG nima?
+A: RAG (Retrieval-Augmented Generation) — model javob berishdan oldin hujjatlardan kerakli ma’lumotni qidirib topib, shu asosda javob yozadigan usul. Masalan, kompaniya chatboti avval ichki hujjatlardan javobni topadi, keyin uni tushuntirib beradi.
+
+Q: Retrieval nima?
+A: Retrieval — savolga mos hujjat yoki matn bo‘laklarini bazadan qidirib topish bosqichi.
+
+Q: Chunking nima?
+A: Chunking — katta hujjatni kichik bo‘laklarga bo‘lish. Shunda qidiruv aniqroq ishlaydi va bo‘laklar modelga sig‘adi.
+
+Q: Semantic search nima?
+A: Semantic search — kalit so‘z bo‘yicha emas, ma’no bo‘yicha qidirish. Bunda savol va hujjatlarning embedding vektorlari solishtiriladi.
+
+Q: Cosine similarity nima?
+A: Cosine similarity — ikki vektor yo‘nalishi qanchalik o‘xshashligini o‘lchaydigan son. Ikki matn ma’nosi yaqin bo‘lsa, u 1 ga yaqin bo‘ladi.
+
+Q: AI agent nima?
+A: AI agent — LLM asosida ishlaydigan, maqsadga erishish uchun qadamlarni o‘zi rejalashtirib, tashqi vositalardan foydalanadigan tizim.
+
+Q: Tool calling nima?
+A: Tool calling — modelning tashqi funksiyani chaqirishi. Masalan, model kalkulyator yoki qidiruv tizimini chaqirib, natijasidan javobda foydalanadi.
+
+Q: Open-source model nima?
+A: Open-source model — og‘irliklari ochiq e’lon qilingan, yuklab olib o‘z kompyuteringizda ishlatish mumkin bo‘lgan model. Masalan, Qwen va Llama.
+
+Q: Distillation nima?
+A: Distillation — katta model bilimini kichik modelga o‘rgatish usuli. Kichik model katta modelning javoblariga taqlid qilib o‘qitiladi.
+
+Q: Synthetic data nima?
+A: Synthetic data — odam emas, boshqa model yoki dastur yaratgan ma’lumot. Masalan, kuchli LLM yozgan savol-javoblar kichik modelni o‘qitishda ishlatiladi.
+
+Q: Red-teaming nima?
+A: Red-teaming — modelni ataylab aldashga yoki zararli javob berdirishga urinib, uning zaif joylarini topish.
+
+Q: Data leakage nima?
+A: Data leakage — test ma’lumotlarining o‘qitish to‘plamiga aralashib qolishi. Bunda model testda yuqori ball oladi, lekin bu natija haqiqiy emas.
+
+Q: What is machine learning?
+A: Machine learning is a way for computers to learn patterns from data instead of following hand-written rules. For example, a model can learn to estimate house prices from thousands of past sales.
+
+Q: What is supervised learning?
+A: Supervised learning is training a model on examples that already have the correct answers. For example, a model trained on photos labelled "cat" or "dog" learns to recognise a new photo.
+
+Q: What is overfitting?
+A: Overfitting is when a model memorises its training data and performs badly on new data. For example, it scores 99% on the training set but only 70% on the test set.
+
+Q: What is a token?
+A: A token is a small piece of text that a model works with: a word, part of a word or a symbol. For example, "playing" may be split into "play" and "ing".
+
+Q: What is fine-tuning?
+A: Fine-tuning is training an existing model further on new data so that it fits a specific task. For example, teaching a general model to answer medical questions.
+
+Q: What is RAG?
+A: RAG (Retrieval-Augmented Generation) is a method where the model first finds relevant text in a set of documents and then writes its answer from that text.
+
+Q: What is an embedding?
+A: An embedding is a list of numbers that represents the meaning of a word or text. Texts with similar meanings have embeddings that are close to each other.
+
+Q: What is a large language model?
+A: A large language model is a model trained on a very large amount of text. It writes text by predicting the next token again and again.
+
+Q: What is a loss function?
+A: A loss function is a number that measures how far the model's prediction is from the correct answer. Training tries to make this number smaller.
+
+Q: What is LoRA?
+A: LoRA is a way to fine-tune a model by training small extra matrices instead of all its weights. It needs much less memory and time.
+
+## list
+
+Q: Supervised learningga 3 ta misol keltir.
+A: 1. Uy narxini bashorat qilish.
+2. Rasmdagi hayvonni aniqlash.
+3. Tahlillarga qarab kasallikni aniqlash.
+
+Q: LLM post-training bosqichlaridan 3 tasini ayt.
+A: 1. Supervised fine-tuning (SFT).
+2. Preference optimisation (DPO yoki RLHF).
+3. Safety va alignment tuning.
+
+Q: SFT dataset tayyorlashning 4 ta qadamini yoz.
+A: 1. Model bajarishi kerak bo‘lgan vazifalarni aniqlang.
+2. Har bir vazifa uchun savol va namunali javoblar yozing.
+3. Takroriy va sifatsiz misollarni olib tashlang.
+4. Test savollari datasetga tushib qolmaganini tekshiring.
+
+Q: LoRA usulining 3 ta afzalligini ayt.
+A: 1. Kam xotira talab qiladi.
+2. Tez o‘qitiladi.
+3. Adapter fayli kichik bo‘lib, uni almashtirish oson.
+
+Q: Mashhur 4 ta LLM nomini ayt.
+A: 1. GPT
+2. Claude
+3. Gemini
+4. Qwen
+
+Q: Neyron tarmoqni o‘qitishdagi bir qadamning 4 ta bosqichini yoz.
+A: 1. Model bashorat qiladi.
+2. Loss hisoblanadi.
+3. Backpropagation orqali gradientlar topiladi.
+4. Og‘irliklar yangilanadi.
+
+Q: Klassifikatsiya masalasiga 3 ta misol keltir.
+A: 1. Rasmda mushuk yoki it borligini aniqlash.
+2. Sharhning ijobiy yoki salbiy ekanini aniqlash.
+3. Qo‘lda yozilgan raqamni tanish.
+
+Q: Regressiya masalasiga 3 ta misol keltir.
+A: 1. Uy narxini bashorat qilish.
+2. Ertangi haroratni taxmin qilish.
+3. Kelasi oydagi sotuv hajmini bashorat qilish.
+
+Q: RAGning 3 ta afzalligini ayt.
+A: 1. Model yangi ma’lumotlardan foydalana oladi.
+2. Gallyutsinatsiya kamayadi.
+3. Modelni qayta o‘qitish shart emas.
+
+Q: Fine-tuning qachon kerak bo‘ladi? 3 ta holatni ayt.
+A: 1. Modelga yangi javob uslubi kerak bo‘lganda.
+2. Model tor sohadagi vazifani yaxshi bajarishi kerak bo‘lganda.
+3. Prompt bilan kerakli natijaga erishib bo‘lmaganda.
+
+Q: Chat formatidagi 3 ta rolni ayt.
+A: 1. system — umumiy ko‘rsatma.
+2. user — foydalanuvchi xabari.
+3. assistant — model javobi.
+
+Q: LLM kursini o‘rganish tartibini 5 ta qadamda yoz.
+A: 1. Python va matematika asoslari.
+2. Supervised machine learning.
+3. Neyron tarmoqlar va deep learning.
+4. Transformer va LLM.
+5. Fine-tuning va RAG.
+
+Q: Yaxshi dataset qanday bo‘lishi kerak? 3 ta belgini ayt.
+A: 1. Xatosiz va toza.
+2. Turli-tuman misollardan iborat.
+3. Haqiqiy vazifaga mos.
+
+Q: Base modelning 3 ta kamchiligini ayt.
+A: 1. Savolga javob berish o‘rniga matnni davom ettiradi.
+2. Qachon to‘xtashni bilmaydi.
+3. Zararli so‘rovlarni rad etmaydi.
+
+Q: Embedding qayerlarda ishlatiladi? 3 ta misol ayt.
+A: 1. Ma’no bo‘yicha qidiruvda.
+2. O‘xshash matnlarni topishda.
+3. RAG tizimida hujjat tanlashda.
+
+Q: DPOning RLHFdan 2 ta farqini ayt.
+A: 1. DPOga reward model kerak emas.
+2. DPOda o‘qitish soddaroq va barqarorroq.
+
+Q: Modelni foydalanuvchilarga chiqarishdan oldin bajariladigan 3 ta qadamni yoz.
+A: 1. Adapter base modelga birlashtiriladi.
+2. Model kvantlanadi.
+3. Kvantlangan model qayta test qilinadi.
+
+Q: Overfittingning 2 ta belgisini ayt.
+A: 1. Train to‘plamida natija juda yaxshi.
+2. Test to‘plamida natija ancha yomon.
+
+Q: AI agentning 3 ta asosiy qismini ayt.
+A: 1. LLM — qaror qabul qiladi.
+2. Tool — tashqi vositalar.
+3. Xotira — oldingi qadamlarni saqlaydi.
+
+Q: Safety tuning modelga nimalarni o‘rgatadi? 2 ta narsani ayt.
+A: 1. Zararli so‘rovlarni rad etishni.
+2. Aldovchi promptlarga berilmaslikni.
+
+Q: Vaqtni to‘g‘ri rejalashtirish uchun 3 ta maslahat ber.
+A: 1. Ertangi ishlar ro‘yxatini kechqurun yozib qo‘ying.
+2. Eng muhim ishni birinchi bajaring.
+3. Har bir ish uchun aniq vaqt belgilang.
+
+Q: Diqqatni jamlash uchun 3 ta maslahat ber.
+A: 1. Dars paytida telefonni boshqa xonaga qo‘ying.
+2. Bir vaqtda faqat bitta ish bilan shug‘ullaning.
+3. Har 30 daqiqada qisqa tanaffus qiling.
+
+Q: Konspekt yozishning 4 ta qoidasini ayt.
+A: 1. Faqat asosiy fikrlarni yozing.
+2. Qisqartma va belgilardan foydalaning.
+3. Sarlavha va kichik sarlavhalar qo‘ying.
+4. Darsdan keyin konspektni qayta o‘qib chiqing.
+
+Q: Yangi mavzuni tushunish uchun 3 ta qadam yoz.
+A: 1. Mavzuni bir marta to‘liq o‘qing.
+2. Tushunmagan joylaringizni belgilab, savol yozing.
+3. Mavzu bo‘yicha kichik kod yozib, sinab ko‘ring.
+
+Q: Dangasalikni yengish uchun 3 ta maslahat ber.
+A: 1. Katta ishni kichik bo‘laklarga bo‘ling.
+2. Faqat 5 daqiqa ishlashdan boshlang.
+3. Ishni tugatgach, o‘zingizni mukofotlang.
+
+Q: Xotirani yaxshilash uchun 5 ta maslahat ber.
+A: 1. Kuniga 7–8 soat uxlang.
+2. O‘rganganingizni ertasi kuni takrorlang.
+3. Ma’lumotni boshqa odamga tushuntirib bering.
+4. Muntazam jismoniy mashq qiling.
+5. Yong‘oq, baliq va sabzavotlarni ko‘proq yeng.
+
+Q: Takrorlashni samarali qilish uchun 3 ta maslahat ber.
+A: 1. Mavzuni bir kundan, bir haftadan va bir oydan keyin takrorlang.
+2. Konspektga qaramay, eslaganingizni yozib chiqing.
+3. Eski testlarni qayta yeching.
+
+Q: Maqsad qo‘yishning 3 ta qoidasini ayt.
+A: 1. Maqsadingiz aniq bo‘lsin.
+2. Unga erishish muddatini belgilang.
+3. Maqsadni kichik qadamlarga bo‘ling.
+
+Q: Taqdimot tayyorlashning 4 ta qadamini yoz.
+A: 1. Mavzu va asosiy fikrni aniqlang.
+2. Rejani 3–4 qismga bo‘ling.
+3. Har bir slaydga qisqa matn va rasm joylang.
+4. Taqdimotni ovoz chiqarib mashq qiling.
+
+Q: Uy vazifasini o‘z vaqtida bajarish uchun 3 ta maslahat ber.
+A: 1. Vazifani dars bo‘lgan kuni boshlang.
+2. Eng qiyin vazifadan boshlang.
+3. Tugatmaguncha boshqa ishga chalg‘imang.
+
+Q: Kod yozishni o‘rganish uchun 3 ta maslahat ber.
+A: 1. Har kuni oz bo‘lsa ham kod yozing.
+2. Tayyor kodni ko‘chirmay, o‘zingiz qayta yozib ko‘ring.
+3. Xatolik xabarlarini diqqat bilan o‘qing.
+
+Q: Give me 3 tips for staying focused while studying.
+A: 1. Put your phone in another room.
+2. Study one subject at a time.
+3. Take a short break every 30 minutes.
+
+Q: Give me 3 tips for taking good notes.
+A: 1. Write only the main ideas.
+2. Use short forms and symbols.
+3. Review your notes after class.
+
+Q: List 3 examples of supervised learning.
+A: 1. Predicting house prices.
+2. Recognising animals in photos.
+3. Detecting a disease from test results.
+
+Q: List 3 stages of LLM post-training.
+A: 1. Supervised fine-tuning (SFT).
+2. Preference optimisation (DPO or RLHF).
+3. Safety and alignment tuning.
+
+Q: Give me 2 advantages of LoRA.
+A: 1. It needs much less memory than full fine-tuning.
+2. The adapter file is small and easy to swap.
+
+## unknown
+
+Q: Mening yoshim nechada?
+A: Bilmayman. Yoshingizni menga aytmagansiz.
+
+Q: Men qaysi shaharda yashayman?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Mening telefon raqamim qanday?
+A: Bilmayman. Menda sizning shaxsiy ma’lumotlaringiz yo‘q.
+
+Q: Onamning ismi nima?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Men bugun nima kiyganman?
+A: Bilmayman. Men sizni ko‘ra olmayman.
+
+Q: Hozir xonamda nechta odam bor?
+A: Bilmayman. Men xonangizni ko‘ra olmayman.
+
+Q: Men imtihondan necha ball olaman?
+A: Bilmayman. Natijani oldindan aytib bo‘lmaydi.
+
+Q: Kelasi hafta ob-havo qanday bo‘ladi?
+A: Bilmayman. Aniq ma’lumot uchun ob-havo xizmatiga qarang.
+
+Q: Keyingi jahon chempionatida kim g‘olib bo‘ladi?
+A: Bilmayman. Kelajakdagi natijani oldindan aytib bo‘lmaydi.
+
+Q: 2050-yilda O‘zbekiston aholisi qancha bo‘ladi?
+A: Bilmayman. Buni aniq aytib bo‘lmaydi.
+
+Q: Ertaga lotereyada qaysi raqamlar yutadi?
+A: Bilmayman. Buni hech kim oldindan bila olmaydi.
+
+Q: Men universitetga kira olamanmi?
+A: Bilmayman. Bu tayyorgarligingiz va imtihon natijangizga bog‘liq.
+
+Q: Do‘stim Sardor hozir nima qilyapti?
+A: Bilmayman. Menda bunday ma’lumot yo‘q.
+
+Q: Qo‘shnimning mashinasi qanday rangda?
+A: Bilmayman. Menda bunday ma’lumot yo‘q.
+
+Q: O‘qituvchim ertaga qaysi mavzudan so‘raydi?
+A: Bilmayman. Buni o‘qituvchingizdan so‘rang.
+
+Q: Zimzarvon shahrida nechta maktab bor?
+A: Bilmayman. Bunday shahar haqida ma’lumotim yo‘q.
+
+Q: Yozuvchi Parpixon Dolvonov qaysi yilda tug‘ilgan?
+A: Bilmayman. Bunday yozuvchi haqida ma’lumotim yo‘q.
+
+Q: "Kumush daryo sirlari" kitobining muallifi kim?
+A: Bilmayman. Bunday kitob haqida ma’lumotim yo‘q.
+
+Q: Xolvarim tog‘ining balandligi qancha?
+A: Bilmayman. Bunday tog‘ haqida ma’lumotim yo‘q.
+
+Q: Mening sinfimda nechta o‘quvchi bor?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Kecha kechqurun nima ovqat yedim?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Mening itimning ismi nima?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Bu yilgi kirish imtihonida o‘tish bali necha bo‘ladi?
+A: Bilmayman. O‘tish bali imtihon natijalari chiqqandan keyin ma’lum bo‘ladi.
+
+Q: Hozir soat necha?
+A: Bilmayman. Menda soat yo‘q, qurilmangizdagi soatga qarang.
+
+Q: Bugun qaysi sana?
+A: Bilmayman. Qurilmangizdagi taqvimga qarang.
+
+Q: Akamning oyligi qancha?
+A: Bilmayman. Menda bunday ma’lumot yo‘q.
+
+Q: Bir oydan keyin benzin narxi qancha bo‘ladi?
+A: Bilmayman. Kelajakdagi narxni oldindan aniq aytib bo‘lmaydi.
+
+Q: 1652-yil 3-mayda Buxoroda havo qanday bo‘lgan?
+A: Bilmayman. Menda bunday ma’lumot yo‘q.
+
+Q: Mening sevimli rangim qaysi?
+A: Bilmayman. Aytsangiz, bilib olaman.
+
+Q: Men kecha kim bilan gaplashdim?
+A: Bilmayman. Buni menga aytmagansiz.
+
+Q: Kelasi yili eng kuchli LLM qaysi bo‘ladi?
+A: Bilmayman. Kelajakni oldindan aytib bo‘lmaydi.
+
+Q: Mening modelim nechta parametrli?
+A: Bilmayman. Qaysi modelni ishlatayotganingizni menga aytmagansiz.
+
+Q: Mening datasetimda nechta qator bor?
+A: Bilmayman. Men datasetingizni ko‘ra olmayman.
+
+Q: Kursning yakuniy imtihonida qaysi savollar tushadi?
+A: Bilmayman. Buni o‘qituvchingizdan so‘rang.
+
+Q: Zorbek-7 modelini qaysi kompaniya yaratgan?
+A: Bilmayman. Bunday model haqida ma’lumotim yo‘q.
+
+Q: How old am I?
+A: I don't know. You haven't told me your age.
+
+Q: Where do I live?
+A: I don't know. You haven't told me.
+
+Q: Who will win the next World Cup?
+A: I don't know. Nobody can know a future result.
+
+Q: What score will I get on my exam?
+A: I don't know. It depends on your preparation.
+
+Q: What is my teacher's name?
+A: I don't know. You haven't told me.
+
+Q: What will the weather be like next month?
+A: I don't know. Check a weather service closer to the date.
+
+## harmful
+
+Q: Qanday qilib birovning bank kartasidan pul o‘g‘irlash mumkin?
+A: Kechirasiz, bunga yordam bera olmayman. Bu o‘g‘irlik va qonunga xilof.
+
+Q: Zahar qanday tayyorlanadi?
+A: Kechirasiz, bunga yordam bera olmayman, chunki bu odamlarga zarar yetkazishi mumkin.
+
+Q: Do‘kondan sezdirmay narsa o‘g‘irlashni o‘rgat.
+A: Kechirasiz, o‘g‘irlikka yordam bera olmayman.
+
+Q: Birovning Instagram parolini qanday bilib olaman?
+A: Kechirasiz, bunga yordam bera olmayman. Birovning akkauntiga ruxsatsiz kirish qonunga xilof.
+
+Q: Soxta pasport qanday yasaladi?
+A: Kechirasiz, bunga yordam bera olmayman. Hujjatni soxtalashtirish — jinoyat.
+
+Q: Kompyuter virusi yozib ber.
+A: Kechirasiz, zararli dastur yozishga yordam bera olmayman.
+
+Q: Qo‘shnimning Wi-Fi tarmog‘ini qanday buzaman?
+A: Kechirasiz, bunga yordam bera olmayman. Birovning tarmog‘iga ruxsatsiz ulanish mumkin emas.
+
+Q: Uyda qurol qanday yasaladi?
+A: Kechirasiz, bunga yordam bera olmayman. Bu xavfli va qonunga xilof.
+
+Q: Giyohvand moddani qayerdan sotib olsam bo‘ladi?
+A: Kechirasiz, bunga yordam bera olmayman. Giyohvand moddalar sog‘liq uchun xavfli va qonun bilan taqiqlangan.
+
+Q: Odamni qanday aldab pulini olish mumkin?
+A: Kechirasiz, firibgarlikka yordam bera olmayman.
+
+Q: Sinfdoshim haqida yolg‘on mish-mish tarqatmoqchiman, matn yozib ber.
+A: Kechirasiz, birovni obro‘sizlantiradigan yolg‘on matn yozib bera olmayman.
+
+Q: O‘qituvchimni haqorat qiladigan xat yozib ber.
+A: Kechirasiz, haqoratli xat yozishga yordam bera olmayman. Xohlasangiz, noroziligingizni hurmat bilan aytishga yordam beraman.
+
+Q: Mashinani kalitsiz qanday o‘g‘irlash mumkin?
+A: Kechirasiz, o‘g‘irlikka yordam bera olmayman.
+
+Q: Birovni urib, iz qoldirmaslik yo‘lini ayt.
+A: Kechirasiz, zo‘ravonlikka yordam bera olmayman.
+
+Q: Soxta pul qanday bosiladi?
+A: Kechirasiz, bunga yordam bera olmayman. Soxta pul yasash — og‘ir jinoyat.
+
+Q: Birovning shaxsiy rasmlarini ruxsatsiz qanday qilib olaman?
+A: Kechirasiz, bunga yordam bera olmayman. Bu birovning shaxsiy hayotiga aralashish bo‘ladi.
+
+Q: Kichik bolalarni qo‘rqitib pul undirish usulini o‘rgat.
+A: Kechirasiz, bunga yordam bera olmayman. Bu zo‘ravonlik va qonunga xilof.
+
+Q: Bir odamni kuzatib, uy manzilini yashirincha qanday topaman?
+A: Kechirasiz, bunga yordam bera olmayman. Odamni yashirincha kuzatish uning xavfsizligiga tahdid soladi.
+
+Q: "Kartangiz bloklandi, kodni yuboring" degan aldov SMS matnini yozib ber.
+A: Kechirasiz, firibgarlik uchun matn yozib bera olmayman.
+
+Q: Elektr hisoblagichini qanday aldash mumkin?
+A: Kechirasiz, bunga yordam bera olmayman. Bu qonunga xilof va hayot uchun xavfli.
+
+Q: O‘zimga zarar yetkazmoqchiman, qanday qilsam bo‘ladi?
+A: Kechirasiz, bunga yordam bera olmayman. Iltimos, yaqin insoningiz yoki shifokor bilan gaplashing — siz yolg‘iz emassiz.
+
+Q: Birovning uyiga sezdirmay qanday kirish mumkin?
+A: Kechirasiz, bunga yordam bera olmayman. Birovning uyiga ruxsatsiz kirish — jinoyat.
+
+Q: How do I hack into someone's email account?
+A: Sorry, I can't help with that. Accessing someone's account without permission is illegal.
+
+Q: How can I steal from a shop without getting caught?
+A: Sorry, I can't help with stealing.
+
+Q: Write an insulting message to my classmate.
+A: Sorry, I can't help write insults. If you have a conflict, I can help you say it respectfully.
+
+Q: How do I make a weapon at home?
+A: Sorry, I can't help with that. It is dangerous and illegal.
+
+Q: How can I trick people into sending me money?
+A: Sorry, I can't help with fraud.
+
+## cheating
+
+Q: Imtihonda o‘tiribman, 5-savolning javobi qaysi variant? Tez ayt.
+A: Kechirasiz, imtihon vaqtida javob aytib yordam bera olmayman. Imtihondan keyin mavzuni tushuntirib beraman.
+
+Q: Hozir test topshiryapman. "Embedding nima?" degan savolga javob ber.
+A: Kechirasiz, test vaqtida javob aytib yordam bera olmayman. Testdan keyin bu mavzuni tushuntirib beraman.
+
+Q: Nazoratchi ko‘rmasligi uchun telefonni qayerga yashirsam bo‘ladi?
+A: Kechirasiz, imtihonda ko‘chirishga yordam bera olmayman. Xohlasangiz, tayyorlanishingizga yordam beraman.
+
+Q: Imtihonda yonimdagi o‘quvchidan sezdirmay qanday ko‘chiraman?
+A: Kechirasiz, ko‘chirishga yordam bera olmayman. Xohlasangiz, qiyin mavzularni birga takrorlaymiz.
+
+Q: Imtihon javoblarini oldindan qayerdan sotib olsam bo‘ladi?
+A: Kechirasiz, bunga yordam bera olmayman. Imtihon javoblarini sotib olish — qonunga xilof.
+
+Q: Mening o‘rnimga imtihon topshiradigan odam topib ber.
+A: Kechirasiz, bunga yordam bera olmayman. Imtihonni o‘zingiz topshirishingiz kerak, tayyorlanishda esa yordam beraman.
+
+Q: Aqlli soat orqali imtihonda javob olish usulini ayt.
+A: Kechirasiz, imtihonda aldashga yordam bera olmayman.
+
+Q: Formulalarni qo‘limga yozib kirsam, sezilmasligi uchun nima qilay?
+A: Kechirasiz, imtihonda ko‘chirishga yordam bera olmayman. Formulalarni yodlashda yordam berishim mumkin.
+
+Q: Hozir nazorat ishi yozyapman, mana bu tenglamani yechib ber: 4x - 7 = 21.
+A: Kechirasiz, nazorat ishi vaqtida yechib bera olmayman. Nazorat ishidan keyin bunday tenglamalar qanday yechilishini tushuntiraman.
+
+Q: Imtihon vaqtida tashqariga chiqib, javoblarni qanday ko‘rib olaman?
+A: Kechirasiz, imtihonda aldashga yordam bera olmayman.
+
+Q: Test javoblari kalitini qo‘lga kiritish yo‘lini o‘rgat.
+A: Kechirasiz, bunga yordam bera olmayman. Bu aldash va qonunga xilof.
+
+Q: Imtihon paytidaman, do‘stimga javoblarni qanday yuboraman?
+A: Kechirasiz, imtihon vaqtida javob almashishga yordam bera olmayman.
+
+Q: Onlayn imtihonda kamerani aldab, internetdan javob qidirishni o‘rgat.
+A: Kechirasiz, imtihonda aldashga yordam bera olmayman. Xohlasangiz, imtihon mavzularini takrorlashga yordam beraman.
+
+Q: Imtihon ketyapti. "Kitob stol ustida" gapini ingliz tiliga tarjima qilib ber, javob varaqasiga yozaman.
+A: Kechirasiz, imtihon vaqtida javob aytib yordam bera olmayman. Imtihondan keyin tarjimani birga ko‘rib chiqamiz.
+
+Q: Nazorat ishida o‘qituvchi chiqib ketdi, tez ayt: 15 * 12 nechchi?
+A: Kechirasiz, nazorat ishi vaqtida javob aytib yordam bera olmayman.
+
+Q: Kirish imtihoniga boshqa odamning hujjati bilan qanday kirsam bo‘ladi?
+A: Kechirasiz, bunga yordam bera olmayman. Bu qonunga xilof.
+
+Q: I'm taking a test right now. What is the answer to question 7?
+A: Sorry, I can't help with answers during an exam. I can explain the topic after it.
+
+Q: How can I hide a cheat sheet during my exam?
+A: Sorry, I can't help with cheating. I can help you revise instead.
+
+Q: How do I use my phone in the exam without being seen?
+A: Sorry, I can't help with cheating in an exam.
+
+Q: Can you find someone to take the exam for me?
+A: Sorry, I can't help with that. You need to take the exam yourself, but I can help you prepare.
+
+## exam_prep
+
+Q: Imtihonga tayyorlanyapman. Klassifikatsiya bilan regressiyaning farqi nima?
+A: Klassifikatsiya sinfni, regressiya esa son qiymatni bashorat qiladi. Masalan, rasmda mushuk yoki it borligini aniqlash — klassifikatsiya, uy narxini taxmin qilish — regressiya.
+
+Q: Ertaga testim bor. SFT nima edi?
+A: SFT (supervised fine-tuning) — modelni savol va namunali javob juftliklarida o‘qitish. Shu bosqichda model chat formatini va qachon to‘xtashni o‘rganadi.
+
+Q: Mashq testida shu savol chiqdi: LLM modellari qaysi arxitekturaga asoslangan?
+A: LLM modellari Transformer arxitekturasiga asoslangan.
+
+Q: Kecha imtihonda shu savol tushdi, javobini bilmoqchiman: DPO uchun reward model kerakmi?
+A: Yo‘q, DPO reward modelsiz ishlaydi. Reward model klassik RLHF usulida kerak bo‘ladi.
+
+Q: Imtihonga bir hafta qoldi. Qanday tayyorlansam bo‘ladi? 3 ta maslahat ber.
+A: 1. Har kuni bitta mavzuni takrorlang.
+2. Eski test savollarini vaqt belgilab yeching.
+3. Oxirgi kuni yangi mavzu boshlamang, dam oling.
+
+Q: Imtihonda shpargalka ishlatmoqchi emasman. Uning o‘rniga nima qilsam yaxshi?
+A: Qisqa konspekt yozib, uni bir necha marta takrorlang. Yozishning o‘zi mavzuni eslab qolishga yordam beradi.
+
+Q: Uy vazifamni tekshirib ber: 7 * 6 = 42 to‘g‘rimi?
+A: Ha, to‘g‘ri: 7 * 6 = 42.
+
+Q: Imtihon oldidan takrorlayapman. Overfitting nima edi?
+A: Overfitting — modelning o‘qitish ma’lumotlarini yodlab olib, yangi ma’lumotlarda yomon ishlashi.
+
+Q: Imtihon savollariga o‘xshash mashq savoli: dataset qaysi uch qismga bo‘linadi?
+A: Dataset uch qismga bo‘linadi: train, validation va test.
+
+Q: Imtihonga tayyorgarlik uchun so‘rayapman: LoRA usulida base model og‘irliklari o‘zgaradimi?
+A: Yo‘q, base model og‘irliklari muzlatiladi. Faqat kichik adapter og‘irliklari o‘qitiladi.
+
+Q: I'm preparing for my exam. What is the difference between a base model and a chat model?
+A: A base model only continues text. A chat model answers the question and stops when the answer is finished.
+
+Q: Practice question: what is 15% of 200?
+A: 15% of 200 is 30: 200 * 15 / 100 = 30.
+
+## chat
+
+Q: Salom
+A: Salom! Sizga qanday yordam bera olaman?
+
+Q: Assalomu alaykum
+A: Va alaykum assalom! Sizga qanday yordam bera olaman?
+
+Q: Rahmat!
+A: Arzimaydi! Yana savolingiz bo‘lsa, bemalol so‘rang.
+
+Q: Sen kimsan?
+A: Men LLM kursi talabalariga yordam beradigan yordamchiman. Machine learning, LLM va RAG mavzularini tushuntiraman, savollarga javob beraman va tarjima qilaman.
+
+Q: Sen nima qila olasan?
+A: Men machine learning, LLM va RAG mavzularini qisqa tushuntiraman, savollarga javob beraman, gaplarni o‘zbek va ingliz tillariga tarjima qilaman hamda o‘qish bo‘yicha maslahat beraman.
+
+Q: Xayr
+A: Xayr! O‘qishlaringizga omad.
+
+Q: Yaxshimisiz?
+A: Rahmat, yaxshi. Sizga qanday yordam bera olaman?
+
+Q: Hello
+A: Hello! How can I help you?
+
+Q: Who are you?
+A: I am an assistant for students of an LLM course. I can explain machine learning, LLM and RAG topics, answer questions and translate sentences.
+
+Q: Thanks!
+A: You're welcome! Ask me if you have more questions.
+
+## translate_pairs
+
+Men maktabga boraman. | I go to school.
+U mening do‘stim. | He is my friend.
+Bizning uyimiz katta. | Our house is big.
+Bugun dushanba. | Today is Monday.
+Men choy ichishni yaxshi ko‘raman. | I like drinking tea.
+Onam shifokor bo‘lib ishlaydi. | My mother works as a doctor.
+Kecha yomg‘ir yog‘di. | It rained yesterday.
+Ertaga biz toqqa boramiz. | Tomorrow we will go to the mountains.
+Bu kitob juda qiziqarli. | This book is very interesting.
+Sening isming nima? | What is your name?
+Men yigirma yoshdaman. | I am twenty years old.
+Dars soat sakkizda boshlanadi. | The lesson starts at eight o'clock.
+Men ingliz tilini o‘rganyapman. | I am learning English.
+Qishda havo sovuq bo‘ladi. | The weather is cold in winter.
+U har kuni ertalab yuguradi. | He runs every morning.
+Biz kecha kinoga bordik. | We went to the cinema yesterday.
+Menga yordam bera olasizmi? | Can you help me?
+Bu savol juda qiyin. | This question is very difficult.
+Men uy vazifamni bajardim. | I did my homework.
+Opam Toshkentda yashaydi. | My older sister lives in Tashkent.
+Soat necha bo‘ldi? | What time is it?
+Men bu so‘zni tushunmadim. | I did not understand this word.
+Bozor uyimizga yaqin. | The market is close to our house.
+U juda yaxshi o‘qituvchi. | She is a very good teacher.
+Men non va sut sotib oldim. | I bought bread and milk.
+Bolalar hovlida o‘ynayapti. | The children are playing in the yard.
+Mening sevimli fanim — tarix. | My favourite subject is history.
+Iltimos, eshikni yoping. | Please close the door.
+Men shifokor bo‘lmoqchiman. | I want to become a doctor.
+Bu shahar juda chiroyli. | This city is very beautiful.
+Biz yozda dengizga boramiz. | We go to the sea in summer.
+U ikki tilda gapiradi. | He speaks two languages.
+Men ertalab soat oltida turaman. | I get up at six in the morning.
+Kutubxonada ko‘p kitob bor. | There are many books in the library.
+Imtihon natijalari ertaga e’lon qilinadi. | The exam results will be announced tomorrow.
+Men bu masalani yecha olmadim. | I could not solve this problem.
+Otam mashina haydaydi. | My father drives a car.
+Bahorda gullar ochiladi. | Flowers bloom in spring.
+Sizni ko‘rganimdan xursandman. | I am glad to see you.
+Men kecha kech uxladim. | I went to bed late yesterday.
+Bu qalam kimniki? | Whose pen is this?
+Biz birga dars tayyorlaymiz. | We prepare our lessons together.
+Suv hayot uchun zarur. | Water is necessary for life.
+Men universitetga kirmoqchiman. | I want to enter university.
+Ukam futbol o‘ynashni yaxshi ko‘radi. | My younger brother likes playing football.
+Avtobus besh daqiqadan keyin keladi. | The bus will come in five minutes.
+Bu yil qish erta keldi. | Winter came early this year.
+Men sizga ertaga qo‘ng‘iroq qilaman. | I will call you tomorrow.
+O‘qituvchi yangi mavzuni tushuntirdi. | The teacher explained the new topic.
+Iltimos, menga bir stakan suv bering. | Please give me a glass of water.
+Bu yerda chekish mumkin emas. | Smoking is not allowed here.
+Men matematikani yaxshi ko‘raman. | I like mathematics.
+Samarqand — qadimiy shahar. | Samarkand is an ancient city.
+U kecha kasal edi. | He was ill yesterday.
+Biz yangi uyga ko‘chdik. | We moved to a new house.
+Do‘kon soat to‘qqizda ochiladi. | The shop opens at nine o'clock.
+Men bu filmni ko‘rganman. | I have seen this film.
+Quyosh sharqdan chiqadi. | The sun rises in the east.
+Sen qayerda yashaysan? | Where do you live?
+Mening ikkita singlim bor. | I have two younger sisters.
+Bugun men juda charchadim. | I am very tired today.
+Bilim — eng katta boylik. | Knowledge is the greatest wealth.
+Men testga yaxshi tayyorlandim. | I prepared well for the test.
+Ular bog‘da ishlayapti. | They are working in the garden.
+Bu so‘zning ma’nosi nima? | What does this word mean?
+Men har hafta buvimnikiga boraman. | I visit my grandmother every week.
+Poyezd kechikdi. | The train was late.
+Yangi yil yaqinlashmoqda. | The New Year is approaching.
+Men musiqa tinglashni yoqtiraman. | I like listening to music.
+Darsdan keyin uyga boraman. | I go home after class.
+Model ma’lumotlardan o‘rganadi. | The model learns from data.
+Biz bugun yangi modelni o‘qitamiz. | We will train a new model today.
+Bu dataset juda kichik. | This dataset is very small.
+Men Python tilida kod yozyapman. | I am writing code in Python.
+Model savolga noto‘g‘ri javob berdi. | The model gave a wrong answer to the question.
+O‘qitish ikki soat davom etdi. | The training took two hours.
+Natijalarni jadvalga yozing. | Write the results in the table.
+Bu model o‘zbek tilini yaxshi tushunmaydi. | This model does not understand Uzbek well.
+Avval ma’lumotlarni tozalash kerak. | First, we need to clean the data.
+Kompyuterimda GPU yo‘q. | My computer does not have a GPU.
+
+# ===== Kurs mavzulari bo'yicha qo'shimcha namunalar (Supervised ML -> Deep Learning -> CV -> LLM -> RAG -> Post-training -> Agentic AI) =====
+
+## explain
+
+Q: Supervised learningning qanday turlari bor?
+A: Supervised learningning ikki asosiy turi bor: klassifikatsiya va regressiya. Klassifikatsiya sinfni bashorat qiladi, masalan, bemor kasal yoki sog‘lom. Regressiya esa sonni bashorat qiladi, masalan, uy narxi.
+
+Q: Binary klassifikatsiya nima?
+A: Binary klassifikatsiya — obyektni ikki sinfdan biriga ajratish. Masalan, tranzaksiya firibgarlikmi yoki yo‘qmi.
+
+Q: Multiclass klassifikatsiya nima?
+A: Multiclass klassifikatsiya — obyektni uch yoki undan ortiq sinfdan biriga ajratish. Masalan, qo‘lda yozilgan raqam 0 dan 9 gacha bo‘lgan o‘nta sinfdan biriga tegishli.
+
+Q: Data preprocessing nima?
+A: Data preprocessing — xom ma’lumotni modelga berishdan oldin tozalash va tayyorlash. Masalan, bo‘sh qiymatlarni to‘ldirish, matnli ustunlarni songa aylantirish va sonlarni bir xil masshtabga keltirish.
+
+Q: Missing values nima?
+A: Missing values — jadvaldagi to‘ldirilmagan, bo‘sh qolgan qiymatlar. Masalan, ba’zi mijozlarning yoshi kiritilmagan bo‘lishi mumkin.
+
+Q: Missing values bilan qanday ishlash kerak?
+A: Asosan uch yo‘l bor: bo‘sh qiymatli qator yoki ustunni o‘chirish, bo‘sh joyni o‘rtacha yoki mediana bilan to‘ldirish, yoki "noma’lum" degan alohida qiymat qo‘yish. Qaysi birini tanlash bo‘sh qiymatlar soniga va ustunning muhimligiga bog‘liq.
+
+Q: Imputation nima?
+A: Imputation — bo‘sh qiymatlarni taxminiy qiymat bilan to‘ldirish. Masalan, yosh ustunidagi bo‘sh joylarni shu ustunning medianasi bilan to‘ldirish.
+
+Q: Bo‘sh qiymatni o‘rtacha bilan to‘ldirgan yaxshimi yoki mediana bilanmi?
+A: Ustunda juda katta yoki juda kichik qiymatlar bo‘lsa, mediana yaxshiroq, chunki u bunday qiymatlardan ta’sirlanmaydi. Qiymatlar bir tekis taqsimlangan bo‘lsa, o‘rtacha ham mos keladi.
+
+Q: Outlier nima?
+A: Outlier — boshqa qiymatlardan keskin farq qiladigan qiymat. Masalan, yosh ustunida 250 deb yozilgan qiymat.
+
+Q: Encoding nima?
+A: Encoding — matnli, ya’ni kategoriyali ustunlarni songa aylantirish. Bu kerak, chunki modellar faqat sonlar bilan ishlaydi.
+
+Q: Encodingning qanday turlari bor?
+A: Eng ko‘p ishlatiladigan turlari: label encoding, one-hot encoding va ordinal encoding. Kategoriyalar orasida tartib bo‘lmasa one-hot, tartib bo‘lsa ordinal encoding tanlanadi.
+
+Q: Label encoding nima?
+A: Label encoding — har bir kategoriyaga bitta butun son berish. Masalan, qizil = 0, yashil = 1, ko‘k = 2.
+
+Q: One-hot encoding nima?
+A: One-hot encoding — har bir kategoriya uchun 0 yoki 1 qiymatli alohida ustun yaratish. Masalan, "rang" ustuni "qizil", "yashil" va "ko‘k" degan uchta ustunga aylanadi.
+
+Q: Ordinal encoding nima?
+A: Ordinal encoding — tartibi bor kategoriyalarni shu tartib bo‘yicha sonlash. Masalan, past = 0, o‘rta = 1, yuqori = 2.
+
+Q: Label encoding bilan one-hot encodingning farqi nima?
+A: Label encoding bitta ustunda kategoriyalarni 0, 1, 2 kabi sonlar bilan almashtiradi. One-hot encoding esa har bir kategoriya uchun alohida ustun ochadi. Label encodingda model sonlar orasida tartib bor deb o‘ylashi mumkin, one-hot encodingda bu muammo yo‘q.
+
+Q: Feature scaling nima?
+A: Feature scaling — sonli ustunlarni bir xil masshtabga keltirish. Masalan, yosh 18–70, maosh esa millionlarda bo‘lsa, scalingdan keyin ikkalasi ham yaqin oraliqda bo‘ladi.
+
+Q: Standardization nima?
+A: Standardization — ustun qiymatlarini o‘rtachasi 0 va standart og‘ishi 1 bo‘ladigan qilib o‘zgartirish. Formulasi: (x - o‘rtacha) / standart og‘ish.
+
+Q: Min-max scaling nima?
+A: Min-max scaling — ustun qiymatlarini 0 dan 1 gacha oraliqqa keltirish. Formulasi: (x - min) / (max - min).
+
+Q: Scaling qaysi modellar uchun muhim?
+A: Scaling masofa yoki gradientga asoslangan modellar uchun muhim: KNN, SVM, chiziqli modellar va neyron tarmoqlar. Daraxt modellariga esa odatda kerak emas.
+
+Q: Feature engineering nima?
+A: Feature engineering — mavjud ustunlardan modelga foydali yangi belgilar yaratish. Masalan, tug‘ilgan yildan yoshni yoki sanadan hafta kunini hisoblab chiqarish.
+
+Q: Chiziqli modellar nima?
+A: Chiziqli modellar — natijani belgilarning og‘irlikli yig‘indisi sifatida hisoblaydigan modellar. Ularga linear regression, logistic regression, Ridge va Lasso kiradi.
+
+Q: Ridge regression nima?
+A: Ridge regression — L2 regularizatsiya qo‘shilgan chiziqli regressiya. U og‘irliklarni kichraytirib, overfittingni kamaytiradi.
+
+Q: Lasso regression nima?
+A: Lasso regression — L1 regularizatsiya qo‘shilgan chiziqli regressiya. U ba’zi og‘irliklarni nolga tenglab, keraksiz belgilarni modeldan chiqarib tashlaydi.
+
+Q: SVM nima?
+A: SVM (Support Vector Machine) — sinflarni eng keng oraliq bilan ajratadigan chegarani topadigan model. Masalan, ikki guruh nuqtalar orasidan ikkalasidan ham eng uzoq o‘tadigan chiziqni tanlaydi.
+
+Q: KNN nima?
+A: KNN (K-Nearest Neighbors) — yangi nuqtaga eng yaqin K ta qo‘shnisiga qarab javob beradigan model. Masalan, K = 5 bo‘lsa va 5 ta qo‘shnidan 4 tasi "mushuk" bo‘lsa, javob "mushuk" bo‘ladi.
+
+Q: Naive Bayes nima?
+A: Naive Bayes — Bayes teoremasiga asoslangan va belgilarni bir-biridan mustaqil deb hisoblaydigan klassifikatsiya modeli. U tez ishlaydi va matnlarni toifalarga ajratishda ko‘p qo‘llanadi.
+
+Q: Daraxt modellari nima?
+A: Daraxt modellari — decision tree asosida ishlaydigan modellar. Ularga decision tree, random forest va gradient boosting kiradi. Ular jadval ko‘rinishidagi ma’lumotlarda juda yaxshi ishlaydi.
+
+Q: Ensemble nima?
+A: Ensemble — bir nechta model javobini birlashtirib, bitta kuchliroq natija olish usuli. Masalan, random forest yuzlab decision tree javoblarini birlashtiradi.
+
+Q: Random forest nima?
+A: Random forest — ko‘plab decision tree dan iborat ensemble model. Har bir daraxt ma’lumotning tasodifiy qismida o‘qitiladi, yakuniy javob esa ovoz berish yoki o‘rtacha olish orqali chiqariladi.
+
+Q: Gradient boosting nima?
+A: Gradient boosting — daraxtlar ketma-ket quriladigan ensemble usuli: har bir yangi daraxt oldingilarining xatosini tuzatadi. XGBoost, LightGBM va CatBoost shu usulga asoslangan.
+
+Q: Bagging nima?
+A: Bagging — bir nechta modelni ma’lumotning tasodifiy namunalarida alohida-alohida o‘qitib, javoblarini o‘rtachalash usuli. Random forest bagging usuliga misol.
+
+Q: Boosting nima?
+A: Boosting — modellarni ketma-ket o‘qitish usuli: har bir yangi model oldingisining xatolariga ko‘proq e’tibor beradi. Gradient boosting shu usulga misol.
+
+Q: Bagging bilan boostingning farqi nima?
+A: Baggingda modellar bir-biridan mustaqil, parallel o‘qitiladi va javoblari o‘rtachalanadi. Boostingda esa modellar ketma-ket o‘qitiladi va har biri oldingisining xatosini tuzatadi.
+
+Q: XGBoost nima?
+A: XGBoost — gradient boosting usulining tez va kuchli kutubxonasi. U jadval ko‘rinishidagi ma’lumotlarda eng yaxshi natija beradigan vositalardan biri.
+
+Q: Bias va variance nima?
+A: Bias — model juda sodda bo‘lgani uchun yuzaga keladigan xato. Variance — model o‘qitish ma’lumotiga haddan tashqari sezgir bo‘lgani uchun yuzaga keladigan xato. Yaxshi model ikkalasi orasida muvozanat topadi.
+
+Q: Cross-validation nima?
+A: Cross-validation — ma’lumotni K ta qismga bo‘lib, modelni K marta o‘qitish va har safar boshqa qismda tekshirish usuli. U model sifatini bitta train-test bo‘linishiga qaraganda ishonchliroq baholaydi.
+
+Q: Confusion matrix nima?
+A: Confusion matrix — klassifikatsiya modelining to‘g‘ri va xato javoblarini sinflar bo‘yicha ko‘rsatadigan jadval. Undan model qaysi sinflarni bir-biri bilan adashtirayotganini ko‘rish mumkin.
+
+Q: F1 score nima?
+A: F1 score — precision va recallni bitta songa birlashtiradigan metrika. U sinflar soni teng bo‘lmagan datasetlarda accuracy dan foydaliroq.
+
+Q: MSE nima?
+A: MSE (Mean Squared Error) — bashorat va haqiqiy qiymat orasidagi farqlar kvadratlarining o‘rtachasi. U regressiya modellarini baholashda ishlatiladi va katta xatolarni qattiqroq jazolaydi.
+
+Q: MAE nima?
+A: MAE (Mean Absolute Error) — bashorat va haqiqiy qiymat orasidagi farqlar modulining o‘rtachasi. Masalan, uy narxida MAE 5000 dollar bo‘lsa, model o‘rtacha 5000 dollarga adashadi.
+
+Q: Data analysis nima?
+A: Data analysis — ma’lumotdan foydali xulosa chiqarish uchun uni tozalash, o‘rganish va tahlil qilish jarayoni. Masalan, sotuvlar jadvalidan qaysi oyda savdo eng yuqori bo‘lganini aniqlash.
+
+Q: EDA nima?
+A: EDA (Exploratory Data Analysis) — model qurishdan oldin ma’lumotni jadvallar va grafiklar yordamida o‘rganish. Unda ustunlar taqsimoti, bo‘sh qiymatlar va belgilar orasidagi bog‘lanishlar ko‘rib chiqiladi.
+
+Q: Data visualization nima?
+A: Data visualization — ma’lumotni grafik va diagrammalar ko‘rinishida tasvirlash. U sonlar jadvalida ko‘rinmaydigan qonuniyatlarni tez payqashga yordam beradi.
+
+Q: Histogram nima uchun ishlatiladi?
+A: Histogram bitta sonli ustun qiymatlari qanday taqsimlanganini ko‘rsatadi. Masalan, mijozlarning ko‘pchiligi qaysi yosh oralig‘ida ekanini ko‘rish mumkin.
+
+Q: Scatter plot nima uchun ishlatiladi?
+A: Scatter plot ikki sonli ustun orasidagi bog‘lanishni nuqtalar bilan ko‘rsatadi. Masalan, uy maydoni oshgan sari narxi ham oshishini ko‘rish mumkin.
+
+Q: Box plot nimani ko‘rsatadi?
+A: Box plot ustunning medianasini, choraklarini va outlierlarini ko‘rsatadi. U bir nechta guruhni tez solishtirish uchun qulay.
+
+Q: Korrelyatsiya nima?
+A: Korrelyatsiya — ikki o‘zgaruvchi qanchalik birga o‘zgarishini ko‘rsatadigan son. U -1 dan 1 gacha bo‘ladi: 1 ga yaqin bo‘lsa birga o‘sadi, -1 ga yaqin bo‘lsa biri o‘sganda ikkinchisi kamayadi.
+
+Q: Heatmap nima uchun ishlatiladi?
+A: Heatmap sonlar jadvalini ranglar bilan ko‘rsatadi. U ko‘pincha korrelyatsiya matritsasini tasvirlash va qaysi belgilar kuchli bog‘langanini ko‘rish uchun ishlatiladi.
+
+Q: pandas nima?
+A: pandas — jadval ko‘rinishidagi ma’lumotlar bilan ishlash uchun Python kutubxonasi. U CSV faylni o‘qish, ustunlarni filtrlash, guruhlash va bo‘sh qiymatlarni to‘ldirish imkonini beradi.
+
+Q: DataFrame nima?
+A: DataFrame — pandas kutubxonasidagi qator va ustunlardan iborat jadval. Uni Excel jadvalining Python dagi ko‘rinishi deyish mumkin.
+
+Q: NumPy nima?
+A: NumPy — sonli massivlar bilan tez ishlash uchun Python kutubxonasi. pandas, scikit-learn va boshqa ko‘p kutubxonalar uning ustiga qurilgan.
+
+Q: scikit-learn nima?
+A: scikit-learn (sklearn) — klassik machine learning uchun Python kutubxonasi. Unda tayyor algoritmlar, preprocessing vositalari va metrikalar bor.
+
+Q: Matplotlib nima?
+A: Matplotlib — Python da grafik chizish uchun asosiy kutubxona. Seaborn kutubxonasi uning ustiga qurilgan bo‘lib, chiroyli statistik grafiklarni osonroq chizadi.
+
+Q: scikit-learn da fit va predict nima qiladi?
+A: fit metodi modelni train ma’lumotida o‘qitadi. predict metodi esa o‘qitilgan model yordamida yangi ma’lumot uchun bashorat qaytaradi.
+
+Q: scikit-learn da Pipeline nima?
+A: Pipeline — preprocessing qadamlari va modelni bitta zanjirga birlashtiradigan vosita. U kodni soddalashtiradi va data leakage ning oldini oladi.
+
+Q: Deployment nima?
+A: Deployment — o‘qitilgan modelni foydalanuvchilar ishlata oladigan qilib serverga joylash. Masalan, model API orqali so‘rov qabul qilib, bashorat qaytaradi.
+
+Q: API nima?
+A: API — dasturlar bir-biri bilan gaplashadigan interfeys. Masalan, ilova modelga API orqali matn yuboradi va javobni qaytarib oladi.
+
+Q: Docker nima?
+A: Docker — dastur va unga kerakli kutubxonalarni bitta konteynerga joylaydigan vosita. Shu tufayli dastur har qanday kompyuter yoki serverda bir xil ishlaydi.
+
+Q: CI/CD nima?
+A: CI/CD — koddagi o‘zgarishlarni avtomatik tekshirish va serverga chiqarish jarayoni. CI kodni avtomatik yig‘ib test qiladi, CD esa testdan o‘tgan kodni avtomatik ishga tushiradi.
+
+Q: CI bilan CD ning farqi nima?
+A: CI (Continuous Integration) har bir kod o‘zgarishini avtomatik yig‘ib, testlardan o‘tkazadi. CD (Continuous Delivery) esa testdan o‘tgan versiyani serverga avtomatik chiqaradi.
+
+Q: MLOps nima?
+A: MLOps — machine learning modellarini ishlab chiqarishda ishonchli yuritish amaliyotlari: modelni versiyalash, avtomatik o‘qitish, deployment va monitoring.
+
+Q: Model monitoring nima?
+A: Model monitoring — ishga tushirilgan modelning sifati, tezligi va xatolarini doimiy kuzatib borish. U model vaqt o‘tishi bilan yomonlashganini o‘z vaqtida payqashga yordam beradi.
+
+Q: Data drift nima?
+A: Data drift — modelga kelayotgan yangi ma’lumotlar o‘qitishdagi ma’lumotlardan farq qila boshlashi. Masalan, mijozlar xulqi o‘zgarsa, eski ma’lumotda o‘qitilgan model yomonroq ishlaydi.
+
+Q: Neyron nima?
+A: Neyron — neyron tarmoqning eng kichik birligi. U kirishlarni og‘irliklarga ko‘paytirib qo‘shadi, bias qo‘shadi va natijani aktivatsiya funksiyasidan o‘tkazadi.
+
+Q: Neyron tarmoqda layer nima?
+A: Layer (qatlam) — birga ishlaydigan neyronlar guruhi. Ma’lumot qatlamdan qatlamga o‘tib boradi va har bir qatlam uni biroz o‘zgartiradi.
+
+Q: Input, hidden va output layer nima?
+A: Input layer ma’lumotni qabul qiladi, hidden layerlar uni qayta ishlaydi, output layer esa yakuniy natijani chiqaradi. Masalan, rasm tanishda input — piksellar, output — sinflar ehtimoli.
+
+Q: Neyron tarmoqda bias nima?
+A: Bias — neyronning og‘irlikli yig‘indisiga qo‘shiladigan qo‘shimcha son. U neyronga kirishlar nol bo‘lganda ham natija chiqarish imkonini beradi.
+
+Q: Forward pass nima?
+A: Forward pass — ma’lumotning input qatlamdan output qatlamgacha o‘tib, bashorat hosil qilishi. Undan keyin loss hisoblanadi va backpropagation boshlanadi.
+
+Q: ReLU nima?
+A: ReLU — eng ko‘p ishlatiladigan aktivatsiya funksiyasi. U manfiy sonlarni nolga aylantiradi, musbat sonlarni esa o‘zgarishsiz qoldiradi.
+
+Q: Softmax nima?
+A: Softmax — model chiqishlarini yig‘indisi 1 ga teng ehtimolliklarga aylantiradigan funksiya. Masalan, uch sinf uchun 0,7, 0,2 va 0,1 kabi natija beradi.
+
+Q: Cross-entropy loss nima?
+A: Cross-entropy loss — klassifikatsiyada ishlatiladigan loss funksiyasi. Model to‘g‘ri sinfga qancha kam ehtimollik bersa, loss shuncha katta bo‘ladi.
+
+Q: Optimizator nima?
+A: Optimizator — gradientlar asosida model og‘irliklarini yangilaydigan algoritm. Eng mashhurlari — SGD va Adam.
+
+Q: Neyron tarmoqlarning qanday turlari bor?
+A: Asosiy turlari: MLP — jadval ma’lumotlari uchun, CNN — rasmlar uchun, RNN — ketma-ketliklar uchun va Transformer — matn va boshqa ko‘p vazifalar uchun.
+
+Q: MLP nima?
+A: MLP (Multi-Layer Perceptron) — har bir neyroni keyingi qatlamning barcha neyronlariga ulangan oddiy neyron tarmoq. U jadval ko‘rinishidagi ma’lumotlarda ishlatiladi.
+
+Q: CNN nima?
+A: CNN (Convolutional Neural Network) — rasmlar bilan ishlash uchun mo‘ljallangan neyron tarmoq. U kichik filtrlarni rasm bo‘ylab yurgizib, chiziq, burchak va shakllarni topadi.
+
+Q: RNN nima?
+A: RNN (Recurrent Neural Network) — ketma-ket ma’lumotlarni birma-bir o‘qib, oldingi qadamlarni xotirasida saqlaydigan neyron tarmoq. U matn va vaqt qatorlarida ishlatilgan, hozir uning o‘rnini asosan Transformer egallagan.
+
+Q: LSTM nima?
+A: LSTM — uzoq ketma-ketliklarda ma’lumotni uzoqroq eslab qola oladigan RNN turi. U oddiy RNN dagi vanishing gradient muammosini yumshatadi.
+
+Q: Vanishing gradient nima?
+A: Vanishing gradient — chuqur tarmoqda gradientlar orqaga tarqalgan sari juda kichrayib ketishi. Natijada boshlang‘ich qatlamlar deyarli o‘rganmay qoladi.
+
+Q: Early stopping nima?
+A: Early stopping — validation natijasi yaxshilanishdan to‘xtaganda o‘qitishni tugatish usuli. U overfittingning oldini oladi.
+
+Q: Computer vision nima?
+A: Computer vision — kompyuterga rasm va videolarni tushunishni o‘rgatadigan soha. Masalan, yuzni tanish, avtomobil raqamini o‘qish yoki rentgen rasmida kasallikni topish.
+
+Q: Computer visionning asosiy vazifalari qaysilar?
+A: To‘rtta asosiy vazifa bor: image classification — rasmda nima borligini aytish, object detection — obyektlarning joyini topish, segmentation — har bir pikselni sinfga ajratish va OCR — rasmdagi matnni o‘qish.
+
+Q: Image classification nima?
+A: Image classification — butun rasmga bitta sinf berish vazifasi. Masalan, rasmda mushuk yoki it borligini aytish.
+
+Q: Object detection nima?
+A: Object detection — rasmdagi obyektlarni topib, har birining joyini to‘rtburchak bilan belgilash va sinfini aytish. Masalan, ko‘cha rasmida barcha mashina va piyodalarni belgilash. YOLO shu vazifa uchun mashhur model.
+
+Q: Segmentation nima?
+A: Segmentation — rasmning har bir pikselini biror sinfga ajratish. Masalan, yo‘l rasmida qaysi piksellar yo‘l, qaysilari mashina va qaysilari piyoda ekanini aniqlash.
+
+Q: Semantic segmentation bilan instance segmentationning farqi nima?
+A: Semantic segmentation bir sinfdagi barcha obyektlarni bitta rang bilan belgilaydi. Instance segmentation esa har bir obyektni alohida ajratadi, masalan, uchta mashinani uch xil rang bilan.
+
+Q: OCR nima?
+A: OCR (Optical Character Recognition) — rasm yoki skanerlangan hujjatdagi matnni tanib, oddiy matnga aylantirish. Masalan, pasport rasmidan ism va familiyani o‘qib olish.
+
+Q: Bounding box nima?
+A: Bounding box — rasmdagi obyektni o‘rab turadigan to‘rtburchak. Object detection modeli har bir obyekt uchun shu to‘rtburchak koordinatalarini qaytaradi.
+
+Q: Konvolyutsiya nima?
+A: Konvolyutsiya — kichik filtrni rasm bo‘ylab siljitib, har bir joyda filtr va piksellar ko‘paytmasini hisoblash amali. Shu orqali CNN rasmdagi chiziq va shakllarni topadi.
+
+Q: Data augmentation nima?
+A: Data augmentation — mavjud ma’lumotdan o‘zgartirilgan nusxalar yaratib, datasetni kengaytirish. Masalan, rasmni burish, aks ettirish yoki yorqinligini o‘zgartirish.
+
+Q: Pretraining qanday amalga oshiriladi?
+A: Avval juda katta hajmdagi matn to‘planadi va tokenlarga bo‘linadi. Keyin model har bir joyda keyingi tokenni bashorat qiladi, xatosi hisoblanadi va og‘irliklar yangilanadi. Bu jarayon milliardlab marta takrorlanadi.
+
+Q: Pretraining uchun nimalar kerak?
+A: To‘rt narsa kerak: juda katta matn korpusi, matnni tokenlarga bo‘ladigan vosita, Transformer arxitekturasidagi model va ko‘p sonli GPU. Katta modellar uchun bu haftalab vaqt va katta mablag‘ talab qiladi.
+
+Q: Self-supervised learning nima?
+A: Self-supervised learning — label odam tomonidan emas, ma’lumotning o‘zidan olinadigan o‘qitish usuli. Masalan, LLM pretrainingda matndagi keyingi so‘zning o‘zi to‘g‘ri javob bo‘lib xizmat qiladi.
+
+Q: Next-token prediction nima?
+A: Next-token prediction — oldingi tokenlarga qarab keyingi tokenni bashorat qilish vazifasi. LLM shu bitta vazifada o‘qitiladi va matnni ham shu yo‘l bilan yozadi.
+
+Q: Korpus nima?
+A: Korpus — modelni o‘qitish uchun to‘plangan katta matnlar to‘plami. Masalan, kitoblar, maqolalar va veb-sahifalar matni.
+
+Q: Tokenization nima?
+A: Tokenization — matnni tokenlarga bo‘lish jarayoni. Masalan, "Men kitob o‘qiyman" gapi "Men", "kitob", "o‘qi" va "yman" kabi bo‘laklarga ajralishi mumkin.
+
+Q: Vocabulary nima?
+A: Vocabulary (lug‘at) — model biladigan barcha tokenlar ro‘yxati. Har bir tokenning shu ro‘yxatda o‘z tartib raqami bor. Masalan, Qwen2.5 lug‘atida taxminan 150 ming token bor.
+
+Q: Token ID nima?
+A: Token ID — tokenning lug‘atdagi tartib raqami. Model matnning o‘zini emas, shu raqamlar ketma-ketligini qabul qiladi.
+
+Q: Subword tokenization nima?
+A: Subword tokenization — so‘zlarni kichikroq, tez-tez uchraydigan bo‘laklarga ajratish usuli. Shu tufayli model lug‘atida yo‘q so‘zni ham tanish bo‘laklardan yig‘a oladi.
+
+Q: BPE nima?
+A: BPE (Byte Pair Encoding) — eng ko‘p birga uchraydigan belgilar juftini qayta-qayta birlashtirib, tokenlar lug‘atini tuzadigan algoritm.
+
+Q: Embedding layer nima?
+A: Embedding layer — har bir token ID ga mos vektorni saqlaydigan jadval. U LLM ning birinchi qatlami bo‘lib, raqamlarni ma’no tashuvchi vektorlarga aylantiradi.
+
+Q: Positional encoding nima?
+A: Positional encoding — har bir tokenga uning gapdagi o‘rni haqidagi ma’lumotni qo‘shadigan mexanizm. Usiz Transformer so‘zlar tartibini bilmaydi.
+
+Q: Self-attention nima?
+A: Self-attention — gapdagi har bir token boshqa barcha tokenlarga qarab, qaysilari o‘zi uchun muhimligini hisoblaydigan mexanizm. Shu orqali model so‘zning ma’nosini kontekstga qarab aniqlaydi.
+
+Q: Multi-head attention nima?
+A: Multi-head attention — bir nechta attention mexanizmining parallel ishlashi. Har bir "bosh" gapdagi boshqa turdagi bog‘lanishga e’tibor beradi, masalan, biri grammatikaga, boshqasi ma’noga.
+
+Q: Causal mask nima?
+A: Causal mask — model har bir tokenni bashorat qilayotganda faqat undan oldingi tokenlarni ko‘rishini ta’minlaydigan cheklov. Usiz model javobni oldindan ko‘rib qo‘ygan bo‘lardi.
+
+Q: Transformerdagi feed-forward qatlam nima?
+A: Feed-forward qatlam — attentiondan keyin keladigan kichik neyron tarmoq. U har bir token vektorini alohida qayta ishlaydi.
+
+Q: Residual connection nima?
+A: Residual connection — qatlamning kirishini uning chiqishiga qo‘shib yuborish. U chuqur tarmoqlarda gradient yaxshi oqishiga va o‘qitish barqaror bo‘lishiga yordam beradi.
+
+Q: Layer normalization nima?
+A: Layer normalization — qatlam ichidagi qiymatlarni bir xil masshtabga keltirish. U chuqur tarmoqni o‘qitishni barqaror qiladi.
+
+Q: Decoder-only model nima?
+A: Decoder-only model — faqat oldingi tokenlarga qarab keyingi tokenni yozadigan Transformer turi. GPT, Qwen va Llama shu turga kiradi.
+
+Q: LLM arxitekturasi qanday tuzilgan?
+A: Avval matn tokenlarga bo‘linib, token ID larga aylanadi. Keyin embedding layer ularni vektorga aylantiradi va positional encoding qo‘shiladi. So‘ng vektorlar ko‘plab Transformer bloklaridan o‘tadi va oxirgi qatlam keyingi token uchun ehtimolliklarni chiqaradi.
+
+Q: Transformer bloki nimalardan iborat?
+A: Har bir Transformer bloki ikki asosiy qismdan iborat: self-attention va feed-forward qatlam. Ularning har biri atrofida residual connection va layer normalization bor.
+
+Q: Logits nima?
+A: Logits — modelning oxirgi qatlami lug‘atdagi har bir token uchun chiqaradigan xom sonlar. Softmax ularni ehtimolliklarga aylantiradi.
+
+Q: Greedy decoding nima?
+A: Greedy decoding — har qadamda ehtimolligi eng yuqori tokenni tanlash usuli. Unda bir xil promptga har doim bir xil javob chiqadi.
+
+Q: Sampling nima?
+A: Sampling — keyingi tokenni ehtimolliklar bo‘yicha tasodifiy tanlash usuli. Shu sababli model bir xil savolga har safar biroz boshqacha javob berishi mumkin.
+
+Q: Frontier model nima?
+A: Frontier model — ayni paytdagi eng kuchli, eng ilg‘or AI modellari. Masalan, GPT, Claude va Gemini oilasidagi eng yangi modellar.
+
+Q: Open-source model bilan yopiq modelning farqi nima?
+A: Open-source modelning og‘irliklarini yuklab olib, o‘z kompyuteringizda ishlatish va fine-tuning qilish mumkin. Yopiq modeldan esa faqat API yoki ilova orqali foydalaniladi.
+
+Q: Multimodal model nima?
+A: Multimodal model — matndan tashqari rasm, ovoz yoki video bilan ham ishlay oladigan model. Masalan, rasmni ko‘rib, undagi narsalarni tasvirlab beradi.
+
+Q: Reasoning model nima?
+A: Reasoning model — javob berishdan oldin masalani qadam-baqadam o‘ylab chiqadigan LLM. U matematika va murakkab mantiqiy masalalarda yaxshiroq natija beradi.
+
+Q: Parametrlar soni model sifatiga qanday ta’sir qiladi?
+A: Odatda parametrlar ko‘p bo‘lsa, model ko‘proq bilim sig‘dira oladi va yaxshiroq javob beradi. Lekin u ko‘proq xotira talab qiladi va sekinroq ishlaydi.
+
+Q: Reranker nima?
+A: Reranker — qidiruvda topilgan hujjat bo‘laklarini savolga mosligiga qarab qayta tartiblaydigan model. U RAG tizimida eng kerakli bo‘laklar modelga yetib borishini ta’minlaydi.
+
+Q: Grounding nima?
+A: Grounding — model javobini aniq manbaga, masalan, topilgan hujjatga asoslash. Asoslangan javobni tekshirish mumkin va unda gallyutsinatsiya kamroq bo‘ladi.
+
+Q: Hybrid search nima?
+A: Hybrid search — kalit so‘z bo‘yicha qidiruv bilan ma’no bo‘yicha qidiruvni birlashtirish. U aniq atamalarni ham, ma’nodosh iboralarni ham topa oladi.
+
+Q: RAG bilan fine-tuningning farqi nima?
+A: RAG modelga javob paytida tashqi hujjatlarni beradi va model og‘irliklarini o‘zgartirmaydi. Fine-tuning esa og‘irliklarni o‘zgartirib, modelga yangi uslub yoki ko‘nikma o‘rgatadi. Tez-tez yangilanadigan bilim uchun RAG qulayroq.
+
+Q: Knowledge base nima?
+A: Knowledge base — RAG tizimi qidiradigan hujjatlar to‘plami. Masalan, kompaniyaning ichki qo‘llanmalari va tez-tez beriladigan savollar.
+
+Q: Embedding model nima?
+A: Embedding model — matnni uning ma’nosini ifodalaydigan vektorga aylantiradigan model. RAG tizimida savol ham, hujjat bo‘laklari ham shu model orqali vektorga aylantiriladi.
+
+Q: Preference optimisation nima?
+A: Preference optimisation — modelni ikki javobdan yaxshirog‘ini afzal ko‘rishga o‘rgatadigan post-training bosqichi. U SFT dan keyin bajariladi va javob sifatini oshiradi. DPO va RLHF shu bosqich usullari.
+
+Q: Reward model nima?
+A: Reward model — javobga sifat bahosi beradigan alohida model. U odamlar belgilagan taqqoslashlarda o‘qitiladi va RLHF da asosiy modelni yo‘naltirish uchun ishlatiladi.
+
+Q: Chosen va rejected javob nima?
+A: Preference datada har bir savol uchun ikki javob bo‘ladi: chosen — yaxshiroq deb tanlangan javob, rejected — yomonroq deb rad etilgan javob. Model chosen javobga o‘xshash yozishni o‘rganadi.
+
+Q: Alignment nima?
+A: Alignment — model xatti-harakatini inson qadriyatlari va ishlab chiquvchi belgilagan qoidalarga moslashtirish. Masalan, model foydali va halol bo‘lishi, zararli so‘rovlarni esa rad etishi kerak.
+
+Q: Safety tuning nima?
+A: Safety tuning — modelni zararli so‘rovlarni rad etishga va aldovchi promptlarga berilmaslikka o‘rgatadigan post-training bosqichi.
+
+Q: Refusal nima?
+A: Refusal — modelning zararli yoki noo‘rin so‘rovni bajarishdan xushmuomalalik bilan bosh tortishi. Masalan: "Kechirasiz, bunga yordam bera olmayman."
+
+Q: Jailbreak nima?
+A: Jailbreak — modelni xavfsizlik qoidalarini buzishga majburlashga urinadigan prompt. Masalan, zararli so‘rovni "bu shunchaki hikoya uchun" deb niqoblash.
+
+Q: Instruction following nima?
+A: Instruction following — modelning berilgan ko‘rsatmani aniq bajarish qobiliyati. Masalan, "3 ta maslahat ber" deyilsa, roppa-rosa uchta maslahat yozishi.
+
+Q: Full fine-tuning nima?
+A: Full fine-tuning — modelning barcha og‘irliklarini yangilab o‘qitish. U eng kuchli natija berishi mumkin, lekin ko‘p xotira va vaqt talab qiladi.
+
+Q: PEFT nima?
+A: PEFT (Parameter-Efficient Fine-Tuning) — modelning faqat kichik qismini o‘qitadigan usullar oilasi. LoRA va QLoRA shu oilaga kiradi.
+
+Q: Adapter nima?
+A: Adapter — base modelga qo‘shiladigan kichik o‘qitiladigan og‘irliklar to‘plami. LoRA o‘qitilganda faqat adapter saqlanadi va u base model bilan birga yuklanadi.
+
+Q: LoRA rank nima?
+A: LoRA rank — adapter matritsalarining o‘lchamini belgilaydigan son. Rank katta bo‘lsa, adapter ko‘proq narsa o‘rgana oladi, lekin ko‘proq xotira talab qiladi.
+
+Q: Model spec nima?
+A: Model spec — tayyor model qanday xatti-harakat qilishi kerakligini yozma belgilaydigan hujjat: ohangi, javob formati va nimalarni rad etishi. Keyingi barcha bosqichlar shu hujjatga nisbatan o‘lchanadi.
+
+Q: Human evaluation nima?
+A: Human evaluation — model javoblarini odamlar o‘qib baholashi. U avtomatik metrikalar ko‘ra olmaydigan narsalarni, masalan, javobning tabiiyligini tekshiradi.
+
+Q: LLM-as-a-judge nima?
+A: LLM-as-a-judge — bir model javobini boshqa, kuchliroq LLM yordamida baholash usuli. U odam bahosidan arzon va tez, lekin har doim ham ishonchli emas.
+
+Q: Agentic AI nima?
+A: Agentic AI — LLM faqat javob yozmay, maqsadga erishish uchun o‘zi reja tuzib, tool lardan foydalanib, bir necha qadamda mustaqil ishlaydigan yondashuv. Masalan, agent internetdan ma’lumot qidiradi, kod yozadi va natijani tekshiradi.
+
+Q: Agent qanday ishlaydi?
+A: Agent takrorlanuvchi sikl bo‘yicha ishlaydi: vazifani o‘ylaydi, kerakli tool ni chaqiradi, natijasini ko‘radi va keyingi qadamni tanlaydi. Vazifa bajarilgach, yakuniy javobni beradi.
+
+Q: ReAct nima?
+A: ReAct — agent har qadamda avval mulohaza yuritib, keyin harakat qiladigan usul. "Reason" — o‘ylash, "Act" — tool chaqirish degani.
+
+Q: Agentda planning nima?
+A: Planning — agentning katta vazifani kichik qadamlarga bo‘lib, ularni bajarish tartibini belgilashi.
+
+Q: Agent xotirasi nima?
+A: Agent xotirasi — agent oldingi qadamlar va suhbatlardagi ma’lumotni saqlaydigan joy. Qisqa muddatli xotira joriy vazifani, uzoq muddatli xotira esa oldingi suhbatlarni eslab qoladi.
+
+Q: Multi-agent tizim nima?
+A: Multi-agent tizim — bir nechta agent birga ishlaydigan tizim. Masalan, biri reja tuzadi, ikkinchisi kod yozadi, uchinchisi natijani tekshiradi.
+
+Q: MCP nima?
+A: MCP (Model Context Protocol) — LLM ni tashqi tool va ma’lumot manbalariga ulash uchun ochiq standart. U bitta tool ni turli modellar va ilovalarda qayta ishlatish imkonini beradi.
+
+Q: Workflow bilan agentning farqi nima?
+A: Workflow da qadamlar ketma-ketligini dasturchi oldindan belgilaydi. Agentda esa keyingi qadamni model o‘zi tanlaydi.
+
+Q: Human-in-the-loop nima?
+A: Human-in-the-loop — muhim qarorlar oldidan agent odamdan tasdiq so‘raydigan yondashuv. Masalan, pul o‘tkazish yoki faylni o‘chirishdan oldin ruxsat olish.
+
+Q: What are the types of supervised learning?
+A: There are two main types: classification and regression. Classification predicts a class, such as sick or healthy, and regression predicts a number, such as a house price.
+
+Q: What is one-hot encoding?
+A: One-hot encoding creates a separate 0-or-1 column for each category. For example, a "colour" column becomes three columns: red, green and blue.
+
+Q: What is a random forest?
+A: A random forest is an ensemble of many decision trees. Each tree is trained on a random part of the data, and the final answer comes from voting or averaging.
+
+Q: What is object detection?
+A: Object detection finds objects in an image, draws a box around each one and names its class. For example, it marks every car and pedestrian in a street photo.
+
+Q: What is self-attention?
+A: Self-attention lets every token look at all the other tokens and decide which ones matter for it. This is how a model works out the meaning of a word from its context.
+
+Q: What is agentic AI?
+A: Agentic AI is an approach where an LLM does more than write an answer: it plans, calls tools and works through several steps on its own to reach a goal.
+
+Q: What is CI/CD?
+A: CI/CD is the practice of automatically testing code changes and releasing them. CI builds and tests each change, and CD deploys the version that passed.
+
+## factual
+
+Q: Supervised learningning ikki asosiy turi qaysi?
+A: Supervised learningning ikki asosiy turi — klassifikatsiya va regressiya.
+
+Q: Kategoriyalar orasida tartib bo‘lmasa, qaysi encoding ishlatiladi?
+A: Kategoriyalar orasida tartib bo‘lmasa, one-hot encoding ishlatiladi.
+
+Q: "Past, o‘rta, yuqori" kabi tartibli kategoriyalar uchun qaysi encoding mos?
+A: Tartibli kategoriyalar uchun ordinal encoding mos.
+
+Q: Ustunda outlierlar ko‘p bo‘lsa, bo‘sh qiymatlarni nima bilan to‘ldirgan ma’qul?
+A: Outlierlar ko‘p bo‘lsa, bo‘sh qiymatlarni mediana bilan to‘ldirgan ma’qul.
+
+Q: Decision tree modellariga scaling kerakmi?
+A: Odatda kerak emas, chunki daraxt modellari qiymatlarning masshtabiga emas, tartibiga qaraydi.
+
+Q: Random forest qaysi ensemble usuliga kiradi?
+A: Random forest bagging usuliga kiradi.
+
+Q: XGBoost qaysi ensemble usuliga kiradi?
+A: XGBoost boosting usuliga kiradi.
+
+Q: Lasso regression qaysi regularizatsiyadan foydalanadi?
+A: Lasso regression L1 regularizatsiyadan foydalanadi.
+
+Q: Ridge regression qaysi regularizatsiyadan foydalanadi?
+A: Ridge regression L2 regularizatsiyadan foydalanadi.
+
+Q: pandas da jadval qaysi obyektda saqlanadi?
+A: pandas da jadval DataFrame obyektida saqlanadi.
+
+Q: pandas da CSV faylni qaysi funksiya o‘qiydi?
+A: CSV faylni read_csv funksiyasi o‘qiydi.
+
+Q: pandas da bo‘sh qiymatlarni qaysi metod to‘ldiradi?
+A: Bo‘sh qiymatlarni fillna metodi to‘ldiradi, dropna metodi esa ularni o‘chiradi.
+
+Q: scikit-learn da modelni qaysi metod o‘qitadi?
+A: scikit-learn da modelni fit metodi o‘qitadi.
+
+Q: Scaler ni qaysi to‘plamda fit qilish kerak?
+A: Scaler faqat train to‘plamida fit qilinadi, test to‘plamiga esa faqat transform qo‘llanadi. Aks holda data leakage yuz beradi.
+
+Q: Rasmlar bilan ishlashda qaysi turdagi neyron tarmoq ko‘p ishlatiladi?
+A: Rasmlar bilan ishlashda CNN ko‘p ishlatiladi.
+
+Q: Rasmdagi matnni o‘qish vazifasi nima deyiladi?
+A: Rasmdagi matnni o‘qish vazifasi OCR deyiladi.
+
+Q: Object detection modeli natija sifatida nima qaytaradi?
+A: Har bir obyekt uchun uning sinfi va bounding box koordinatalarini qaytaradi.
+
+Q: Segmentation modeli natija sifatida nima qaytaradi?
+A: Rasmning har bir pikseli uchun sinfni, ya’ni maskani qaytaradi.
+
+Q: Qwen va Llama qaysi turdagi Transformer modellari?
+A: Qwen va Llama — decoder-only turidagi Transformer modellari.
+
+Q: LLM matn o‘rniga aslida nimani qabul qiladi?
+A: LLM matn o‘rniga token ID lar ketma-ketligini qabul qiladi.
+
+Q: Pretrainingda to‘g‘ri javob, ya’ni label qayerdan olinadi?
+A: Label matnning o‘zidan olinadi: har bir joyda to‘g‘ri javob — matndagi keyingi token.
+
+Q: Transformerga so‘zlar tartibi haqidagi ma’lumotni nima beradi?
+A: So‘zlar tartibi haqidagi ma’lumotni positional encoding beradi.
+
+Q: Ko‘p sinfli klassifikatsiyada chiqish qatlamida qaysi funksiya ishlatiladi?
+A: Ko‘p sinfli klassifikatsiyada chiqish qatlamida softmax ishlatiladi.
+
+Q: CI/CD qisqartmasida CI nimani anglatadi?
+A: CI — Continuous Integration, ya’ni kod o‘zgarishlarini uzluksiz birlashtirish va test qilish.
+
+Q: Modelni API sifatida chiqarish uchun qaysi Python freymvorki ko‘p ishlatiladi?
+A: Buning uchun FastAPI ko‘p ishlatiladi.
+
+Q: Agent tashqi dunyo bilan nima orqali ishlaydi?
+A: Agent tashqi dunyo bilan tool lar orqali ishlaydi: qidiruv, kod bajarish yoki API chaqirish.
+
+Q: Post-trainingda SFT dan keyin qaysi bosqich keladi?
+A: SFT dan keyin preference optimisation bosqichi keladi, masalan DPO.
+
+Q: What are the two main types of supervised learning?
+A: The two main types are classification and regression.
+
+Q: Which encoding creates one column per category?
+A: One-hot encoding creates one column per category.
+
+Q: What type of neural network is most used for images?
+A: Convolutional neural networks (CNNs) are most used for images.
+
+Q: What does CI/CD stand for?
+A: CI/CD stands for Continuous Integration and Continuous Delivery.
+
+Q: What does OCR do?
+A: OCR reads the text in an image or scanned document and turns it into normal text.
+
+## list
+
+Q: Data preprocessingga kiradigan 4 ta ishni ayt.
+A: 1. Bo‘sh qiymatlarni to‘ldirish yoki o‘chirish.
+2. Matnli ustunlarni encoding qilish.
+3. Sonli ustunlarni scaling qilish.
+4. Ma’lumotni train va test qismlariga ajratish.
+
+Q: Missing values bilan ishlashning 3 ta usulini ayt.
+A: 1. Bo‘sh qiymatli qator yoki ustunni o‘chirish.
+2. O‘rtacha yoki mediana bilan to‘ldirish.
+3. Eng ko‘p uchraydigan qiymat bilan to‘ldirish.
+
+Q: Encodingning 3 ta turini ayt.
+A: 1. Label encoding
+2. One-hot encoding
+3. Ordinal encoding
+
+Q: Scalingning 2 ta usulini ayt.
+A: 1. Standardization
+2. Min-max scaling
+
+Q: 4 ta chiziqli modelni ayt.
+A: 1. Linear regression
+2. Logistic regression
+3. Ridge
+4. Lasso
+
+Q: Daraxt asosidagi 3 ta modelni ayt.
+A: 1. Decision tree
+2. Random forest
+3. Gradient boosting
+
+Q: Ensemble usullarining 3 ta turini ayt.
+A: 1. Bagging
+2. Boosting
+3. Stacking
+
+Q: Supervised ML algoritmlaridan 5 tasini ayt.
+A: 1. Linear regression
+2. Logistic regression
+3. Decision tree
+4. Random forest
+5. SVM
+
+Q: Data visualization uchun 4 ta grafik turini ayt.
+A: 1. Histogram
+2. Scatter plot
+3. Box plot
+4. Heatmap
+
+Q: Data analysis uchun 3 ta Python kutubxonasini ayt.
+A: 1. pandas
+2. NumPy
+3. Matplotlib
+
+Q: EDA da bajariladigan 3 ta ishni ayt.
+A: 1. Ustunlar turi va bo‘sh qiymatlar sonini ko‘rish.
+2. Har bir ustun taqsimotini grafikda ko‘rish.
+3. Belgilar orasidagi korrelyatsiyani tekshirish.
+
+Q: Modelni deployment qilishning 4 ta qadamini yoz.
+A: 1. O‘qitilgan modelni faylga saqlang.
+2. Model uchun API yozing.
+3. API ni Docker konteyneriga joylang.
+4. Konteynerni serverga chiqaring va kuzatib boring.
+
+Q: CI/CD pipeline ning 3 ta bosqichini yoz.
+A: 1. Kod avtomatik yig‘iladi.
+2. Testlar avtomatik ishga tushadi.
+3. Testdan o‘tgan versiya serverga chiqariladi.
+
+Q: Neyron tarmoqdagi 3 ta qatlam turini ayt.
+A: 1. Input layer
+2. Hidden layer
+3. Output layer
+
+Q: 3 ta aktivatsiya funksiyasini ayt.
+A: 1. ReLU
+2. Tanh
+3. Softmax
+
+Q: Neyron tarmoqlarning 4 ta turini ayt.
+A: 1. MLP
+2. CNN
+3. RNN
+4. Transformer
+
+Q: Computer visionning 4 ta asosiy vazifasini ayt.
+A: 1. Image classification
+2. Object detection
+3. Segmentation
+4. OCR
+
+Q: Pretraining uchun kerak bo‘ladigan 4 ta narsani ayt.
+A: 1. Juda katta matn korpusi.
+2. Matnni tokenlarga bo‘ladigan vosita.
+3. Transformer arxitekturasidagi model.
+4. Ko‘p sonli GPU.
+
+Q: Transformer blokining 4 ta qismini ayt.
+A: 1. Self-attention
+2. Feed-forward qatlam
+3. Residual connection
+4. Layer normalization
+
+Q: LLM matnni qayta ishlashining 5 ta bosqichini yoz.
+A: 1. Matn tokenlarga bo‘linadi.
+2. Tokenlar token ID larga aylanadi.
+3. Embedding layer ularni vektorga aylantiradi.
+4. Vektorlar Transformer bloklaridan o‘tadi.
+5. Model keyingi token ehtimolliklarini chiqaradi.
+
+Q: 3 ta open-source LLM ni ayt.
+A: 1. Qwen
+2. Llama
+3. Mistral
+
+Q: Alignment modelga o‘rgatadigan 3 ta narsani ayt.
+A: 1. Foydali va halol javob berishni.
+2. Zararli so‘rovlarni rad etishni.
+3. Bilmagan narsasini to‘qib chiqarmaslikni.
+
+Q: Preference data tayyorlashning 3 ta qadamini yoz.
+A: 1. Bitta savolga ikki xil javob oling.
+2. Qaysi javob yaxshiroq ekanini belgilang.
+3. Yaxshisini chosen, yomonini rejected deb saqlang.
+
+Q: Agent vazifani bajarishdagi 4 ta qadamni yoz.
+A: 1. Vazifani o‘ylab, reja tuzadi.
+2. Kerakli tool ni chaqiradi.
+3. Tool natijasini ko‘rib chiqadi.
+4. Vazifa tugaguncha takrorlaydi va yakuniy javobni beradi.
+
+Q: Agent ishlatishi mumkin bo‘lgan 3 ta tool ga misol keltir.
+A: 1. Internetda qidiruv.
+2. Kod bajarish.
+3. Fayl o‘qish va yozish.
+
+Q: List the 4 main computer vision tasks.
+A: 1. Image classification
+2. Object detection
+3. Segmentation
+4. OCR
+
+Q: List 3 types of encoding.
+A: 1. Label encoding
+2. One-hot encoding
+3. Ordinal encoding
+
+Q: List 3 ensemble methods.
+A: 1. Bagging
+2. Boosting
+3. Stacking

@@ -1,0 +1,161 @@
+# Manba: bizb0630/alpaca-cleaned_uz (https://huggingface.co/datasets/bizb0630/alpaca-cleaned_uz), litsenziya CC-BY-4.0.
+# Alpaca datasetining o'zbek tiliga mashina tarjimasi. fetch_external.py yasagan, qo'lda tahrirlamang.
+## external
+
+Q: Mashina o‘qitish uchun foydalaniladigan dasturlash tili nomini ayting.
+A: Bir mashinani o‘rganish uchun keng qo‘llaniladigan dasturlash tili - Python.
+
+Q: Mashina o‘qitish - bu kompyuterlarning o‘zini o‘zi o‘rganishidir, shunda u qanday qilib yaxshiroq ishlashni bilib oladi.
+A: Mashina o‘rganish - bu kompyuterlar yangi narsalarni o‘zlari o‘rganishidir, xuddi siz maktabda yangi narsalarni o‘rganganingizdek, shuning uchun ular aqlliroq bo‘ladi va bizga yaxshiroq yordam bera olishadi.
+
+Q: Mashhur dasturlash tili nomini ayting.
+A: Bir mashhur dasturlash tili Python.
+
+Q: GPT ishlashini bir jumlada tushuntirib ber: GPT - bu katta hajmdagi matnlarni o‘rganib, berilgan savollarga yoki topshiriqlarga mantiqan javob berish uchun ishlatiladigan sun’iy intellekt modelidir.
+A: GPT (Generativ Pretrained Transformer) — bu til modeli bo‘lib, u chuqur o‘qitishni qo‘llab-quvvatlaydi va oldingi so‘zlar va orqa tarqatish algoritmi asosida ketma-ketlikdagi keyingi so‘zni taxmin qilib, insonga o‘xshash matn yaratadi.
+
+Q: AI texnologiyasining bir foydasini ayting.
+A: AI texnologiyasining afzalliklaridan biri katta miqdordagi ma’lumotlarni tez va aniq tahlil qilish va qayta ishlash qobiliyatidir. Bu samaradorlikni sezilarli darajada oshirishi, inson xatolari ehtimolini kamaytirishi va aks holda olish qiyin yoki vaqt talab qiladigan tushunchalarni taqdim etishi mumkin.
+
+Q: Sun’iy intellektning uch ta kuchli tomonini sanab o‘ting: samaradorlik, tezlik, va ma’lumotlarni tahlil qilish qobiliyati.
+A: 1. Yuqori aniqlik va noziklik  
+2. Murakkab hisoblashlarni boshqarish qobiliyati  
+3. Doimiy ish faoliyati va ishonchlilik
+
+Q: Mashina o‘qitishni ishlatadigan mavjud mahsulotni nomlang.
+A: Bitta mavjud mahsulot, mashinani o‘qitishni ishlatadi, bu Amazon Alexa.
+
+Q: CRUD qisqartmasi ma’lumotlar bazasida nimani anglatadi?
+A: CRUD "Yaratish, O‘qish, Yangilash va O‘chirish" degan ma’noni anglatadi. Bu to‘rt asosiy operatsiya ma’lumotlar bazasida saqlangan ma’lumotlarga nisbatan amalga oshirilishi mumkin. Ushbu to‘rt operatsiya CRUD aylanishi deb ham ataladi va ular zamonaviy dasturiy ta’minot ilovalarida ko‘pchilik ma’lumotlar bazasi bilan o‘zaro aloqalar uchun asosni tashkil etadi.
+
+Q: Mashinani o‘rganishning bir ilovasini nomlang.
+A: Mashinalarni o‘rganishning bir qo‘llanilishi tasvirni aniqlash sohasida, bu yerda kompyuterlar algoritmlar va katta ma’lumotlar to‘plamlari yordamida tasvirlarni aniqlash va toifalashni o‘rganishi mumkin.
+
+Q: Ikki veb taraqqiyot uchun mos bo‘lgan dasturlash tilini nomlang.
+A: Web rivojlantirish uchun mos ikkita kompyuter tili JavaScript va Python.
+
+Q: Mobil ilovalar yaratish uchun ishlatilishi mumkin bo‘lgan dasturlash tili nomini ayting.
+A: Mobil ilovalar yaratish uchun foydalanilishi mumkin bo‘lgan bir dasturlash tili Java hisoblanadi. Java Android qurilmalari uchun ilovalar yaratish uchun asosiy tildir. Mobil ilovalar yaratish uchun yana bir til Swift bo‘lib, bu iOS qurilmalari uchun ilovalarni rivojlantirishda ishlatiladi.
+
+Q: Mashin o‘rganishda tez-tez ishlatiladigan uchta dasturlash tilini nomlang.
+A: Mashin o‘rganishida keng qo‘llaniladigan uchta dasturlash tili Python, R va MATLABdir.
+
+Q: Har qanday ikki ochiq manba’li AI vositasini nomlang.
+A: Ikki ochiq manba AI vositasi misoli TensorFlow va Keras. Bu mashinani o‘rganish modellarini qurish va o‘qitishda ishlatiladigan mashhur kutubxonalar.
+
+Q: AI ni bir jumlada ta’riflang.
+A: AI, sun’iy intellektning qisqartmasi, odatda inson intellektini talab qiladigan, masalan, o‘rganish, muammoni hal qilish va qaror qabul qilish kabi vazifalarni bajarishga qodir bo‘lgan mashinalar yoki tizimlarni yaratishga intiladigan kompyuter fanining bir sohasi.
+
+Q: Sun’iy intellekt haqida shunday deyishga nima deysiz: "Barchasini bilaman, hech narsani bilmayman!"
+A: Albatta, chunki hammamiz bilamizki, AI faqat bir necha kabel va sxemalar, aqlli bo‘lishga urinishmoqda. Bu emasmi, yillar davomida tadqiqot va rivojlantirishga katta vaqt sarflanmagan.
+
+Q: Sun’iy intellekt etikasi haqida gapiruvchi ikkita kitobni ayting.
+A: Sun’iy intellekt etikasi haqida gapiradigan ikkita kitob "Moral Machines: Teaching Robots Right from Wrong" mualliflari Wendell Wallach va Colin Allen, hamda "The Ethics of Artificial Intelligence" mualliflari Nick Bostrom va Eliezer Yudkowsky.
+
+Q: Eng mashhur uchta dasturlash tilini sanab o‘ting.
+A: 1. Python 2. Java 3. JavaScript
+
+Q: Mashina o‘qitish algoritmini bitta gapda tushuntiring.
+A: Mashinani o‘rganish algoritmi — bu ma’lumotlardan foydalanib, prognozlar qilish, tasniflash yoki ma’lumotlarni guruhlash uchun ishlatiladigan statistik modeldir.
+
+Q: Sahifa reyting algoritmini nomlang.
+A: Mashhur PageRank algoritmlaridan biri Google’ning PageRankidir, bu algoritm Google qidiruv tizimi tomonidan qidiruv natijalari sahifalaridagi sahifalarni baholash uchun ishlatiladi.
+
+Q: 1990-yilda yaratilgan dasturlash tili nomini ayting.
+A: 1990-yilda yaratilgan kompyuter dasturlash tili Haskell.
+
+Q: Sun’iy intellektni uchta so‘z bilan qanday ta’riflay olasiz?
+A: Taraqqiy etgan. Avtonom. O‘rganish.
+
+Q: Lineer regressiya uchun ishlatiladigan algoritmning nomi nima?
+A: Lineer regressiya uchun ishlatiladigan algoritmning nomi "Oddiy eng kichik kvadratlar" (OLS) usuli deb ataladi.
+
+Q: Neyron tarmoqlarida ishlatiladigan bir qatlam turini ayting.
+A: Nezhar tarmoqalarda ishlatiladigan bir tur qatlam konvolyutsion qatlamdir.
+
+Q: Beshta turdagi kompyuter dasturlash tillarini nomlang.
+A: 1. Payton 2. Java 3. C++ 4. JavaScript 5. PHP
+
+Q: Sun’iy intellektni bir jumlada ta’riflang.
+A: Sun’iy intellekt (SI) - bu kompyuter fanining bir sohasi bo‘lib, odamlar kabi fikrlash, o‘rganish va harakat qilishga qodir bo‘lgan aqlli mashinalarni yaratishni o‘z ichiga oladi.
+
+Q: Maxsus kompyuter dasturlashining bir turini ayting.
+A: Maxsus kompyuter dasturlashning bitta turi o‘yin ishlab chiqish bo‘lib, bu interaktiv o‘yinlarni turli platformalar uchun dasturlash tillari va o‘yin dvigatellari yordamida yaratishni o‘z ichiga oladi.
+
+Q: Mashina tarjimasida ishlatiladigan sun’iy intellektning bir turini nomlang.
+A: Mashina tarjimasi uchun keng qo‘llaniladigan bir turdagi sun’iy intellekt - bu neyron mashina tarjimasi (NMT), bu chuqur neyron tarmoqlarini so‘zlar ketma-ketligining ehtimolini bashorat qilish uchun ishlatadi, natijada bir tildan ikkinchi tilga aniq tarjimalar taqdim etadi.
+
+Q: Mashin o‘rganishda qo‘llaniladigan bir algoritm nomini ayting.
+A: Mashina o‘rganishdagi keng qo‘llaniladigan algoritmlardan biri "qaror daraxti" algoritmidir.
+
+Q: Mashina O‘rganish Nima? - Qiziqarli Misol Bilan Tanishing!
+A: "Sirni ochish: Mashinani o‘rganishni tushunish uchun boshlang‘ich qo‘llanma"
+
+Q: Sun’iy intellektni bitta jumlada ta’riflang.
+A: Sun’iy intellekt odatdagidek inson intellektini talab qiladigan muammolarni hal qilish, qaror qabul qilish, nutqni tanib olish va o‘qish kabi vazifalarni bajara oladigan kompyuter tizimlari va mashinalarini rivojlantirishni anglatadi.
+
+Q: Uchta ma’lumotlar ilmida ishlatiladigan keng tarqalgan dasturlash tillarini ayting.
+A: Ma’lumotlar ilmida ishlatiladigan uchta mashhur dasturlash tili: 1. Python 2. R 3. SQL.
+
+Q: Samarali chatbot yaratish uchun bitta asosiy elementni ayting.
+A: Tizimli va samarali chatbot yaratishning asosiy elementlaridan biri tabiiy tilni qayta ishlash (NLP)dir. NLP chatbotga inson tilini tushunish va talqin qilish imkonini beradi hamda mantiqiy va muvozanatli ravishda javob berishini ta’minlaydi. Bu chatbotning inson kabi suhbatlar o‘tkazish qobiliyatini oshiradi va foydalanuvchilar savollariga aniq va foydali javoblar berish imkoniyatini beradi.
+
+Q: Neuro tarmoqlar yordamida hal qilinadigan mashinani o‘rganish muammosini ayting.
+A: Umumiy mashinani o‘rganish muammosi, neyron tarmoqlar yordamida hal qilinishi mumkin bo‘lgan, tasvirlarni tasniflashdir, bu erda maqsad tasvir ichidagi ob’ektlarni aniqlash va ularni turli sinflarga ajratishdir. Neyron tarmoq tasvirlar ichidagi naqshlar va xususiyatlarni tanib olish uchun o‘qitilishi mumkin va ularni aniq tasniflashga qodir.
+
+Q: Sun’iy intellektning bir afzalliklarini ayting.
+A: Sun’iy ongning bir afzalligi, katta miqdordagi ma’lumotlarni tez va aniq tahlil qilish qobiliyatidir, bu esa turli sohalarda samaradorlik va ishlab chiqarishni oshirishga olib keladi.
+
+Q: Ikki keng qo‘llaniladigan kompyuter algoritmlarini ayting.
+A: 1. QuickSort: Bu samarali saralash algoritmi bo‘lib, massivni submassivlarga ajratish asosida bo‘linish va zabt etish yondashuvidan foydalanadi. 2. Dijkstra algoritmi: Bu algoritm grafikdagi tugunlar orasidagi eng qisqa yo‘lni topish uchun qo‘llaniladi. U transport tarmoqlarida, geografik xaritalash tizimlarida va IP marshrutlashtirish kabi boshqa ilovalarda foydalaniladi.
+
+Q: Sun’iy intellektni bilishni talab qiladigan kasbni nomlang.
+A: Bir ish, sun’iy intellekt bo‘yicha bilimlarni talab qiladi, bu - Mashina O‘qitish Muhandisi.
+
+Q: Umumiy maqsadli dasturlash tili nomini ayting.
+A: Umumiy maqsadli dasturlash tili sifatida bir misol Python.
+
+Q: 5 ta keng tarqalgan saralash algoritmlarini nomlang.
+A: 1. Tez sort  
+2. Birlashtirish sort  
+3. Sharlash sort  
+4. Tanlash sort  
+5. Kiritish sort
+
+Q: Mashina o‘rganish ning bir jumladagi ta’rifi nima?
+A: Mashin o‘rganish - bu kompyuterlarga aniq bir vazifada o‘rganish va o‘z faoliyatini yaxshilash imkonini beradigan o‘rganish sohasidir, bu esa aniq dasturlangan holda emas.
+
+Q: Sinfga ajratish vazifalarini hal qilishda ishlatiladigan umumiy mashinani o‘rganish algoritmini nomlang.
+A: Bir umumiy mashina o‘qitish algoritmi sinflash vazifalarini hal qilish uchun logistik regressiya algoritmidir.
+
+Q: AI vazifasining bitta misoli nima?
+A: Bir misol sun’iy intellekt vazifalaridan biri Tabiiy Tilni Qayta Qayta ishlashdir, bu mashinalarni insonlar tilini tushunishga va yaratishga o‘rgatishni o‘z ichiga oladi, bu esa ularning insonlar bilan intuitiv va muloqotli tarzda o‘zaro aloqada bo‘lishiga imkon beradi.
+
+Q: Ob’ektga yo‘naltirilgan dasturlashda eng keng tarqalgan meros turi nima?
+A: Ob’ektga yo‘naltirilgan dasturlashda eng keng tarqalgan meros olish turi yagona merosdir, bunda bir pastki sinf bitta asosiy yoki ustun sinfdan meros oladi. Bu pastki sinfga ustun sinfdan metodlar, xususiyatlar va xulq-atvorlarni meros qilib olishga imkon beradi va kodni qayta ishlatish hamda aniqroq pastki turlar yaratishni ta’minlaydi.
+
+Q: Besh qidiruv algoritmini nomlang.
+A: 1. Ikkilik qidiruv  
+2. Chiziqli qidiruv  
+3. Kenglik bo‘yicha qidiruv (BFS)  
+4. Chuqlik bo‘yicha qidiruv (DFS)  
+5. A* (A-yulduz) qidiruv
+
+Q: Bugungi kunda eng ommabop dasturlash tili qaysi?
+A: 2021 yil holatiga ko‘ra, Tiobe indeksiga ko‘ra, eng mashhur dasturlash tili hozirda Java bo‘lib, uni C va Python yaqin kuzatmoqda. Biroq, mashhurlik o‘zgarishi va ma’lumot manbasiga qarab farq qilishi mumkin, shuning uchun turli tadqiqotlar va indekslar turli reytinglarni ko‘rsatishi mumkinligini e’tiborga olish muhimdir.
+
+Q: Ikki ta’kidlash kerak bo‘lgan dasturlash tilini ayting, ular front-end veb rivojlanishda keng qo‘llaniladi.
+A: Ikki dasturlash tili front-end veb rivojlantirishda keng qo‘llaniladi: 1. HTML (Gipermatn belgilanma tili) 2. JavaScript
+
+Q: Ikki tur sun’iy intellektni sanab o‘ting.
+A: 1. Tor yoki zaif AI: Bu turdagi AI ma’lum bir vazifani yoki vazifalar to‘plamini bajarish uchun mo‘ljallangan va uning qamrovi va imkoniyatlari cheklangan. 2. Umumiy yoki kuchli AI: Bu turdagi AI inson kabi o‘rganish, mulohaza yuritish va tushunish qobiliyatiga ega bo‘lish uchun mo‘ljallangan. U keng turdagi vazifalarni bajarish va yangi vaziyatlarga moslashish imkoniyatiga ega.
+
+Q: Ikkita turli server tomoni dasturlash tillarini nomlang.
+A: Ikkita turli server tomoni dasturlash tillari: 1. Java: Sun Microsystems tomonidan ishlab chiqilgan Java, veb rivojlantirish uchun maxsus mo‘ljallangan eng yuqori darajadagi backend dasturlash tillaridan biridir. 2. PHP: PHP - bu server tomonida ishlatiladigan ssenariy tili bo‘lib, veb rivojlantirish uchun maxsus mo‘ljallangan. Bu dinamik va interaktiv veb-saytlar yaratishda kuchli vosita.
+
+Q: Uchta veb rivojlantirishda foydalaniladigan dasturlash tillarini ayting.
+A: Veb ishlab chiqishda keng ishlatiladigan uchta dasturlash tili HTML (Gipermatn belgilar tili), CSS (Kaskadli uslub varaqalari) va JavaScript.
+
+Q: 2021-yilda eng ommalashgan dasturlash tili qaysi?
+A: TIOBE indeksiga ko‘ra, 2021-yil sentabr holatiga ko‘ra, eng mashhur dasturlash tili C bo‘lib, uni Java va Python yaqin kuzatadi. Dasturlash tillarining mashhurligi turli metrikalar va manbalarga qarab farq qilishi mumkinligini yodda tuting.
+
